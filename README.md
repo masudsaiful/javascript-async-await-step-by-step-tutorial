@@ -20,7 +20,7 @@ H) Javascript Promises
 
 I) Async/Await
 
-## Lets a short overview all of them:
+## Let's a short overview all of them:
 
 ### A) Javascript Function
 #### i) Name Function
