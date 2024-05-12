@@ -719,7 +719,7 @@ c) Blocking can make wait to display the result if delay happen in the order sta
 ### E) Javascript Callback Function
 Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks. 
 #### How to use Callback Function? 
-##### i) Callback function syntax:
+##### a) Callback function syntax:
 ```javascript
 // Example1
 normalFunc(callbackFunc) // "I am normal function", "I am callback function"  
@@ -765,7 +765,7 @@ Let's explain the above codes
 
 
 
-##### i) Callback function syntax with parameter:
+##### b) Callback function syntax with parameter:
 ```javascript
 // Example1: Callback function using arguments
 normalFunc(callbackFunc) // "I am normal function", "Are you callback function? Yes, I am..."  
@@ -798,6 +798,9 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1(notify)
 }
 ```
+
+
+##### c) Callback function syntax in anonymous function or arrow function:
 
 
 
