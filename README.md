@@ -801,6 +801,9 @@ function normalFunc(callbackParam1, callbackParam2) {
 
 
 ##### c) Callback function syntax in anonymous function or arrow function:
+```javascript
+
+```
 
 
 
