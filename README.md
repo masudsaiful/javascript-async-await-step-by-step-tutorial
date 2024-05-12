@@ -699,13 +699,9 @@ console.log(order) // "Warm hearted greetings for accepting our hospitality. piz
 
 ##### The problems with the above Examples are:
 a) We have to call four functions to display the result in Example1. 
-
 ###### i) orderFunc('pizza', 'burger'), 
-
 ###### ii) displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order)),
-
 ###### iii) greetingsFunc() and 
-
 ###### iv) orderStatusFunc(order) 
 
 So, it will be nightmare to manage lots of function call in a larger application.
