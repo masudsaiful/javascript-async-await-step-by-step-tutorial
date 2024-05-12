@@ -763,6 +763,7 @@ Let's explain the above codes
 ###### x) In Example2, only one function call to display the result, thus hassell free when matter of bulk functions call.
 ###### xi) In both Examples, we can prevent the parent function from displaying the result by not providing callback arguments. So, more fine control over the functions call. 
 
+
 ##### i) Callback function syntax with parameter:
 ```javascript
 // Example1: Callback function using arguments
