@@ -713,4 +713,4 @@ b) From the Example2 it is not possible to prevent the orderFunc('pizza', 'burge
 c) Blocking can make wait to display the result if delay happen in the order status function of the above code i.e. orderStatusFunc(order). In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that by writing asynchronous programming using browser based javascript engine and web APIs.
 
 
-Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
+###### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
