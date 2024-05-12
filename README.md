@@ -718,8 +718,8 @@ c) Blocking can make wait to display the result if delay happen in the order sta
 
 ### E) Javascript Callback Function
 Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks. 
-#### i) How to use Callback Function? 
-##### Callback function syntax:
+#### How to use Callback Function? 
+##### i) Callback function syntax:
 ```javascript
 // Example1
 normalFunc(callbackFunc) // "I am normal function", "I am callback function"  
@@ -734,15 +734,20 @@ function normalFunc(callbackParam) {
 }
 
 // Example2
-normalFunc(callbackFunc) // "I am callback function", "I am normal function"    
+normalFunc(callbackFunc1, callbackFunc2) // "I am callback function2", "I am normal function", "I am callback function1"   
 
-function callbackFunc() {
-  console.log('I am callback function')
+function callbackFunc1() {
+  console.log('I am callback function1')
 }
 
-function normalFunc(callbackParam) {
-  callbackParam()
+function callbackFunc2() {
+  console.log('I am callback function2')
+}
+
+function normalFunc(callbackParam1, callbackParam2) {
+  callbackParam2()
   console.log('I am normal function')
+  callbackParam1()
 }
 ```
 Let's explain the above codes
@@ -751,7 +756,9 @@ Let's explain the above codes
 ###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
 ###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks.
 ###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
-###### v) In the Example2, Inside normalFunc(callbackParam) function callbackParam() is previously called before parent function's own task.
+###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, neat and clean codebase.
+###### vii) In Example2, more than one callback can be passed. 
+###### viii) In Example2, more important wher the callback function invoked, less important argument sequence.
 
 
 
