@@ -714,3 +714,45 @@ c) Blocking can make wait to display the result if delay happen in the order sta
 
 
 ###### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
+
+
+### E) Javascript Callback Function
+Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks. 
+#### i) How to use Callback Function? 
+##### Callback function syntax:
+```javascript
+// Example1
+normalFunc(callbackFunc) // "I am normal function", "I am callback function"  
+
+function callbackFunc() {
+  console.log('I am callback function')
+}
+
+function normalFunc(callbackParam) {
+  console.log('I am normal function')
+  callbackParam()
+}
+
+// Example2
+normalFunc(callbackFunc) // "I am callback function", "I am normal function"    
+
+function callbackFunc() {
+  console.log('I am callback function')
+}
+
+function normalFunc(callbackParam) {
+  callbackParam()
+  console.log('I am normal function')
+}
+```
+Let's explain the above codes
+###### i) CallbackFunc() is a callback function because it's passed as argument to normalFunc(callbackFunc) function
+###### ii) CallbackFunc() function passed as argument to normalFunc(callbackFunc) function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
+###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
+###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks.
+###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
+###### v) In the Example2, Inside normalFunc(callbackParam) function callbackParam() is previously called before parent function's own task.
+
+
+
+
