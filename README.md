@@ -598,22 +598,34 @@ If you ever design patterns in OOP (Object-Oriented Programming), you'll find a 
 
 If we look at in 'Synchronous Programming: Example1' in this line,
 
-###### "displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))", 
+```javascript
+displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
+```
 
 it will display output the greetings message in first part and order status in second part,
 
-###### i.e. "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+```javascript
+console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+```
 
 Now change order status in first argument and greetings message in second arguments like below, 
 
-###### "displayOrderStatusFunc(orderStatusFunc(order), greetingsFunc())",
+```
+displayOrderStatusFunc(orderStatusFunc(order), greetingsFunc())
+```
 
 the output will be now,
-###### i.e. "pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality"
 
+```javascript
+console.log(displayOrderStatus) // "pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality"
+```
 
-Now examine the 'Synchronous Programming: Example2'. We always wanted to display warm greetings message in first place and delivery status at second place. Moreover we let the each function to control other function call inside from them and thus better control over when to execute a function.
-###### i.e. "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+Next examine the 'Synchronous Programming: Example2'. We always wanted to display warm greetings message in first place and delivery status at second place in this example. Moreover we let the each function to control other function call inside their and thus better control over when to execute a function.
+
+```javascript
+console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+```
+
 This is how we can better control the function execution sequences when writing synchronous programming.
 
 
