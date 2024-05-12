@@ -697,16 +697,16 @@ const order = orderFunc('pizza', 'burger')
 console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
 ```
 
-##### The problems with the Examples above are:
+##### The problems with the above Examples are:
 a) We have to call four functions to display the result in Example1. 
 
-i) orderFunc('pizza', 'burger'), 
+###### i) orderFunc('pizza', 'burger'), 
 
-ii) displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order)),
+###### ii) displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order)),
 
-iii) greetingsFunc() and 
+###### iii) greetingsFunc() and 
 
-iv) orderStatusFunc(order) 
+###### iv) orderStatusFunc(order) 
 
 So, it will be nightmare to manage lots of function call in a larger application.
 
