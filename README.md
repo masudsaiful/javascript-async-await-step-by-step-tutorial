@@ -756,10 +756,46 @@ Let's explain the above codes
 ###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
 ###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks.
 ###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
-###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, neat and clean codebase.
+###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, keeping consistency, neat and clean code.
 ###### vii) In Example2, more than one callback can be passed. 
-###### viii) In Example2, more important wher the callback function invoked, less important argument sequence.
+###### viii) In Example2, more important is where the callback function invoked, less important argument sequence.
+###### ix) In Example2, more important is where the callback function invoked, less important argument sequence.
+###### x) In Example2, only one function call to display the result, thus hassell free when matter of bulk functions call.
+###### xi) In both Examples, we can prevent the parent function from displaying the result by not providing callback arguments. So, more fine control over the functions call. 
 
+##### i) Callback function syntax with parameter:
+```javascript
+// Example1: Callback function using arguments
+normalFunc(callbackFunc) // "I am normal function", "Are you callback function? Yes, I am..."  
+
+function callbackFunc(notifyParam) {
+  console.log(notifyParam + 'Yes, I am...')
+}
+
+function normalFunc(callbackParam) {
+  console.log('I am normal function')
+  let notify = 'Are you callback function? '
+  callbackParam(notify)
+}
+
+// Example2: Multiple callback function using arguments
+normalFunc(callbackFunc1, callbackFunc2) // "I am normal function", "Are you callback function? Yes, I am callback function2", "Are you callback function? Yes, I am callback function1"   
+
+function callbackFunc1(notifyParam) {
+  console.log(notifyParam + 'Yes, I am callback function1')
+}
+
+function callbackFunc2(notifyParam) {
+  console.log(notifyParam + 'Yes, I am callback function2')
+}
+
+function normalFunc(callbackParam1, callbackParam2) {
+  console.log('I am normal function')
+  let notify = 'Are you callback function? '
+  callbackParam2(notify)
+  callbackParam1(notify)
+}
+```
 
 
 
