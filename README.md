@@ -429,7 +429,7 @@ In the Example2 we can now seen that the output sequence orders are 'something3'
 
 
 ### C) Function Sequence and synchronous programming
-#### What we have learned before let's recape those again, 
+#### What we have already learned let's recape those again, 
 
 
 ##### Javascript is,
