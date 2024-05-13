@@ -763,7 +763,8 @@ Let's explain the above codes
 ###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
 ###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, keeping consistency, neat and clean code.
 ###### vii) In Example2, more than one callback can be passed. 
-###### viii) In Example2, more important is where the callback function invoked, less important argument sequence. See the following snippets in Example2.
+###### viii) In Example2, more important is where the callback functions invoked, less important is argument sequences. See the following snippets in Example2.
+
 ```javascript
 function normalFunc(callbackParam1, callbackParam2) {
   callbackParam2()
@@ -771,11 +772,12 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1()
 }
 ```
-Here function call sequence are callbackParam2() and then next callbackParam1(). So, it can be easy to control time-consuming function call.
-###### ix) In Example2, more important is where the callback function invoked, less important argument sequence.
-###### x) In Example2, only one function call to display the result, thus hassell free when matter of bulk functions call. 
-###### xi) In both Examples, we can prevent the parent function from displaying the result by not providing callback arguments. So, more fine control over the functions call. 
+Here function call sequences are callbackParam2() and then next callbackParam1(). So, time-consuming function call sequences are managed in a single function block.
 
+
+###### ix) In Example2, more important is where the callback function invoked, less important argument sequence.
+###### x) In Example2, only one function call to display the result, thus hassell when comparing to bulk functions call. 
+###### xi) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
 ##### b) Callback function syntax with parameter:
@@ -811,6 +813,7 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1(notify)
 }
 ```
+Both of the examples we can see when callback function passed as argument from parent function call no need to parameter signature rather when invoked inside the parent function definition then need parameter.
 
 
 ##### c) Callback function syntax in anonymous function or arrow function:
