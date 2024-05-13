@@ -1004,7 +1004,7 @@ simpleFunc(message => {
 
 Enough with the callback description.  
 
-**Let's see some few more examples **how callback function act with the Web API things like: setTimeout() function**, after that we will leap to know about 'Asynchronous Programming'**
+**Let's see some few more examples how callback function act with the Web API things like: setTimeout() function, after that we will leap to know about 'Asynchronous Programming'**
 ```javascript
 // Example 1: setTimeout function using callback
 setTimeout(a => {
