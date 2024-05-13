@@ -1035,10 +1035,10 @@ const employeeFunc = countParam1 => {
 }
 
 const bossFunc = callback => {
-  console.log('Boss calling employee')
-  console.log('Plz, come after 3 seconds')
   let count = 3
   callback(count)
+  console.log('Boss calling employee')
+  console.log('Plz, come after 3 seconds')
 }
 
 bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
