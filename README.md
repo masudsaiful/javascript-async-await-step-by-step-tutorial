@@ -1043,6 +1043,23 @@ const bossFunc = callback => {
 
 bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
 ```
+Did you see the shining parts are on the above codes? Let's find out the sun.
+
+Imagine your are fetching huge size of dB request from backend API in replace of setTimeout() method. i.e. 'fetch()'. You have to wait for full response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious fetch request happen in an application. Using callback you have triggered an action. 
+
+###### i) The action (here callback function) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. these are also called Web APIs)
+
+###### ii) Javascript will hand over the asynchronous function to browser based javascript engine ( In chrome it's' V8 ) to deal with these Web API using some terminologies like: Memory Heap, Call Stack, Call Stack Queue, Event Loop (Details of these out of scope in here)
+
+###### iii) Now Javascript for it's single-threaded architecturel nature will start to execute the next instructions of code.
+
+###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line, so, concurrently happening numerous tasks.
+
+###### v) Whenever browser ended with dealing it will blank the Call Stack Frame, back to Web API method and released, handed over the result to response in Javascript code. 
+
+###### vi) The response are avilable now in Javascript code where it has been returned.
+
+So, using callback we are not getting block in Javascript code. Thus, the callback function really shine where asynchronous functions are used.
 
 
 
