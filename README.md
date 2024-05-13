@@ -1065,7 +1065,7 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 
 ###### v) Whenever 'setTimeout()' timer reached the destination, browser ended with dealing. It will blank this task from Callback Queue, back to Web API method, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Javascript code and lastly setTimeout() return an ID of timer.
 
-###### vi) Now the response are avilable to use later.
+###### vi) Now the response are avilable to use in Javascript code later.
 
 **Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Thus, the callback function really shine when use with asynchronoous programming.**
 
