@@ -886,18 +886,127 @@ function normalFunc(callbackParam1, callbackParam2) {
 }
 ```
 
-##### c) Callback function syntax in anonymous function or arrow function:
+##### c) Callback function syntax using Anonyumous and Arrow syntax:
 ```javascript
 
-// Example1: A simple callback function
-function simplaFunc() {
+// Example1: Simple callback function call from Name Function
+function simpleFunc(callback) {
   console.log('I am simple function')
+  let message = 'You are callback function'
+  callback(message)
+
 }
 
-function simpleCallbackFunc() {
-  console.log('I am simple callback function')
+function simpleCallbackFunc(message) {
+  console.log(message)
 }
+
+simpleFunc(simpleCallbackFunc) // "I am simple function", "You are callback function"
+
+
+same as,
+
+
+// Example2: Simple callback function call from Anonymous Function
+const simpleFunc = function(callback) {
+  console.log('I am anonymous function')
+  let message = 'You are callback function'
+  callback(message)
+
+}
+
+function simpleCallbackFunc(message) {
+  console.log(message)
+}
+
+simpleFunc(simpleCallbackFunc) // "I am anonymous function", "You are callback function"
+
+
+same as,
+
+
+
+// Example3: Simple callback function call from Arrow Function
+const simpleFunc = callback => {
+  console.log('I am arrow function')
+  let message = 'You are callback function'
+  callback(message)
+
+}
+
+function simpleCallbackFunc(message) {
+  console.log(message)
+}
+
+simpleFunc(simpleCallbackFunc) // "I am arrow function", "You are callback function"
+
+
+same as,
+
+
+// Example4: Anonymous callback function call from Anonymous Function
+const simpleFunc = function(callback) {
+  console.log('I am anonymous function')
+  let message = 'You are anonymous callback function'
+  callback(message)
+
+}
+
+const simpleCallbackFunc = function (message) {
+  console.log(message)
+}
+
+simpleFunc(simpleCallbackFunc) // "I am anonymous function", "You are anonymous callback function"
+
+
+same as,
+
+
+// Example5: Arrow callback function call from Arrow Function
+const simpleFunc = callback => {
+  console.log('I am arrow function')
+  let message = 'You are arrow callback function'
+  callback(message)
+
+}
+
+const simpleCallbackFunc = message => {
+  console.log(message)
+}
+
+simpleFunc(simpleCallbackFunc) // "I am arrow function", "You are arrow callback function"
+
+
+same as,
+
+
+// Example6: Callback Function difined and passed as arguments simultaneously from Parent Function 
+const simpleFunc = callback => {
+  console.log('I am parent function')
+  let message = 'You are callback function'
+  callback(message)
+
+}
+
+simpleFunc(message => {
+  console.log(message)
+}) // "I am parent function", "You are callback function"
 ```
+
+
+It's seems little different in the above Example6 code. Callback function itself defined and passed as argument through parent parameter as belows
+```javascript
+simpleFunc(message => {
+  console.log(message)
+})
+
+
+// Another Example: Using setTimeOut() Web API
+
+```
+
+
+###### i) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
 
