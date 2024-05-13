@@ -625,12 +625,42 @@ the output will be now,
 console.log(displayOrderStatus) // "pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality"
 ```
 
-Next examine the 'Synchronous Programming: Example2'. We always wanted to display warm greetings message in first place and delivery status at second place in this example. Moreover we let the each function to control other function call inside their and thus better control over when to execute a function.
+Next examine the 'Synchronous Programming: Example2'. We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed in this example.
 
 ```javascript
 console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
 ```
 
+Moreover we let the each function to control other function call inside their body and thus better controlling over when to execute a function.
+
+```javascript
+const orderFunc = (item1, item2) => {
+	...
+	let status = orderStatusFunc(items)
+	...
+}
+
+const orderStatusFunc = item => {
+	if (item) {
+		...
+		let display = displayOrderStatusFunc(status)
+		...
+	}
+}
+
+const displayOrderStatusFunc = param => {
+	if (param) {
+		let greetings = greetingsFunc()
+		...
+	}
+}
+
+const greetingsFunc = () => {
+	...
+}
+
+const order = orderFunc('pizza', 'burger')
+```
 This is how we can better control the function execution sequences when writing synchronous programming.
 
 
@@ -755,7 +785,7 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1()
 }
 ```
-Let's explain the above codes
+Let's explain the callback function advantages of above codes
 ###### i) CallbackFunc() is a callback function because it's passed as argument to normalFunc(callbackFunc) function
 ###### ii) CallbackFunc() function passed as argument to normalFunc(callbackFunc) function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
 ###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
@@ -772,17 +802,17 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1()
 }
 ```
-Here function invoked sequences are callbackParam2() and then next callbackParam1() and hence function call sequences are managed in a single function block.
+Here callback function invoked sequences are callbackParam2() and then next callbackParam1() and hence function call sequences are managed in a single function block.
 
 
-###### x) In Example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
+###### ix) In Example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
 
 ```javascript
 normalFunc(callbackFunc1, callbackFunc2)
 ```
 
 
-###### xi) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
+###### x) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
 
@@ -819,12 +849,20 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1(notify)
 }
 ```
-Both of the examples we can see when callback function passed as argument from parent function call no need to parameter signature rather when invoked inside the parent function definition then need parameter.
+Another advantages to use callback function. Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature rather when invoked inside the parent function then need parameter.
 
 
 ##### c) Callback function syntax in anonymous function or arrow function:
 ```javascript
 
+// Example1: A simple callback function
+function simplaFunc() {
+  console.log('I am simple function')
+}
+
+function simpleCallbackFunc() {
+  console.log('I am simple callback function')
+}
 ```
 
 
