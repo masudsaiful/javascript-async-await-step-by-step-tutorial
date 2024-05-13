@@ -745,7 +745,7 @@ So, it will be nightmare to manage lots of function call in a larger application
 b) From the Example2 it is not possible to prevent the orderFunc('pizza', 'burger')  function from displaying the greetings message. That means there need more flexible and efficient controlling to manage the function sequence.
 
 
-c) Blocking can make wait to display the result if delay happen in the order status function of the above code i.e. orderStatusFunc(order). In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that by writing asynchronous programming using browser based javascript engine and web APIs.
+c) Blocking can make wait to display the result if delay happen in the order status function of the above code i.e. orderStatusFunc(order). In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that by writing asynchronous programming using browser based javascript engine and web APIs which we will discuss that later in this article.
 
 
 ###### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
