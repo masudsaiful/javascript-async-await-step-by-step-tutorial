@@ -1070,6 +1070,16 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 **Handling asynchronous functions using callback are not getting block in Javascript code. Thus, the callback function really shine where asynchronous functions are used.**
 
 
+### A) Multi-threaded, Non-Blocking and Asynchronous
+We have already got idea from the above parts of this article that Javascript is by default **Single-threaded, Blocking and Synchronous** programming language. But modern JavaScript has pushed this notion back and moved forward. Programmers can now be able to code multi-threading programming with Javascript.
+
+
+#### i) Multi-threaded
+```javascript
+
+```
+
+
 
 
 
