@@ -1045,7 +1045,7 @@ const bossFunc = callback => {
 
 bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
 ```
-Above code will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
+Above code mentioning in Example3 will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
 Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself calling a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
 
@@ -1055,19 +1055,19 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 
 **Using callback you have triggered an action.** 
 
-###### i) The action (here callback function) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. these are also called Web APIs)
+###### i) The action (here callback function. i.e employeeFunc and callback(count)) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. these are also called Web APIs)
 
 ###### ii) Javascript will hand over the asynchronous function to browser based javascript engine ( In chrome it's' V8 ) to deal with these Web API using some terminologies like: Memory Heap, Call Stack, Call Stack Queue, Event Loop (Details of these out of scope in here)
 
-###### iii) Now Javascript for it's single-threaded architecturel nature will start to execute the next instructions of code.
+###### iii) Now Javascript for it's single-threaded architectural nature will start to execute the next instructions of code.
 
-###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line, so, concurrently happening numerous tasks.
+###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line. So, concurrently happening numerous tasks.
 
-###### v) Whenever 'setTimeout()' timer reached the destination browser ended with dealing, it will blank the Call Stack Frame, back to Web API method and released, handed over the 'settimeOut()' callback function to Javascript to execute, return the response from where it's received. 
+###### v) Whenever 'setTimeout()' timer reached the destination, browser ended with dealing. It will blank this task from Callback Queue, back to Web API method, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Javascript code and lastly setTimeout() return an ID of timer.
 
-###### vi) The response are avilable now in Javascript code where it is received or returned.
+###### vi) Now the response are avilable to use later.
 
-**Handling asynchronous functions using callback are not making block the Javascript code. Thus, the callback function really shine where asynchronous functions are used.**
+**Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Thus, the callback function really shine when use with asynchronoous programming.**
 
 
 ### F) Multi-threaded, Non-Blocking and Asynchronous
