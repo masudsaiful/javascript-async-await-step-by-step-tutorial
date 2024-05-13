@@ -1047,7 +1047,7 @@ bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", 
 ```
 Above code will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
-Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds.
+Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself called a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
@@ -1063,11 +1063,11 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 
 ###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line, so, concurrently happening numerous tasks.
 
-###### v) Whenever browser ended with dealing, it will blank the Call Stack Frame, back to Web API method and released, handed over the result to response in Javascript code. 
+###### v) Whenever 'setTimeout()' timer reached the destination browser ended with dealing, it will blank the Call Stack Frame, back to Web API method and released, handed over the 'settimeOut()' callback function to Javascript to execute, return the response from where it's received. 
 
-###### vi) The response are avilable now in Javascript code where it has been returned.
+###### vi) The response are avilable now in Javascript code where it is received or returned.
 
-**Handling asynchronous functions using callback are not getting block in Javascript code. Thus, the callback function really shine where asynchronous functions are used.**
+**Handling asynchronous functions using callback are not making block the Javascript code. Thus, the callback function really shine where asynchronous functions are used.**
 
 
 ### F) Multi-threaded, Non-Blocking and Asynchronous
