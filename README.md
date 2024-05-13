@@ -1047,7 +1047,7 @@ bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", 
 ```
 Above code will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
-Second, it will display **"Hurray! I am here after 3 seconds"**, though **"callback(count)"** is called at first but will back with result after 3 seconds.
+Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds.
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
