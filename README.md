@@ -1043,9 +1043,22 @@ const bossFunc = callback => {
 
 bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
 ```
-Did you see the shining parts are on the above codes? Let's find out the sun.
 
-Imagine your are fetching huge size of dB request from backend API in replace of setTimeout() method. i.e. 'fetch()'. You have to wait for full response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious fetch request happen in an application. Using callback you have triggered an action. 
+
+Above code will display These two result first **"Boss calling employee", "Plz, come after 3 seconds"**
+
+Next it will display **"Hurray! I am here after 3 seconds"**, though **"callback(count)"** is called at first but will back with result after 3 seconds.
+
+
+
+
+###### Did you see the shining parts are on the above codes? Let's find out the sun.
+
+Imagine your are fetching huge size of dB request from backend API in replace of setTimeout() method. i.e. 'fetch()'. You have to wait for full response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious fetch request happen in an application. 
+
+
+
+Using callback you have triggered an action. 
 
 ###### i) The action (here callback function) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. these are also called Web APIs)
 
