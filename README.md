@@ -772,11 +772,16 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1()
 }
 ```
-Here function call sequences are callbackParam2() and then next callbackParam1(). So, time-consuming function call sequences are managed in a single function block.
+Here function invoked sequences are callbackParam2() and then next callbackParam1() and hence function call sequences are managed in a single function block.
 
 
-###### ix) In Example2, more important is where the callback function invoked, less important argument sequence.
-###### x) In Example2, only one function call to display the result, thus hassell when comparing to bulk functions call. 
+###### x) In Example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
+
+```javascript
+normalFunc(callbackFunc1, callbackFunc2)
+```
+
+
 ###### xi) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
