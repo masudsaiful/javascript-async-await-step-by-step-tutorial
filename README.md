@@ -1027,7 +1027,7 @@ parentFunc(anotherFunc) // "Parent calling callback", "I will come after 3 secon
 
 
 
-// Example 2: setTimeout function using callback inside from another function with external argument
+// Example 3: setTimeout function using callback inside from another function with external argument
 const employeeFunc = countParam1 => {
   setTimeout(countParam2 => {
     console.log('Hurray! I am here after ' + countParam2 +  ' seconds')
