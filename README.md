@@ -1047,7 +1047,7 @@ bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", 
 ```
 Above code will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
-Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself called a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
+Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself calling a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
