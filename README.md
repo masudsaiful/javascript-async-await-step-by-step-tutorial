@@ -1002,7 +1002,7 @@ simpleFunc(message => {
 ```
 
 
-Enough with the callback description.  Let's see some few more examples how callback function act with the Web APIs things like: setTimeout() function, after that we we will leap to know about 'Asynchronous Programming'
+Enough with the callback description.  Let's see some few more examples how callback function act with the Web API things like: setTimeout() function, after that we will leap to know about 'Asynchronous Programming'
 ```javascript
 // Example 1: setTimeout function using callback
 setTimeout(a => {
@@ -1012,10 +1012,10 @@ setTimeout(a => {
 
 
 // Example 2: setTimeout function using callback inside from another function
-const afterThreeSecFunc = () => {
+const anotherFunc = () => {
   setTimeout(a => {
     console.log('I will come after ' + a +  ' seconds')
-  }, 3000, '3') // Print me after 3 seconds
+  }, 3000, '3')
 }
 
 const parentFunc = callback => {
@@ -1023,7 +1023,25 @@ const parentFunc = callback => {
   console.log('Parent calling callback')
 }
 
-parentFunc(afterThreeSecFunc)
+parentFunc(anotherFunc) // "Parent calling callback", "I will come after 3 seconds"
+
+
+
+// Example 2: setTimeout function using callback inside from another function with external argument
+const employeeFunc = countParam1 => {
+  setTimeout(countParam2 => {
+    console.log('Hurray! I am here after ' + countParam2 +  ' seconds')
+  }, countParam1*1000, countParam1)
+}
+
+const bossFunc = callback => {
+  console.log('Boss calling employee')
+  console.log('Plz, come after 3 seconds')
+  let count = 3
+  callback(count)
+}
+
+bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
 ```
 
 
