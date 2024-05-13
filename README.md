@@ -1,5 +1,10 @@
 **                                                                       **
 
+
+At one time, developers wrote procedural JavaScript, meaning function-based JavaScript programming. But over time, JavaScript features and characteristics kept updating. Developers had to struggle a lot to handle single-threaded architecture, blocking, and execution sequence issues while writing programs. They had to write programming in a very cumbersome way to control which function would execute after which, to handle it beautifully. To overcome single-threaded issues, blocking issues, and synchronous programming problems, official JavaScript (ECMAScript) kept adding various features or characteristics at different times so that through multi-threaded, non-blocking, and asynchronous ways, many tasks could output simultaneously. This made web programming even smoother, more efficient, and developer-friendly.
+
+Since JavaScript is inherently a single-threaded, blocking, and synchronous programming language, and in subsequent versions of ECMAScript, various updated features were added, combining all these with browser-dependent features and utilizing web APIs, we can write multi-threaded flavors, non-blocking, and asynchronous programming using JavaScript. In modern JavaScript, for handling asynchronous programming, in 2015, the ES6 standard introduced us to Promises objects, through which asynchronous operations can be tracked. Then in 2017, ECMA introduced the Async/Await concept, which works with Promises and helps handle asynchronous operations with even more proficiency, making it easier and more developer-friendly to write multi-threaded JavaScript code with better results.
+
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
 A) Javascript Functions
