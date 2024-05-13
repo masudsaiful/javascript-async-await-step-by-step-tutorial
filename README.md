@@ -852,9 +852,7 @@ function normalFunc(callbackParam1, callbackParam2) {
 Another advantages to use callback function. 
 ###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature rather when invoked inside parent body then need parameter.
 ```javascript
-// Example1: Callback function using arguments
-
-// No need parameter to pass in callbackFunc
+// Example1: Callback function using arguments - No need parameter to pass in callbackFunc
 normalFunc(callbackFunc)
 
 function callbackFunc(notifyParam) {
@@ -868,9 +866,7 @@ function normalFunc(callbackParam) {
   callbackParam(notify)
 }
 
-// Example2: Multiple callback function using arguments
-
-// No need to pass arguments with callbackFunc1 and callbackFunc2
+// Example2: Multiple callback function using arguments - No need to pass arguments with callbackFunc1 and callbackFunc2
 normalFunc(callbackFunc1, callbackFunc2) 
 
 function callbackFunc1(notifyParam) {
