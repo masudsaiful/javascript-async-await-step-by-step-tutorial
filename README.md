@@ -1075,7 +1075,7 @@ We have already got idea from the above parts of this article that Javascript is
 
 
 #### i) Multi-threaded
-Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc.
+Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript engine programmers can write multi-threaded code. Though javascript execute code line by line at a time using asynchronous methods javascript can handle numerous tasks In tandemly. 
 
 ```javascript
 
