@@ -1002,7 +1002,7 @@ simpleFunc(message => {
 ```
 
 
-Enough with the callback description.  Let's see some few more examples how callback function act with the Web API things like: setTimeout() function, after that we will leap to know about 'Asynchronous Programming'
+Enough with the callback description.  Let's see some few more examples **how callback function act with the Web API things like: setTimeout() function**, after that we will leap to know about 'Asynchronous Programming'
 ```javascript
 // Example 1: setTimeout function using callback
 setTimeout(a => {
@@ -1043,11 +1043,9 @@ const bossFunc = callback => {
 
 bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
 ```
-Above code will display These two result first **"Boss calling employee", "Plz, come after 3 seconds"**
+Above code will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
-Next it will display **"Hurray! I am here after 3 seconds"**, though **"callback(count)"** is called at first but will back with result after 3 seconds.
-
-Here, **"callback(count)"**
+Second, it will display **"Hurray! I am here after 3 seconds"**, though **"callback(count)"** is called at first but will back with result after 3 seconds.
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
@@ -1063,11 +1061,11 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 
 ###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line, so, concurrently happening numerous tasks.
 
-###### v) Whenever browser ended with dealing it will blank the Call Stack Frame, back to Web API method and released, handed over the result to response in Javascript code. 
+###### v) Whenever browser ended with dealing, it will blank the Call Stack Frame, back to Web API method and released, handed over the result to response in Javascript code. 
 
 ###### vi) The response are avilable now in Javascript code where it has been returned.
 
-So, using callback we are not getting block in Javascript code. Thus, the callback function really shine where asynchronous functions are used.
+**Handling asynchronous functions using callback are not getting block in Javascript code. Thus, the callback function really shine where asynchronous functions are used.**
 
 
 
