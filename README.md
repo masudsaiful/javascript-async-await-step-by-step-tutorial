@@ -925,7 +925,6 @@ simpleFunc(simpleCallbackFunc) // "I am anonymous function", "You are callback f
 same as,
 
 
-
 // Example3: Simple callback function call from Arrow Function
 const simpleFunc = callback => {
   console.log('I am arrow function')
@@ -994,15 +993,11 @@ simpleFunc(message => {
 ```
 
 
-It's seems little different in the above Example6 code. Callback function itself defined and passed as argument through parent parameter as belows
+It's seems little different with others in the above Example6 code. Callback function itself defined and passed as argument through parent parameter as belows
 ```javascript
 simpleFunc(message => {
   console.log(message)
 })
-
-
-// Another Example: Using setTimeOut() Web API
-
 ```
 
 
