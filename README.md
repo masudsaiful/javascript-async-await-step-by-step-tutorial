@@ -17,7 +17,7 @@ D) Problems with synchronous programming
 
 E) Callback
 
-F) Single-threaded, non-blocking and asynchronous
+F) multi-threaded, non-blocking and asynchronous
 
 G) Problems with Asynchronous programing using Callback (Callback Hell)
 
@@ -789,7 +789,7 @@ Let's explain the callback function advantages of above codes
 ###### i) CallbackFunc() is a callback function because it's passed as argument to normalFunc(callbackFunc) function
 ###### ii) CallbackFunc() function passed as argument to normalFunc(callbackFunc) function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
 ###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
-###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks.
+###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks or can be placed in any optimal position according development needs.
 ###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
 ###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, keeping consistency, neat and clean code.
 ###### vii) In Example2, more than one callback can be passed. 
@@ -850,9 +850,9 @@ function normalFunc(callbackParam1, callbackParam2) {
 }
 ```
 Another advantages to use callback function. 
-###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature rather when invoked inside parent body then need parameter.
+###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature (parenthesis '()') rather when invoked inside parent body then need parameter.
 ```javascript
-// Example1: Callback function using arguments - No need parameter to pass in callbackFunc
+// Example1: Callback function using arguments - No need parameter (parenthesis '()') to pass in callbackFunc
 normalFunc(callbackFunc)
 
 function callbackFunc(notifyParam) {
@@ -866,7 +866,7 @@ function normalFunc(callbackParam) {
   callbackParam(notify)
 }
 
-// Example2: Multiple callback function using arguments - No need to pass arguments with callbackFunc1 and callbackFunc2
+// Example2: Multiple callback function using arguments - No need to pass arguments (parenthesis '()') with callbackFunc1 and callbackFunc2
 normalFunc(callbackFunc1, callbackFunc2) 
 
 function callbackFunc1(notifyParam) {
@@ -979,7 +979,7 @@ simpleFunc(simpleCallbackFunc) // "I am arrow function", "You are arrow callback
 same as,
 
 
-// Example6: Callback Function difined and passed as arguments simultaneously from Parent Function 
+// Example6: Callback Function defined and passed as arguments simultaneously from Parent Function 
 const simpleFunc = callback => {
   console.log('I am parent function')
   let message = 'You are callback function'
@@ -993,15 +993,40 @@ simpleFunc(message => {
 ```
 
 
-It's seems little different with others in the above Example6 code. Callback function itself defined and passed as argument through parent parameter as belows
+It's seems little different with others in the above Example6 code. Callback function itself defined and passed concurrently as argument through parent parameter. Instead of passing the name of a function as an argument to another function, we can always pass a whole function instead.
 ```javascript
+// Passing the whole function
 simpleFunc(message => {
   console.log(message)
 })
 ```
 
 
-###### i) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
+Enough with the callback description.  Let's see some few more examples how callback function act with the Web APIs things like: setTimeout() function, after that we we will leap to know about 'Asynchronous Programming'
+```javascript
+// Example1: setTimeout function using callback
+setTimeout(a => {
+  console.log('Print me after ' + a +  ' seconds')
+}, 3000, '3') // Print me after 3 seconds
+
+
+
+// Example1: setTimeout function using callback inside from another function
+const afterThreeSecFunc = () => {
+  setTimeout(a => {
+    console.log('I will come after ' + a +  ' seconds')
+  }, 3000, '3') // Print me after 3 seconds
+}
+
+const parentFunc = callback => {
+  callback()
+  console.log('Parent calling callback')
+}
+
+parentFunc(afterThreeSecFunc)
+```
+
+
 
 
 
