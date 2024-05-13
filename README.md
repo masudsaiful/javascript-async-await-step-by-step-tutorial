@@ -780,6 +780,7 @@ Here function call sequences are callbackParam2() and then next callbackParam1()
 ###### xi) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
+
 ##### b) Callback function syntax with parameter:
 ```javascript
 // Example1: Callback function using arguments
