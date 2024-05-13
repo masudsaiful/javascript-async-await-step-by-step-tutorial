@@ -745,7 +745,7 @@ So, it will be nightmare to manage lots of function call in a larger application
 b) From the Example2 it is not possible to prevent the orderFunc('pizza', 'burger')  function from displaying the greetings message. That means there need more flexible and efficient controlling to manage the function sequence.
 
 
-c) Blocking can make wait to display the result if delay happen in the order status function of the above code i.e. orderStatusFunc(order). In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that by writing asynchronous programming using browser based javascript engine and web APIs which we will discuss that later in this article.
+c) Blocking can make wait to display the result if delay happen in the order status function of the above code i.e. orderStatusFunc(order). In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that by writing asynchronous programming using browser based javascript engine and web APIs which we will discuss later in this article.
 
 
 ###### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
@@ -754,7 +754,7 @@ c) Blocking can make wait to display the result if delay happen in the order sta
 ### E) Javascript Callback Function
 Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks. 
 #### How to use Callback Function? 
-##### a) Callback function syntax:
+##### a) Simple callback function syntax:
 ```javascript
 // Example1
 normalFunc(callbackFunc) // "I am normal function", "I am callback function"  
@@ -849,8 +849,46 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1(notify)
 }
 ```
-Another advantages to use callback function. Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature rather when invoked inside the parent function then need parameter.
+Another advantages to use callback function. 
+###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature rather when invoked inside parent body then need parameter.
+```javascript
+// Example1: Callback function using arguments
 
+// No need parameter to pass in callbackFunc
+normalFunc(callbackFunc)
+
+function callbackFunc(notifyParam) {
+  ...
+}
+
+function normalFunc(callbackParam) {
+  ...
+
+  // Now need argument to pass
+  callbackParam(notify)
+}
+
+// Example2: Multiple callback function using arguments
+
+// No need to pass arguments with callbackFunc1 and callbackFunc2
+normalFunc(callbackFunc1, callbackFunc2) 
+
+function callbackFunc1(notifyParam) {
+  ...
+}
+
+function callbackFunc2(notifyParam) {
+  ...
+}
+
+function normalFunc(callbackParam1, callbackParam2) {
+  ...
+
+  // Now need to pass arguments in both callback functions. i.e. callbackParam2(notify), callbackParam1(notify)
+  callbackParam2(notify)
+  callbackParam1(notify)
+}
+```
 
 ##### c) Callback function syntax in anonymous function or arrow function:
 ```javascript
