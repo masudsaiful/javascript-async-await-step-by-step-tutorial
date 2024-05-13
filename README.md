@@ -1057,7 +1057,7 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 
 ###### i) The action (here callback function. i.e employeeFunc and callback(count)) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. these are also called Web APIs)
 
-###### ii) Javascript will hand over the asynchronous function to browser based javascript engine ( In chrome it's' V8 ) to deal with these Web API using some terminologies like: Memory Heap, Call Stack, Call Stack Queue, Event Loop (Details of these out of scope in here)
+###### ii) Javascript will hand over the asynchronous function to browser based javascript engine ( In chrome it's' V8 ) to deal with these Web API using some terminologies like: Memory Heap, Call Stack, Call Stack Queue, Event Loop (Details of these out of scope in here) etc.
 
 ###### iii) Now Javascript for it's single-threaded architectural nature will start to execute the next instructions of code.
 
@@ -1075,8 +1075,10 @@ We have already got idea from the above parts of this article that Javascript is
 
 
 #### i) Multi-threaded
-Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods javascript can handle numerous tasks In tandemly. 
+Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods javascript can handle numerous tasks In tandemly.
 
+
+**Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**
 ```javascript
 
 ```
