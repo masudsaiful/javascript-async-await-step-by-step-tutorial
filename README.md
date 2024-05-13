@@ -763,9 +763,17 @@ Let's explain the above codes
 ###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
 ###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, keeping consistency, neat and clean code.
 ###### vii) In Example2, more than one callback can be passed. 
-###### viii) In Example2, more important is where the callback function invoked, less important argument sequence.
+###### viii) In Example2, more important is where the callback function invoked, less important argument sequence. See the following snippets in Example2.
+```javascript
+function normalFunc(callbackParam1, callbackParam2) {
+  callbackParam2()
+  console.log('I am normal function')
+  callbackParam1()
+}
+```
+Here function call sequence are callbackParam2() and then next callbackParam1(). So, it can be easy to control time-consuming function call.
 ###### ix) In Example2, more important is where the callback function invoked, less important argument sequence.
-###### x) In Example2, only one function call to display the result, thus hassell free when matter of bulk functions call.
+###### x) In Example2, only one function call to display the result, thus hassell free when matter of bulk functions call. 
 ###### xi) In both Examples, we can prevent the parent function from displaying the result by not providing callback arguments. So, more fine control over the functions call. 
 
 
