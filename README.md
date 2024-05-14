@@ -1,9 +1,9 @@
 **                                                                       **
 
 
-At one time, developers wrote procedural JavaScript, meaning function-based JavaScript programming. But over time, JavaScript features and characteristics kept updating. Developers had to struggle a lot to handle single-threaded architecture, blocking, and execution sequence issues while writing programs. They had to write programming in a very cumbersome way to control which function would execute after which, to handle it beautifully. To overcome single-threaded issues, blocking issues, and synchronous programming problems, official JavaScript (ECMAScript) kept adding various features or characteristics at different times so that through multi-threaded, non-blocking, and asynchronous ways, many tasks could output simultaneously. This made web programming even smoother, more efficient, and developer-friendly.
+At one time, developers wrote procedural JavaScript, meaning function-based JavaScript programming. But over time, JavaScript features and characteristics kept updating. Developers faced challenges in managing single-threaded architecture, blocking, and execution sequence issues when writing programs. They often had to write code in a cumbersome manner to control the sequence of function execution, to handle it beautifully. To overcome single-threaded issues, blocking issues, and synchronous programming problems, official JavaScript (ECMAScript) kept adding various features or characteristics at different times so that through multi-threaded, non-blocking, and asynchronous ways, many tasks could output simultaneously. This made web programming even smoother, more efficient, and developer-friendly.
 
-Since JavaScript is inherently a single-threaded, blocking, and synchronous programming language, and in subsequent versions of ECMAScript, various updated features were added, combining all these with browser-dependent features and utilizing web APIs, we can write multi-threaded flavors, non-blocking, and asynchronous programming using JavaScript. In modern JavaScript, for handling asynchronous programming, in 2015, the ES6 standard introduced us to Promises objects, through which asynchronous operations can be tracked. Then in 2017, ECMA introduced the Async/Await concept, which works with Promises and helps handle asynchronous operations with even more proficiency, making it easier and more developer-friendly to write multi-threaded JavaScript code with better results.
+Since JavaScript is inherently a single-threaded, blocking, and synchronous programming language and in subsequent versions of ECMAScript, various updated features were added. Combining these with browser-dependent features and utilizing web APIs, developers can write multi-threaded, non-blocking, and asynchronous JavaScript code. In modern JavaScript, for handling asynchronous programming, in 2015, the ES6 standard introduced the concept of Promises objects, which allow for tracking asynchronous operations. Then in 2017, ECMA introduced the Async/Await concept, which works with Promises and helps handle asynchronous operations with even more proficiency, making it easier and more developer-friendly to write multi-threaded JavaScript code with better results.
 
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
@@ -24,6 +24,9 @@ G) Problems with Asynchronous programing using Callback (Callback Hell)
 H) Javascript Promises
 
 I) Async/Await
+
+I) Recap everything at a glance
+
 
 ## Let's a short overview all of them:
 
@@ -169,7 +172,7 @@ const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 
 
-// Anonymous Function can be defined directly as a callback function in another function
+// Anonymous Function can be defined directly as a callback function in another function (i.e. in here Web API function setTimeout())
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -206,7 +209,7 @@ m(param1, param2, ...)
 })(param1, param2, ...);
 
 
-// Invoking directly as a callback function to another function parameter
+// Invoking directly as a callback function to another function (i.e. in here browser based Web API function setTimeout()) parameter 
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -1029,7 +1032,7 @@ parentFunc(anotherFunc) // "Parent calling callback", "I will come after 3 secon
 
 
 
-// Example 3: setTimeout function using callback inside from another function with external argument
+// Example 3: setTimeout function using callback inside from another function with arguments
 const employeeFunc = countParam1 => {
   setTimeout(countParam2 => {
     console.log('Hurray! I am here after ' + countParam2 +  ' seconds')
@@ -1063,7 +1066,7 @@ Imagine your are fetching huge size of dB request from backend API in replace of
 
 ###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line. So, concurrently happening numerous tasks.
 
-###### v) Whenever 'setTimeout()' timer reached the destination, browser ended with dealing. It will blank this task from Callback Queue, back to Web API method, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Javascript code and lastly setTimeout() return an ID of timer.
+###### v) Whenever 'setTimeout()' timer reached the destination, browser ended with dealing. It will blank this task from Callback Queue, back to Web API method, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Web API and lastly setTimeout() return an ID of timer to Javascript code.
 
 ###### vi) Now the response are avilable to use in Javascript code later.
 
@@ -1083,6 +1086,12 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 
 ```
 
+
+## Conclusion
+
+In this article, I've endeavored to offer a succinct overview of the evolution from classic JavaScript to the modern async/await paradigm. Throughout, I've strived to present theoretical insights alongside practical examples in a clear, elegant, and concise manner.
+
+I would be immensely pleased if anyone discovers any errors or inaccuracies within it and informs me through comments. Such feedback would encourage me to write more articles in the future.
 
 
 
