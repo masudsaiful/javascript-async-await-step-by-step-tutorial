@@ -1083,7 +1083,7 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 ```javascript
 // Example:
-const team = () => {
+const account = () => {
   let team1Deposit = ''
   let team2Deposit = ''
 
@@ -1129,7 +1129,7 @@ const team = () => {
   startTeamTimer()
 }
 
-team()
+account()
 
 
 
