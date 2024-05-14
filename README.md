@@ -1127,7 +1127,7 @@ const team = () => {
 team()
 
 
-// Output
+// Output:
 "Timer 1: "
 "Team1 has no deposit"
 "Team2 has no deposit"
