@@ -1088,8 +1088,8 @@ const account = () => {
   let team2Deposit = ''
 
   const team1 = () => {
-  	team1Deposit = 'Team1 has no deposit'
-    
+    team1Deposit = 'Team1 has no deposit'
+
     const team1Account = amount => {
       team1Deposit = amount
     }
@@ -1100,8 +1100,8 @@ const account = () => {
   }
 
   const team2 = () => {
-  	team2Deposit = 'Team2 has no deposit'
-    
+    team2Deposit = 'Team2 has no deposit'
+
     const team2Account = amount => {
       team2Deposit = amount
     }
@@ -1130,6 +1130,7 @@ const account = () => {
 }
 
 account()
+
 
 
 
