@@ -1082,70 +1082,97 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 ```javascript
+// Example:
 const team = () => {
+  let team1Deposit = 'Team1 has no deposit'
+  let team2Deposit = 'Team2 has no deposit'
+
   const team1 = () => {
-    let team1Deposit = 'Team1 has no deposit'
     const team1Account = amount => {
       team1Deposit = amount
     }
 
-    setTimeout(team1Account, 5000, 'Team1 deposited amount1')
-    setTimeout(() => {
-      console.log(team1Deposit)
-    }, 5000)
+    setTimeout(team1Account, 5000, 'Team1 has amount1')
 
-    setTimeout(team1Account, 10000, 'Team1 deposited amount2')
-    setTimeout(() => {
-      console.log(team1Deposit)
-    }, 10000)
-
-    console.log(team1Deposit)
+    setTimeout(team1Account, 10000, 'Team1 has amount2')
   }
 
   const team2 = () => {
-    let team2Deposit = 'Team2 has no deposit'
     const team2Account = amount => {
       team2Deposit = amount
     }
 
-    setTimeout(team2Account, 5000, 'Team2 deposited amount1')
-    setTimeout(() => {
-      console.log(team2Deposit)
-    }, 5000)
+    setTimeout(team2Account, 5000, 'Team2 has amount1')
 
-    setTimeout(team2Account, 10000, 'Team2 deposited amount2')
-    setTimeout(() => {
-      console.log(team2Deposit)
-    }, 10000)
+    setTimeout(team2Account, 10000, 'Team2 has amount2')
 
-    console.log(team2Deposit)
   }
 
-  let team1Timer = 0
-  startTeam1Timer = () => {
-    team1Timer += 1
-    if (team1Timer <= 10) {
-      console.log('Team1 Timer: ' + team1Timer)
-      setTimeout(startTeam1Timer, 1000)
+  let teamTimer = 0
+  startTeamTimer = () => {
+    teamTimer += 1
+    if (teamTimer <= 15) {
+      console.log('Timer ' + teamTimer + ": ")
+      console.log(team1Deposit)
+      console.log(team2Deposit)
+      setTimeout(startTeamTimer, 1000)
     }
   }
 
-  let team2Timer = 0
-  startTeam2Timer = () => {
-    team2Timer += 1
-    if (team2Timer <= 10) {
-      console.log('Team2 Timer: ' + team2Timer)
-      setTimeout(startTeam2Timer, 1000)
-    }
-  }
-
-  team2()
   team1()
-  startTeam2Timer()
-  startTeam1Timer()
+  team2()
+  startTeamTimer()
 }
 
 team()
+
+
+// Output
+"Timer 1: "
+"Team1 has no deposit"
+"Team2 has no deposit"
+"Timer 2: "
+"Team1 has no deposit"
+"Team2 has no deposit"
+"Timer 3: "
+"Team1 has no deposit"
+"Team2 has no deposit"
+"Timer 4: "
+"Team1 has no deposit"
+"Team2 has no deposit"
+"Timer 5: "
+"Team1 has amount1"
+"Team2 has amount1"
+"Timer 6: "
+"Team1 has amount1"
+"Team2 has amount1"
+"Timer 7: "
+"Team1 has amount1"
+"Team2 has amount1"
+"Timer 8: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 9: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 10: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 11: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 12: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 13: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 14: "
+"Team1 has amount2"
+"Team2 has amount2"
+"Timer 15: "
+"Team1 has amount2"
+"Team2 has amount2"
 ```
 
 
