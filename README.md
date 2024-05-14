@@ -1082,7 +1082,70 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 ```javascript
+const team = () => {
+  const team1 = () => {
+    let team1Deposit = 'Team1 has no deposit'
+    const team1Account = amount => {
+      team1Deposit = amount
+    }
 
+    setTimeout(team1Account, 5000, 'Team1 deposited amount1')
+    setTimeout(() => {
+      console.log(team1Deposit)
+    }, 5000)
+
+    setTimeout(team1Account, 10000, 'Team1 deposited amount2')
+    setTimeout(() => {
+      console.log(team1Deposit)
+    }, 10000)
+
+    console.log(team1Deposit)
+  }
+
+  const team2 = () => {
+    let team2Deposit = 'Team2 has no deposit'
+    const team2Account = amount => {
+      team2Deposit = amount
+    }
+
+    setTimeout(team2Account, 5000, 'Team2 deposited amount1')
+    setTimeout(() => {
+      console.log(team2Deposit)
+    }, 5000)
+
+    setTimeout(team2Account, 10000, 'Team2 deposited amount2')
+    setTimeout(() => {
+      console.log(team2Deposit)
+    }, 10000)
+
+    console.log(team2Deposit)
+  }
+
+  let team1Timer = 0
+  startTeam1Timer = () => {
+    team1Timer += 1
+    if (team1Timer <= 10) {
+      console.log('Team1 Timer: ' + team1Timer)
+      setTimeout(startTeam1Timer, 1000)
+    }
+  }
+
+  let team2Timer = 0
+  startTeam2Timer = () => {
+    team2Timer += 1
+    if (team2Timer <= 10) {
+      console.log('Team2 Timer: ' + team2Timer)
+      setTimeout(startTeam2Timer, 1000)
+    }
+  }
+
+  team2()
+  team1()
+  startTeam2Timer()
+  startTeam1Timer()
+}
+
+team()
 ```
 
 
