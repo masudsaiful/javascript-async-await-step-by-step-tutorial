@@ -1081,6 +1081,10 @@ We have already got idea from the above parts of this article that Javascript is
 Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods javascript can handle numerous tasks In tandemly.
 
 
+#### i) Non-Blocking
+Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods javascript can handle numerous tasks In tandemly.
+
+
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 ```javascript
 
@@ -1089,9 +1093,9 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 
 ## Conclusion
 
-In this article, I've endeavored to offer a succinct overview of the evolution from classic JavaScript to the modern async/await paradigm. Throughout, I've strived to present theoretical insights alongside practical examples in a clear, elegant, and concise manner.
+I've endeavored to provide a concise overview of the transition from legacy JavaScript to the contemporary async/await model in this article. Instead of delving into intricate technical discussions about single-threaded or multi-threaded systems, I've focused on presenting theoretical insights alongside practical examples in a manner that's clear, elegant, and succinct.
 
-I would be immensely pleased if anyone discovers any errors or inaccuracies within it and informs me through comments. Such feedback would encourage me to write more articles in the future.
+I would be greatly pleased if anyone identifies any errors or inaccuracies within this content and notifies me through comments. Such feedback would motivate me to produce more articles in the future.
 
 
 **                                                                       **
