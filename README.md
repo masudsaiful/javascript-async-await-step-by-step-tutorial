@@ -1084,10 +1084,12 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 ```javascript
 // Example:
 const team = () => {
-  let team1Deposit = 'Team1 has no deposit'
-  let team2Deposit = 'Team2 has no deposit'
+  let team1Deposit = ''
+  let team2Deposit = ''
 
   const team1 = () => {
+  	team1Deposit = 'Team1 has no deposit'
+    
     const team1Account = amount => {
       team1Deposit = amount
     }
@@ -1098,6 +1100,8 @@ const team = () => {
   }
 
   const team2 = () => {
+  	team2Deposit = 'Team2 has no deposit'
+    
     const team2Account = amount => {
       team2Deposit = amount
     }
@@ -1113,66 +1117,68 @@ const team = () => {
     teamTimer += 1
     if (teamTimer <= 15) {
       console.log('Timer ' + teamTimer + ": ")
-      console.log(team1Deposit)
       console.log(team2Deposit)
+      console.log(team1Deposit)
       setTimeout(startTeamTimer, 1000)
     }
   }
 
-  team1()
+
   team2()
+  team1()
   startTeamTimer()
 }
 
 team()
 
 
+
 // Output:
 "Timer 1: "
-"Team1 has no deposit"
 "Team2 has no deposit"
+"Team1 has no deposit"
 "Timer 2: "
-"Team1 has no deposit"
 "Team2 has no deposit"
+"Team1 has no deposit"
 "Timer 3: "
-"Team1 has no deposit"
 "Team2 has no deposit"
+"Team1 has no deposit"
 "Timer 4: "
-"Team1 has no deposit"
 "Team2 has no deposit"
+"Team1 has no deposit"
 "Timer 5: "
-"Team1 has amount1"
-"Team2 has amount1"
+"Team2 has no deposit"
+"Team1 has no deposit"
 "Timer 6: "
-"Team1 has amount1"
 "Team2 has amount1"
+"Team1 has amount1"
 "Timer 7: "
-"Team1 has amount1"
 "Team2 has amount1"
+"Team1 has amount1"
 "Timer 8: "
-"Team1 has amount2"
-"Team2 has amount2"
+"Team2 has amount1"
+"Team1 has amount1"
 "Timer 9: "
-"Team1 has amount2"
-"Team2 has amount2"
+"Team2 has amount1"
+"Team1 has amount1"
 "Timer 10: "
-"Team1 has amount2"
-"Team2 has amount2"
+"Team2 has amount1"
+"Team1 has amount1"
 "Timer 11: "
-"Team1 has amount2"
 "Team2 has amount2"
+"Team1 has amount2"
 "Timer 12: "
-"Team1 has amount2"
 "Team2 has amount2"
+"Team1 has amount2"
 "Timer 13: "
-"Team1 has amount2"
 "Team2 has amount2"
+"Team1 has amount2"
 "Timer 14: "
-"Team1 has amount2"
 "Team2 has amount2"
+"Team1 has amount2"
 "Timer 15: "
-"Team1 has amount2"
 "Team2 has amount2"
+"Team1 has amount2"
 ```
 
 
