@@ -1082,7 +1082,7 @@ Lot of tasks simultaneously execution in a programming language is called multi-
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 
-Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display status. Let's see the example code below.
+Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display the status. Let's see the example code below.
 ```javascript
 // Example:
 const accounts = () => {
@@ -1211,10 +1211,13 @@ accounts()
 "Branch1 has deposited amount2"
 "Branch3 has deposited amount2"
 ```
-**It is obvious Javascript run the above code in these function sequences** 
-###### 1) Initial executed method 'accounts()'
-###### 2) Next function sequences are 'branch2(), branch1(), branch3() and notification()'
-###### 2) Next function sequences are 'branch2(), branch1(), branch3() and notification()'
+**Javascript is a single-threaded programming language because**
+1) Javascript run the above code in these function sequences according their call **accounts(), branch2(), branch1(), branch3() and notification()**
+2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start
+3) Blocking may occur to stop the following processes. i.e. If **accounts()** not work for some reasons all others next execution will be hold off.
+
+
+**JJavaScript can create the impression of being a multi-threaded programming language because**
 
 
 **Above code we can modified**.
