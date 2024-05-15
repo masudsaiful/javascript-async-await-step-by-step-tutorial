@@ -1220,8 +1220,9 @@ accounts()
 **JJavaScript can create the impression of being a multi-threaded programming language because**
 
 
-**Above code we can modified**.
+**Above code we can modified as belows**.
 ```javascript
+// Example
 let message = ''
 let timer = 0
 
