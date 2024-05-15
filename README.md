@@ -1220,7 +1220,7 @@ accounts()
 3) Blocking may occur to stop the following processes. i.e. If **accounts()** not work for some reasons all others next execution will be hold off.
 
 
-**JJavaScript can create the impression of being a multi-threaded programming language because**,
+**JavaScript can create the impression of being a multi-threaded programming language because**,
 
 
 **Above code we can modified as belows**.
