@@ -1081,9 +1081,11 @@ We have already got idea from the above parts of this article that Javascript is
 Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods in javascript code can handle numerous tasks In tandemly. 
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
+
+Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. There is a notification system generate transaction message in every second. Accounts software got the output to display status.
 ```javascript
 // Example:
-const account = () => {
+const accounts = () => {
   let branch1Deposit = ''
   let branch2Deposit = ''
   let branch3Deposit = ''
@@ -1127,24 +1129,24 @@ const account = () => {
   }
 
   let timer = 0
-  startTimer = () => {
+  notification = () => {
     timer += 1
     if (timer <= 15) {
       console.log('Timer ' + timer + ": ")
       console.log(branch2Deposit)
       console.log(branch1Deposit)
       console.log(branch3Deposit)
-      setTimeout(startTimer, 1000)
+      setTimeout(notification, 1000)
     }
   }
 
   branch2()
   branch1()
   branch3()
-  startTimer()
+  notification()
 }
 
-account()
+accounts()
 
 
 // Output:
@@ -1211,11 +1213,89 @@ account()
 ```
 
 
+**Above code we can modified**.
+```javascript
+let message = ''
+let timer = 0
+
+const autoTrans = () => {
+  let cnt = 0
+  let branch1Deposit = ''
+  let branch2Deposit = ''
+  let branch3Deposit = ''
+
+  const branch1 = () => {
+    branch1Deposit = 'Branch1 has no deposit'
+
+    const branch1Account = amount => {
+      branch1Deposit = amount
+    }
+
+    setTimeout(branch1Account, 5000, 'Branch1 has deposited amount1')
+
+    setTimeout(branch1Account, 10000, 'Branch1 has deposited amount2')
+  }
+
+  const branch2 = () => {
+    branch2Deposit = 'Branch2 has no deposit'
+
+    const branch2Account = amount => {
+      branch2Deposit = amount
+    }
+
+    setTimeout(branch2Account, 5000, 'Branch2 has deposited amount1')
+
+    setTimeout(branch2Account, 10000, 'Branch2 has deposited amount2')
+
+  }
+  
+ 	const branch3 = () => {
+    branch3Deposit = 'Branch3 has no deposit'
+
+    const branch3Account = amount => {
+      branch3Deposit = amount
+    }
+
+    setTimeout(branch3Account, 4000, 'Branch3 has deposited amount1')
+
+    setTimeout(branch3Account, 8000, 'Branch3 has deposited amount2')
+
+  }
+  
+  const notification = () => {
+    cnt += 1
+    if (cnt <= 15) {
+      message = branch1Deposit +  '\n' + branch2Deposit + '\n' + branch3Deposit + '\n'
+      setTimeout(notification, 1000)
+    }
+  }
+  
+  branch1()
+  branch2()
+  branch3()
+  notification()
+}
+
+const display = () => {
+  timer += 1
+  if (timer <= 15) {
+  	console.log('Timer ' + timer + ":")
+    console.log(message)
+    setTimeout(display, 1000)
+  }
+}
+
+const accounts = (callback1, callback2) => {
+	callback1()
+  callback2()
+}
+
+accounts(autoTrans, display)
+```
+
+
 #### i) Non-Blocking
-Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods in javascript code can handle numerous tasks In tandemly.
 
-
-**Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 ```javascript
 
 ```
