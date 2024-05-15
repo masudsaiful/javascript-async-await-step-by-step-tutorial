@@ -1213,9 +1213,9 @@ accounts()
 ```
 **Javascript is a single-threaded programming language because**,
 
-1) Javascript run the above code in these function sequences according their call **accounts(), branch2(), branch1(), branch3() and notification()**
+1) Javascript run the above code in these function sequences according their call **accounts(), branch2(), branch1(), branch3() and notification()**.
 
-2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start
+2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start.
 
 3) Blocking may occur to stop the following processes. i.e. If **accounts()** not work for some reasons all others next execution will be hold off.
 
