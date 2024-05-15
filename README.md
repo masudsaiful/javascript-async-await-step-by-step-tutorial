@@ -1078,11 +1078,11 @@ We have already got idea from the above parts of this article that Javascript is
 
 
 #### i) Multi-threaded
-Lot of tasks simultaneously executing in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods in javascript code can handle numerous tasks In tandemly. 
+Lot of tasks simultaneously execution in a programming language is called multi-threaded programming. Some of multi-threaded programming languages are Java, C++, PHP etc. Javascript is not by nature multi-threaded but with the help of asynchronous funtions and browser based Javascript run time environment programmers can write multi-threaded code. Though javascript execute code line by line at a time, using asynchronous methods in javascript code can handle numerous tasks In tandemly. 
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 
-Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. There is a notification system generate transaction message in every second. Accounts software got the output to display status.
+Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display status. Let's see the example code below.
 ```javascript
 // Example:
 const accounts = () => {
@@ -1211,6 +1211,10 @@ accounts()
 "Branch1 has deposited amount2"
 "Branch3 has deposited amount2"
 ```
+**It is obvious Javascript run the above code in these function sequences** 
+###### 1) Initial executed method 'accounts()'
+###### 2) Next function sequences are 'branch2(), branch1(), branch3() and notification()'
+###### 2) Next function sequences are 'branch2(), branch1(), branch3() and notification()'
 
 
 **Above code we can modified**.
