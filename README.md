@@ -1084,102 +1084,130 @@ Lot of tasks simultaneously executing in a programming language is called multi-
 ```javascript
 // Example:
 const account = () => {
-  let team1Deposit = ''
-  let team2Deposit = ''
+  let branch1Deposit = ''
+  let branch2Deposit = ''
+  let branch3Deposit = ''
 
-  const team1 = () => {
-    team1Deposit = 'Team1 has no deposit'
+  const branch1 = () => {
+    branch1Deposit = 'Branch1 has no deposit'
 
-    const team1Account = amount => {
-      team1Deposit = amount
+    const branch1Account = amount => {
+      branch1Deposit = amount
     }
 
-    setTimeout(team1Account, 5000, 'Team1 has amount1')
+    setTimeout(branch1Account, 5000, 'Branch1 has deposited amount1')
 
-    setTimeout(team1Account, 10000, 'Team1 has amount2')
+    setTimeout(branch1Account, 10000, 'Branch1 has deposited amount2')
   }
 
-  const team2 = () => {
-    team2Deposit = 'Team2 has no deposit'
+  const branch2 = () => {
+    branch2Deposit = 'Branch2 has no deposit'
 
-    const team2Account = amount => {
-      team2Deposit = amount
+    const branch2Account = amount => {
+      branch2Deposit = amount
     }
 
-    setTimeout(team2Account, 5000, 'Team2 has amount1')
+    setTimeout(branch2Account, 5000, 'Branch2 has deposited amount1')
 
-    setTimeout(team2Account, 10000, 'Team2 has amount2')
+    setTimeout(branch2Account, 10000, 'Branch2 has deposited amount2')
+
+  }
+  
+ 	const branch3 = () => {
+    branch3Deposit = 'Branch3 has no deposit'
+
+    const branch3Account = amount => {
+      branch3Deposit = amount
+    }
+
+    setTimeout(branch3Account, 4000, 'Branch3 has deposited amount1')
+
+    setTimeout(branch3Account, 8000, 'Branch3 has deposited amount2')
 
   }
 
-  let teamTimer = 0
-  startTeamTimer = () => {
-    teamTimer += 1
-    if (teamTimer <= 15) {
-      console.log('Timer ' + teamTimer + ": ")
-      console.log(team2Deposit)
-      console.log(team1Deposit)
-      setTimeout(startTeamTimer, 1000)
+  let timer = 0
+  startTimer = () => {
+    timer += 1
+    if (timer <= 15) {
+      console.log('Timer ' + timer + ": ")
+      console.log(branch2Deposit)
+      console.log(branch1Deposit)
+      console.log(branch3Deposit)
+      setTimeout(startTimer, 1000)
     }
   }
 
-
-  team2()
-  team1()
-  startTeamTimer()
+  branch2()
+  branch1()
+  branch3()
+  startTimer()
 }
 
 account()
 
 
-
-
 // Output:
 "Timer 1: "
-"Team2 has no deposit"
-"Team1 has no deposit"
+"Branch2 has no deposit"
+"Branch1 has no deposit"
+"Branch3 has no deposit"
 "Timer 2: "
-"Team2 has no deposit"
-"Team1 has no deposit"
+"Branch2 has no deposit"
+"Branch1 has no deposit"
+"Branch3 has no deposit"
 "Timer 3: "
-"Team2 has no deposit"
-"Team1 has no deposit"
+"Branch2 has no deposit"
+"Branch1 has no deposit"
+"Branch3 has no deposit"
 "Timer 4: "
-"Team2 has no deposit"
-"Team1 has no deposit"
+"Branch2 has no deposit"
+"Branch1 has no deposit"
+"Branch3 has no deposit"
 "Timer 5: "
-"Team2 has no deposit"
-"Team1 has no deposit"
+"Branch2 has no deposit"
+"Branch1 has no deposit"
+"Branch3 has deposited amount1"
 "Timer 6: "
-"Team2 has amount1"
-"Team1 has amount1"
+"Branch2 has deposited amount1"
+"Branch1 has deposited amount1"
+"Branch3 has deposited amount1"
 "Timer 7: "
-"Team2 has amount1"
-"Team1 has amount1"
+"Branch2 has deposited amount1"
+"Branch1 has deposited amount1"
+"Branch3 has deposited amount1"
 "Timer 8: "
-"Team2 has amount1"
-"Team1 has amount1"
+"Branch2 has deposited amount1"
+"Branch1 has deposited amount1"
+"Branch3 has deposited amount1"
 "Timer 9: "
-"Team2 has amount1"
-"Team1 has amount1"
+"Branch2 has deposited amount1"
+"Branch1 has deposited amount1"
+"Branch3 has deposited amount2"
 "Timer 10: "
-"Team2 has amount1"
-"Team1 has amount1"
+"Branch2 has deposited amount1"
+"Branch1 has deposited amount1"
+"Branch3 has deposited amount2"
 "Timer 11: "
-"Team2 has amount2"
-"Team1 has amount2"
+"Branch2 has deposited amount2"
+"Branch1 has deposited amount2"
+"Branch3 has deposited amount2"
 "Timer 12: "
-"Team2 has amount2"
-"Team1 has amount2"
+"Branch2 has deposited amount2"
+"Branch1 has deposited amount2"
+"Branch3 has deposited amount2"
 "Timer 13: "
-"Team2 has amount2"
-"Team1 has amount2"
+"Branch2 has deposited amount2"
+"Branch1 has deposited amount2"
+"Branch3 has deposited amount2"
 "Timer 14: "
-"Team2 has amount2"
-"Team1 has amount2"
+"Branch2 has deposited amount2"
+"Branch1 has deposited amount2"
+"Branch3 has deposited amount2"
 "Timer 15: "
-"Team2 has amount2"
-"Team1 has amount2"
+"Branch2 has deposited amount2"
+"Branch1 has deposited amount2"
+"Branch3 has deposited amount2"
 ```
 
 
