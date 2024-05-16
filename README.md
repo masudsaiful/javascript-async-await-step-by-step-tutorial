@@ -3,7 +3,7 @@
 
 At one time, developers wrote procedural JavaScript, meaning function-based JavaScript programming. But over time, JavaScript features and characteristics kept updating. Developers faced challenges in managing single-threaded architecture, blocking, and execution sequence issues when writing programs. They often had to write code in a cumbersome manner to control the sequence of function execution, to handle it beautifully. To overcome single-threaded issues, blocking issues, and synchronous programming problems, official JavaScript (ECMAScript) kept adding various features or characteristics at different times so that through multi-threaded, non-blocking, and asynchronous ways, many tasks could output simultaneously. This made web programming even smoother, more efficient, and developer-friendly.
 
-Since JavaScript is inherently a single-threaded, blocking, and synchronous programming language and in subsequent versions of ECMAScript, various updated features were added. Combining these with browser-dependent features and utilizing web APIs, developers can write multi-threaded, non-blocking, and asynchronous JavaScript code. In modern JavaScript, for handling asynchronous programming, in 2015, the ES6 standard introduced the concept of Promises objects, which allow for tracking asynchronous operations. Then in 2017, ECMA introduced the Async/Await concept, which works with Promises and helps handle asynchronous operations with even more proficiency, making it easier and more developer-friendly to write multi-threaded JavaScript code with better results.
+Since JavaScript is inherently a single-threaded, blocking, and synchronous programming language and in subsequent versions of ECMAScript, various updated features were added. Combining these with browser-dependent features and utilizing web APIs, developers can write multi-threaded, non-blocking, and asynchronous JavaScript code. In modern JavaScript, for handling asynchronous programming, in 2015, the ES6 standard introduced the concept of Promises objects, which allow for tracking asynchronous operations. Then in 2017, ECMA introduced the Async/Await concept, which works with Promises and helps to handle asynchronous operations with even more proficiency, making it easier and more developer-friendly to write multi-threaded JavaScript code with better results.
 
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
@@ -332,7 +332,7 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, i
 
 #### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
 ##### Single-threaded:
-In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single call stack, Javascript code is read and gets executed line by line. Call stack concept is the same as the stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and wheever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
+In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single call stack, Javascript code is read and gets executed line by line. Call stack concept is same as stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and whenever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
 ```javascript
       const x = () => {
         return 'something'
@@ -350,21 +350,21 @@ In Javascript programming language while running code it can execute only one in
 
       console.log(result);
 ```
-According Javascript single-threaded architecture let's track the above sample code what's happening in the single 'Call Stack'.
+According Javascript single-threaded architecture let's track the above code sample what's happening in the single 'Call Stack'.
 
 a) Instructions of each line of code are added to the stack frame of single call stack in LIFO (Last in first out) way
 
-b) console.lgo(result) first in
+b) Initial execution of **console.log(result)** as well as **z()** function
 
-c) then z() function
+c) **z()** will wait to return until **y()** completed tasks
 
 d) then y() function
 
 e) then x() function
 
-f) code executed sequentially 
+f) so, code executed sequentially in only one call stack and a single memory heap and only one execution at a time
 
-g) Later deleting and thus releasing the call stack to empty 
+g) when execution completed, releasing the call stack from this task to empty 
 
 
 ##### Blocking:
