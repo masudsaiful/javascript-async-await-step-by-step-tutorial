@@ -466,7 +466,7 @@ In javascript code within the synchronous calls, all the work is done line by li
 The code illustrated in **Example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the Example2 we can now seen that the output sequence orders are 'something2', 'something1' and 'something3'. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that **func3()** will not process until **func2()** execution finished.
+In the Example2 we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that **func3()** will wait until **func2()** execution finished.
 
 
 ### C) Function Sequence and synchronous programming
