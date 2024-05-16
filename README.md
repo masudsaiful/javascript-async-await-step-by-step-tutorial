@@ -368,72 +368,105 @@ g) when execution completed, releasing the call stack from this task to empty
 
 
 ##### Blocking:
-Though Javascript code work sequentially and in the single-threaded stack frame, execution occur one instruction at a time, there may be very chance for the following line of instruction to wait untill it's previous execution completed. It is called blocking. Blocking is the nature of synchronous programming. Let's consider the previous example.
+Though Javascript code work sequentially and in the single-threaded stack frame, execution occur one instruction at a time, there may be very chance for the following line of instruction to wait untill it's previous execution completed. It is called blocking. Blocking is the nature of synchronous programming. Let's consider the following example.
 ```javascript
+      // Example
       const x = () => {
-        return 'something'
+          console.log('processing...')
+          for (let p = 0; p >= 0; p++) {
+              if (p == 10000000000) {
+                  return p
+              }
+          }
       }
 
       const y = () => {
-        return x()
+          return x()
       }
 
-      const z = () => {
-        return y()
+      const display = () => {
+          return y()
+
       }
 
-      let result = z()
-
-      console.log(result) // something;
+      let result = display()
+      console.log('Result: ')
+      console.log(result) // 1000000000
 ```
-Above three functions [ x(), y() and z() ] will work sequentially where z() function need to wait untill the y() function deliver it's result. So, z() will face blocking from the previous execution. Same to y() function task must wait for the previous one [x()] to be completed before moving to the next. This time-consuming execution which can block it's following instruction may happen for the reason of any external API call or any I/O operation or any server end dB connection request or other similar reasons.
+Run the program and you will see execution can take few moments to display result. 
+
+**display()** is blocked untill **y()** completed it's task.
+
+Same to **x()** keeping wait the execution of **y()** where **x()** itself not yet finished it's task.
+
+This time-consuming execution which can block it's following instruction may happen for the reason of any external API call or any I/O operation or any server end dB connection request or other similar reasons.
 
 
 ##### Synchronous:
 In javascript code within the synchronous calls, all the work is done line by line one after another i.e. the first task is executed then the second task is executed, no matter how much time one task will take. When one thread is locked, the thread following it in line is blocked. After escaping from block, execution will start for the next instruction. Look at this two illustrations below.
 ```javascript
+    // Example 1
+    const func1 = () => {
+        console.log('processing something1...')
+        for (let p = 0; p >= 0; p++) {
+            if (p == 10000000000) {
+                return 'something1'
+            }
+        }
+    }
 
-      // Example 1
-      const func1 = () => {
-        console.log('something1')
-      }
-
-      const func2 = () => {
+    const func2 = () => {
         console.log('something2')
-      }
+    }
 
-      const func3 = () => {
+    const func3 = () => {
         console.log('something3')
-      }
+    }
 
-      func1()
-      func2()
-      func3()
+    console.log(func1())
+    func2()
+    func3()
+
+    // "processing something1..."
+    // "something1"
+    // "something2"
+    // "something3"
 
 
 
-      // Example 2
-      const func1 = () => {
-        console.log('something1')
-      }
 
-      const func2 = () => {
+    // Example 2
+    const func1 = () => {
+        console.log('processing something1...')
+        for (let p = 0; p >= 0; p++) {
+            if (p == 10000000000) {
+                return 'something1'
+            }
+        }
+    }
+
+    const func2 = () => {
         console.log('something2')
-      }
+    }
 
-      const func3 = () => {
+    const func3 = () => {
         console.log('something3')
-      }
+    }
 
-      func3()
-      func2()
-      func1()
+    func2()
+    console.log(func1())
+    func3()
+
+    // something2
+    // processing something1...
+    // something1
+    // something3
 
 ```
-The code illustrated in Example1 will print output 'something1', 'something2' and 'something3' sequentially no matter how long the blocking occur in any part inside these functions but will execute according their call sequence i.e. func1(), func2() and func3()
+The code illustrated in **Example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the Example2 we can now seen that the output sequence orders are 'something3', 'something2' and 'something1'. This is because their function call execution occured line by line one after another according they are invoked and one instruction at a time i.e. func3(), func2() and func1()
+In the Example2 we can now seen that the output sequence orders are 'something2', 'something1' and 'something3'. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that **func3()** will not process until **func2()** execution finished.
 
 
 ### C) Function Sequence and synchronous programming
@@ -1316,7 +1349,7 @@ accounts(autoTrans, display)
 
 I've endeavored to provide a concise overview of the transition from legacy JavaScript to the contemporary async/await model in this article. Instead of delving into intricate technical discussions about single-threaded or multi-threaded systems, I've focused on presenting theoretical insights alongside practical examples in a manner that's clear, elegant, and succinct.
 
-I would be greatly pleased if anyone identifies any errors or inaccuracies within this content and notifies me through comments. Such feedback would motivate me to produce more articles in the future.
+I would be greatly pleased if anyone identifies any errors or inaccuracies within this content and notifies me through comments. Such feedback would motivate me to produce more articles in the future. 
 
 
 **                                                                       **
