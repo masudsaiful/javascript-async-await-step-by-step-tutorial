@@ -497,6 +497,7 @@ iv) next instruction will wait untill the previous instruction completed it's ta
 
 ##### Javascript code execution based on following terminologies and Browser based engine
 (We will not in depth discuss such terminologies in this article)
+
 i) Javascript run time environment
 
 ii) Javascript engine
