@@ -350,17 +350,17 @@ In Javascript programming language while running code it can execute only one in
 
       console.log(result);
 ```
-According Javascript single-threaded architecture let's track the above code sample what's happening in the single 'Call Stack'.
+According Javascript single-threaded architecture let's track the above code sample what's happening in the single **'Call Stack'**.
 
-a) Instructions of each line of code are added to the stack frame of single call stack in LIFO (Last in first out) way
+a) Instructions of each line of code are added to the stack frame of single call stack in **LIFO (Last in first out)** way
 
 b) Initial execution of **console.log(result)** as well as **z()** function
 
 c) **z()** will wait to return until **y()** completed tasks
 
-d) then y() function
+d) then **y()** function
 
-e) then x() function
+e) then **x()** function
 
 f) so, code executed sequentially in only one call stack and a single memory heap and only one execution at a time
 
@@ -466,7 +466,7 @@ In javascript code within the synchronous calls, all the work is done line by li
 The code illustrated in **Example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the Example2 we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that **func3()** will wait until **func2()** execution finished.
+In the **Example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that **func3()** will wait until **func2()** execution finished.
 
 
 ### C) Function Sequence and synchronous programming
@@ -489,13 +489,14 @@ i) line by line
 
 ii) sequentially one after another
 
-iii) one instruction at a time 
+iii) only one instruction at a time 
 
 iv) next instruction will wait untill the previous instruction completed it's task, which means blocking
 
 
 
 ##### Javascript code execution based on following terminologies and Browser based engine
+(We will not in depth discuss such terminologies in this article)
 i) Javascript run time environment
 
 ii) Javascript engine
