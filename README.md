@@ -399,7 +399,7 @@ Run the program and you will see execution can take few moments to display resul
 
 Same to **x()** keeping wait the execution of **y()** where **x()** itself not yet finished it's task.
 
-This time-consuming execution which can block it's following instruction may happen for the reason of any external API call or any I/O operation or any server end dB connection request or other similar reasons.
+This time-consuming execution which can block it's following instruction may happen for the reason of any external **API call** or any **I/O operation** or any server end **dB connection** request or other similar reasons.
 
 
 ##### Synchronous:
@@ -518,7 +518,7 @@ ix) Web APIs etc.
 
 
 #### Function Sequence:
-So, functions are executed in the sequence they are called, not the sequence they are defined
+So, functions are executed in the sequence they are called, not the sequence they are defined.
 
 Let's examine the following examples also.
 ```javascript
@@ -580,14 +580,9 @@ seventhFunc(six)
 ```
 **Example1** shows simple function call sequences
 
-**Example2** shows the variations of nested function call sequences.
+**Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (**see fifthFunc()** ) or both calling and definition can be managed inside the parent body (**firstFunc()**). 
 
 Whatever their declaration ordering are managed but result always depends on function call sequences.
-
-
-
-Again in Example3 the result will be i.e. 'Third', 'Second' and 'First' because the calling sequence are in these order i.e. thirdFunc(), secondFunc() and firstFunc()
-
 
 
 #### Synchronous Programming:
@@ -595,7 +590,7 @@ As we already knew Javascript execute functions sequentially but sometimes we wo
 
 
 Suppose we want to do an order in a restaurant, and then update the order status, and then display the order status with greetings.
-We can call an order function (orderFunc), save the order items with extra complimentary items, and then call the status function (orderStatusFunc), save the order status, and then call another function (displayOrderStatusFunc) to display the order status using greetings function (greetingsFunc) to display greetings besides order status.
+We can call an order function (**orderFunc**), save the order items with extra complimentary items, and then call the status function (**orderStatusFunc**), save the order status, and then call another function (**displayOrderStatusFunc**) to display the order status using greetings function (**greetingsFunc**) to display greetings besides order status.
 ```javascript
 // Synchronous Programing: Example 1
 const orderFunc = (item1, item2) => {
@@ -629,7 +624,7 @@ console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hos
 ```
 
 
-Or, we could call a order function (orderFunc), and let the order function call the order status function (orderStatusFunc), and then let the order status function call the order status display function (displayOrderStatusFunc). Then after let the order status display function call the greetings function. Let's re-write the above code as below.  
+Or, we could call a order function (**orderFunc**), and let the order function call the order status function (**orderStatusFunc**), and then let the order status function call the order status display function (**displayOrderStatusFunc**). Then after let the order status display function call the greetings function. Let's re-write the above code as below.  
 ```javascript
 // Synchronous Programing: Example 2
 const orderFunc = (item1, item2) => {
@@ -664,33 +659,37 @@ console.log(order) // "Warm hearted greetings for accepting our hospitality. piz
 ```
 
 
-If you ever design patterns in OOP (Object-Oriented Programming), you'll find a lot of coherence with the above examples. Now let's try to understand how the two examples above are functioning and how we manage a better control over when to execute a function in synchronous programming. 
+If you ever design patterns in OOP (Object-Oriented Programming), you may be find some similar coherence with the above examples. 
 
-If we look at in 'Synchronous Programming: Example1' in this line,
+Now let's try to understand how the two examples above are functioning and how we manage a better control over when to execute functions in synchronous programming. 
 
+If we look at in '**Synchronous Programming: Example1**' in this line,
 ```javascript
 displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 ```
 
 it will display output the greetings message in first part and order status in second part,
-
 ```javascript
 console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
 ```
 
 Now change order status in first argument and greetings message in second arguments like below, 
-
 ```
 displayOrderStatusFunc(orderStatusFunc(order), greetingsFunc())
 ```
 
-the output will be now,
-
+The display will change and thus better controlling to output the result
 ```javascript
 console.log(displayOrderStatus) // "pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality"
 ```
 
-Next examine the 'Synchronous Programming: Example2'. We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed in this example.
+Furthermore, we can also discuss it in this way that we have called a function **orderFunc('pizza', 'burger')**, saved the result and called another function to use it.
+```javascript
+const order = orderFunc('pizza', 'burger')
+const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
+```
+
+Next examine the '**Synchronous Programming: Example2**'. We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed in this example.
 
 ```javascript
 console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
