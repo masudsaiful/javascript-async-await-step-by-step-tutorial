@@ -46,29 +46,33 @@ function functionName (param1, param2, ...) {
 Function will execute when they are called or invoked like belows:
 
 // Inside Javascript code
-function functionName (param1, param2, ...) {
-
-}
-functionName(param1, param2, ...)
+<script>
+  function functionName (param1, param2, ...) {
+    ...
+  }
+  functionName(param1, param2, ...)
+</script>
 
 
 // Basically above code will be invoked automatically by browser Window Object, so above code will be the same as belows:
-function functionName (param1, param2, ...) {
-
-}
-window.functionName(param1, param2, ...)
+<script>
+  function functionName (param1, param2, ...) {
+    ...
+  }
+  window.functionName(param1, param2, ...)
+</script>
 
 
 // When an event occurs in HTML:
 function functionName (param1, param2, ...) {
-
+  ...
 }
 <p onclick="functionName (param1, param2, ...)" />
 
 
 // When an event occurs in Javascript:
 function functionName (param1, param2, ...) {
-
+  ...
 }
 object.onclick = function(){functionName};
 
@@ -154,7 +158,7 @@ Function with no name is called Anonymous Function:
 
 // This function has no name so it is called Anonymous Function
 function (param1, param2, ...) {
-
+  ...
 }
 
 
@@ -173,10 +177,12 @@ let y = 9
 setTimeout(function (param1, param2) { 
     console.log(param1 + param2) 
 }, 1000, x, y);
+
 # Output: 25
 
 
 NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
+
 // Example: anonymous function call only work after declaration like below
 const anonymousFunc = function (param1, param2, ...) {return param1 + param2};
 anonymousFunc(param1, param2, ...)
@@ -194,6 +200,7 @@ let o = 'something' + n
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 ...
+...
 
 
 // Anonymous function can also be used as self-invoking function
@@ -209,6 +216,7 @@ let y = 9
 setTimeout(function (param1, param2) { 
     console.log(param1 + param2) 
 }, 1000, x, y);
+
 # Output: 25
 
 
@@ -220,16 +228,18 @@ function anotherFunction(a, b, callback) {
 	console.log(a + b + callback(a, b))
 }
 anotherFunction(9, 16, anonymousFunc)
+
 # Output: 50
 
 
-Though often assigned to any variable while working, anonymous function variable invokation must be in function call format "functionName()":
+Though often assigned to any variable while coding, anonymous function variable invokation must be in function call format 'functionName()':
 
-// This will return entire function
+// This will return entire function definition
 const arrowFuncName = function () {
   return 'Something';
 }
 console.log(arrowFuncName) 
+
 # Output: () => { return 'Something'; }
 
 
@@ -238,6 +248,7 @@ const arrowFuncName = function () {
   return 'Something';
 }
 console.log( arrowFuncName() )
+
 # Output: Something
 ```
 
@@ -282,18 +293,22 @@ const m = (param1, param2) => { return param1 + param2 };
 
 
 // If Arrow function has single statement and return a value, it can be written as belows
-const m = (param1, param2) => param1 + param2; 
+const m = (param1, param2) => param1 + param2;
+
 NOTE: Omitted curly brackets '{}'' and 'return' keyword
+
 
 
 // If Arrow function has single parameter and single statement, it can be written as belows
 const m = param1 => 'something' + param1; 
-NOTE: Omitted curly brackets '{}'', 'return' keyword and parenthesis '()'
+NOTE: Omitted curly brackets '{}', 'return' keyword and parenthesis '()'
 
 
-// If Arrow function use 'return' keyword, must use 'curly brackets {}'
+// If Arrow function use 'return' keyword, must use curly brackets '{}'
 Either a single statement
 const m = param1 => { return 'something' + param1 };
+
+or,
 
 multiple statement
 const m = param1 => {
@@ -312,6 +327,7 @@ const arrowFuncName = () => {
   return 'Something';
 }
 console.log(arrowFuncName) 
+
 # Output: () => { return 'Something'; }
 
 
@@ -320,6 +336,7 @@ const arrowFuncName = () => {
   return 'Something';
 }
 console.log( arrowFuncName() ) 
+
 # Output: Something
 
 
@@ -329,7 +346,8 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, i
 
 ### B) Single-threaded, blocking and synchronous
 #### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
-###### (From now on towards we will use arrow functions of all examples) ######
+###### (From now on towards we will use arrow functions of all following examples) ######
+
 
 ##### Single-threaded:
 In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single **call stack**, Javascript code is read and gets executed line by line. Call stack concept is same as stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and whenever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
@@ -392,9 +410,10 @@ Though Javascript code work sequentially and in the single-threaded stack frame,
       let result = display()
       console.log('Result: ')
       console.log(result) 
+
       # Output: 1000000000
 ```
-Run the program and you will see execution can take few moments to display result like below, 
+Run the program and you will see execution can take few moments to display the result. In here, 
 
 **display()** is blocked untill **y()** completed it's task.
 
@@ -427,11 +446,11 @@ In javascript code within the synchronous calls, all the work is done line by li
     console.log(func1())
     func2()
     func3()
+
     # Output: processing something1...
               something1
               something2
               something3
-
 
 
 
@@ -456,6 +475,7 @@ In javascript code within the synchronous calls, all the work is done line by li
     func2()
     console.log(func1())
     func3()
+
     # Output: something2
               processing something1...
               something1
@@ -468,7 +488,7 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 
 
 ### C) Function Sequence and synchronous programming
-#### What we have already learned let's recape those again, 
+#### What we have learned let's recape those again, 
 
 
 ##### Javascript is,
@@ -518,6 +538,7 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 #### Function Sequence:
 So, functions are executed in the sequence they are called, not the sequence they are defined.
 Let's examine the following examples,
+
 ```javascript
 //Example 1: Simple function sequences
 const secondFunc = () =>  'Second';
@@ -528,6 +549,7 @@ const firstFunc = () => 'First';
 console.log(firstFunc());
 console.log(secondFunc());
 console.log(thirdFunc());
+
 # Output: First
           Second
           Third
@@ -694,7 +716,7 @@ const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFu
 
 Next examine the '**Synchronous Programming: Example2**'.
 
-We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc()** there and passed status message to control the expected display.
+We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc** there and passed status message to control the expected display.
 
 ```javascript
 const displayOrderStatusFunc = param => {
@@ -738,7 +760,7 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 ```
-So far here, I have just tried to show how we can better control the function execution sequences when writing synchronous programming.
+So far here, I have just tried to explain how we can better control the function execution sequences when writing synchronous programming.
 
 
 ### D) Problems with synchronous programming
