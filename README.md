@@ -7,25 +7,25 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
-A) **Javascript Functions**
+###### A) Javascript Functions
 
-B) **Single-threaded, blocking and synchronous**
+###### B) Single-threaded, blocking and synchronous
 
-C) **Function Sequence and synchronous programming**
+###### C) Function Sequence and synchronous programming
 
-D) **Problems with synchronous programming**
+###### D) Problems with synchronous programming
 
-E) **Callback**
+###### E) Callback
 
-F) **multi-threaded, non-blocking and asynchronous**
+###### F) multi-threaded, non-blocking and asynchronous
 
-G) **Problems with Asynchronous programing using Callback (Callback Hell)**
+###### G) Problems with Asynchronous programing using Callback (Callback Hell)
 
-H) **Javascript Promises**
+###### H) Javascript Promises
 
-I) **Async/Await**
+###### I) Async/Await
 
-I) **Recap everything at a glance**
+###### I) Recap everything at a glance
 
 
 ## Let's a short overview all of them:
