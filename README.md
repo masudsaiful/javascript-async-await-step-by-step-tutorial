@@ -678,12 +678,12 @@ Now change order status in first argument and greetings message in second argume
 displayOrderStatusFunc(orderStatusFunc(order), greetingsFunc())
 ```
 
-The display will change and thus better controlling to output the result
+The display will change now,
 ```javascript
 console.log(displayOrderStatus) // "pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality"
 ```
 
-Furthermore, we can also discuss it in this way that we have called a function **orderFunc('pizza', 'burger')**, saved the result and called another function **displayOrderStatusFunc()** to use it.
+Furthermore, we can also discuss it in this way that we have called a function **orderFunc('pizza', 'burger')**, saved the result and called another function **displayOrderStatusFunc()** to use it and thus better controlling to output the result.
 ```javascript
 const order = orderFunc('pizza', 'burger')
 const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
