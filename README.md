@@ -104,7 +104,6 @@ Obj.firstName;
 
 ##### Return Value and Catch the Value:
 ```javascript
-
 Javascript Function can return value and catch the value in different ways:
 
 // Returning value statement
@@ -137,7 +136,6 @@ let n = 'Something' + functionName (param1, param2, ...)
 
 ##### Hoisting:
 ```javascript
-
 Function call declaration can be happened before their definition. This is called Function hoisting:
 
 // Calling before defining
@@ -152,7 +150,6 @@ function functionName (param1, param2, ...) {
 #### ii) Anonymous Function
 ##### Declaration or Definition:
 ```javascript
-
 Function with no name is called Anonymous Function:
 
 // This function has no name so it is called Anonymous Function
@@ -176,19 +173,17 @@ let y = 9
 setTimeout(function (param1, param2) { 
     console.log(param1 + param2) 
 }, 1000, x, y);
-
 # Output: 25
 
-NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
 
-// Example:
+NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
+// Example: Anonymous can't be hoisting if we declare like below
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 ```
 
 ##### Invokation or Calling:
 ```javascript
-
 // Function without name can be assigned to a variable using expression. The variable then can be used as function invokation
 const m = function (param1, param2, ...) {return param1 + param2};
 let n = m(param1, param2, ...)
@@ -214,8 +209,8 @@ let y = 9
 setTimeout(function (param1, param2) { 
     console.log(param1 + param2) 
 }, 1000, x, y);
-
 # Output: 25
+
 
 // Invoking function variable as a callback function to another function parameter
 let anonymousFunc = function (param1, param2) {
@@ -225,8 +220,8 @@ function anotherFunction(a, b, callback) {
 	console.log(a + b + callback(a, b))
 }
 anotherFunction(9, 16, anonymousFunc)
-
 # Output: 50
+
 
 Though often assigned to any variable while working, anonymous function variable invokation must be in function call format "functionName()":
 
@@ -235,7 +230,6 @@ const arrowFuncName = function () {
   return 'Something';
 }
 console.log(arrowFuncName) 
-
 # Output: () => { return 'Something'; }
 
 
@@ -244,7 +238,6 @@ const arrowFuncName = function () {
   return 'Something';
 }
 console.log( arrowFuncName() )
-
 # Output: Something
 ```
 
@@ -252,7 +245,6 @@ console.log( arrowFuncName() )
 #### iii) Arrow Function
 ##### ES6 introduced Arrow Function in 2015:
 ```javascript
-
 It's a shorter syntax for writing function expression. It's also short syntax of anonymous function:
 
 // Example 1
@@ -313,14 +305,13 @@ const m = param1 => {
 // Arrow Function invokations or Callings are same as those of Anonymous Function described above
 
 
-Though often assigned to any variable while working, arrow function variable invokation must be in function call format (functionName())
+Though often assigned to any variable while working, arrow function variable invokation must be in function call format "functionName()"
 
 // This will return entire function
 const arrowFuncName = () => {
   return 'Something';
 }
 console.log(arrowFuncName) 
-
 # Output: () => { return 'Something'; }
 
 
@@ -329,7 +320,6 @@ const arrowFuncName = () => {
   return 'Something';
 }
 console.log( arrowFuncName() ) 
-
 # Output: Something
 
 
@@ -403,10 +393,9 @@ Though Javascript code work sequentially and in the single-threaded stack frame,
       let result = display()
       console.log('Result: ')
       console.log(result) 
-
       # Output: 1000000000
 ```
-Run the program and you will see execution can take few moments to display result. 
+Run the program and you will see execution can take few moments to display result. In here, 
 
 **display()** is blocked untill **y()** completed it's task.
 
@@ -439,7 +428,6 @@ In javascript code within the synchronous calls, all the work is done line by li
     console.log(func1())
     func2()
     func3()
-
     # Output: processing something1...
               something1
               something2
@@ -469,7 +457,6 @@ In javascript code within the synchronous calls, all the work is done line by li
     func2()
     console.log(func1())
     func3()
-
     # Output: something2
               processing something1...
               something1
@@ -487,51 +474,50 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 
 ##### Javascript is,
 
-i) single-threaded in nature,
+###### i) single-threaded in nature,
 
-ii) blocking architecture and
+###### ii) blocking architecture and
 
-ii) synchronous execution by default 
+###### ii) synchronous execution by default 
 
 
 
 ##### Javascript code execution happen,
 
-i) line by line
+###### i) line by line
 
-ii) sequentially one after another
+###### ii) sequentially one after another
 
-iii) only one instruction at a time 
+###### iii) only one instruction at a time 
 
-iv) next instruction will wait untill the previous instruction completed it's task, which means blocking
+###### iv) next instruction will wait untill the previous instruction completed it's task, which means blocking
 
 
 
 ##### Javascript code execution based on following terminologies and Browser based engine
-(We will not go in-depth discussion in this article about the terminologies)
+**(We will not go in-depth discussion in this article about the terminologies)**
 
-i) Javascript run time environment
+###### i) Javascript run time environment
 
-ii) Javascript engine
+###### ii) Javascript engine
 
-iii) Memory Heap
+###### iii) Memory Heap
 
-iv) call stack
+###### iv) call stack
 
-v) stack frame
+###### v) stack frame
 
-vi) LIFO
+###### vi) LIFO
 
-vii) Callback Queue
+###### vii) Callback Queue
 
-viii) Event Loop
+###### viii) Event Loop
 
-ix) Web APIs etc.
+###### ix) Web APIs etc.
 
 
 #### Function Sequence:
 So, functions are executed in the sequence they are called, not the sequence they are defined.
-
 Let's examine the following examples,
 ```javascript
 //Example 1: Simple function sequences
@@ -543,7 +529,6 @@ const firstFunc = () => 'First';
 console.log(firstFunc()); // First
 console.log(secondFunc()); // Second
 console.log(thirdFunc()); // Third
-
 # Output: First
           Second
           Third
@@ -584,7 +569,6 @@ firstFunc()
 fifthFunc()
 let six = sixthFunc()
 seventhFunc(six)
-
 # Output: First
           Second
           Third
@@ -593,9 +577,9 @@ seventhFunc(six)
           Sixth
           Seventh
 ```
-**Example1** shows simple functions execution sequentially
+**Example1** shows simple functions execution sequentially.
 
-**Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (**fifthFunc()** ) or both calling and definition can be handle inside the parent body (**firstFunc()**). 
+**Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (see in **fifthFunc** ) or both calling and definition can be handle inside the parent body (**firstFunc**). 
 
 Whatever their declaration ordering are managed but result always depends on function call sequences.
 
@@ -635,7 +619,8 @@ const displayOrderStatusFunc = (param1, param2) => {
 const order = orderFunc('pizza', 'burger')
 const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 
-console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+console.log(displayOrderStatus) 
+# Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
 
@@ -670,7 +655,8 @@ const greetingsFunc = () => {
 }
 
 const order = orderFunc('pizza', 'burger')
-console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+console.log(order) 
+# Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
 
@@ -748,7 +734,7 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 ```
-So far here I just want to show how we can better control the function execution sequences when writing synchronous programming.
+So far here, I just tried to show how we can better control the function execution sequences when writing synchronous programming.
 
 
 ### D) Problems with synchronous programming
