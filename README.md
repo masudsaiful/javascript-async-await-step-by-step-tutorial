@@ -35,7 +35,7 @@ I) **Recap everything at a glance**
 ##### Declaration or Definition:
 ```javascript
 
-Function has a name and declared or defined as usually:
+***Function has a name and declared or defined as usually:***
 
 function functionName (param1, param2, ...) {
 
@@ -227,7 +227,7 @@ function anotherFunction(a, b, callback) {
 anotherFunction(9, 16, anonymousFunc)
 
 
-# Though often assigned to any variable while working, anonymous function variable invokation must be in function call format (functionName())
+Though often assigned to any variable while working, anonymous function variable invokation must be in function call format (functionName())
 
 // This will return entire function
 const arrowFuncName = function () {
@@ -248,7 +248,7 @@ console.log( arrowFuncName() ) // Something
 ##### ES6 introduced Arrow Function in 2015:
 ```javascript
 
-# It's a shorter syntax for writing function expression. It's also short syntax of anonymous function:
+It's a shorter syntax for writing function expression. It's also short syntax of anonymous function:
 
 // Example 1
 # Anonymous Function
