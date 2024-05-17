@@ -177,9 +177,9 @@ setTimeout(function (param1, param2) {
 
 
 NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
-// Example: Anonymous can't be hoisting if we declare like below
-const m = function (param1, param2, ...) {return param1 + param2};
-m(param1, param2, ...)
+// Example: anonymous function call only work after declaration like below
+const anonymousFunc = function (param1, param2, ...) {return param1 + param2};
+anonymousFunc(param1, param2, ...)
 ```
 
 ##### Invokation or Calling:
@@ -283,12 +283,12 @@ const m = (param1, param2) => { return param1 + param2 };
 
 // If Arrow function has single statement and return a value, it can be written as belows
 const m = (param1, param2) => param1 + param2; 
-NOTE: Omitted curly brackets {} and 'return' keyword
+NOTE: Omitted curly brackets '{}'' and 'return' keyword
 
 
 // If Arrow function has single parameter and single statement, it can be written as belows
 const m = param1 => 'something' + param1; 
-NOTE: Omitted curly brackets {}, 'return' keyword and parenthesis ()
+NOTE: Omitted curly brackets '{}'', 'return' keyword and parenthesis '()'
 
 
 // If Arrow function use 'return' keyword, must use 'curly brackets {}'
@@ -328,10 +328,9 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, i
 
 
 ### B) Single-threaded, blocking and synchronous
+#### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
 ###### (From now on towards we will use arrow functions of all examples) ######
 
-
-#### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
 ##### Single-threaded:
 In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single **call stack**, Javascript code is read and gets executed line by line. Call stack concept is same as stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and whenever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
 ```javascript
@@ -395,7 +394,7 @@ Though Javascript code work sequentially and in the single-threaded stack frame,
       console.log(result) 
       # Output: 1000000000
 ```
-Run the program and you will see execution can take few moments to display result. In here, 
+Run the program and you will see execution can take few moments to display result like below, 
 
 **display()** is blocked untill **y()** completed it's task.
 
@@ -495,7 +494,7 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 
 
 ##### Javascript code execution based on following terminologies and Browser based engine
-**(We will not go in-depth discussion in this article about the terminologies)**
+###### (We will not go in-depth discussion in this article about the terminologies)
 
 ###### i) Javascript run time environment
 
@@ -526,9 +525,9 @@ const thirdFunc = () =>  'Third';
 const firstFunc = () => 'First';
 
 
-console.log(firstFunc()); // First
-console.log(secondFunc()); // Second
-console.log(thirdFunc()); // Third
+console.log(firstFunc());
+console.log(secondFunc());
+console.log(thirdFunc());
 # Output: First
           Second
           Third
@@ -569,6 +568,7 @@ firstFunc()
 fifthFunc()
 let six = sixthFunc()
 seventhFunc(six)
+
 # Output: First
           Second
           Third
@@ -620,6 +620,7 @@ const order = orderFunc('pizza', 'burger')
 const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 
 console.log(displayOrderStatus) 
+
 # Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
@@ -656,6 +657,7 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 console.log(order) 
+
 # Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
@@ -692,7 +694,7 @@ const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFu
 
 Next examine the '**Synchronous Programming: Example2**'.
 
-We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc()** there and passed status message to control everything.
+We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc()** there and passed status message to control the expected display.
 
 ```javascript
 const displayOrderStatusFunc = param => {
@@ -704,9 +706,11 @@ const displayOrderStatusFunc = param => {
 }
 ```
 
-Moreover, we let the each function to control other function call inside their bodies to reduce bulk function execution when initiate. Thus better controlling over when to execute the functions.
+Moreover, we let the each function to control other function call inside their bodies to reduce bulk function execution at the initialized time. Thus better controlling over when to execute the functions.
 
 ```javascript
+Previous example overview how the function call inside other functions:
+
 const orderFunc = (item1, item2) => {
 	...
 	let status = orderStatusFunc(items)
@@ -734,7 +738,7 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 ```
-So far here, I just tried to show how we can better control the function execution sequences when writing synchronous programming.
+So far here, I have just tried to show how we can better control the function execution sequences when writing synchronous programming.
 
 
 ### D) Problems with synchronous programming
@@ -770,7 +774,9 @@ const displayOrderStatusFunc = (param1, param2) => {
 
 const order = orderFunc('pizza', 'burger')
 const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
-console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+console.log(displayOrderStatus) 
+
+# Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 
 
 // Synchronous Programing: Example 2
@@ -802,10 +808,13 @@ const greetingsFunc = () => {
 }
 
 const order = orderFunc('pizza', 'burger')
-console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+console.log(order) 
+
+# Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
 **The problems with the above Examples are**,
+
 a) We have to call four functions to display the result in **example1**. 
 ###### i) orderFunc(), 
 ###### ii) displayOrderStatusFunc(),
@@ -821,11 +830,16 @@ b) From the **example2** it is not possible to prevent the **orderFunc()**  func
 c) Blocking can make wait to display the result if delay happen in the order status function **orderStatusFunc(order)** of the above codes. In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interruption create delay to the next function execution. So, need to handle that behind the scene by writing asynchronous programming using browser based javascript engine and web API methods which we will discuss later in this article.
 
 
-##### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
+**Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'**.
+
 ### E) Javascript Callback Function
-Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks. 
+
+Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks.
+
 #### How to use Callback Function? 
+
 ##### a) Simple callback function syntax:
+
 ```javascript
 // Example 1
 normalFunc(callbackFunc)  
@@ -838,11 +852,13 @@ function normalFunc(callbackParam) {
   console.log('I am normal function')
   callbackParam()
 }
-// "I am normal function", "I am callback function"
+
+# Output: I am normal function, 
+          I am callback function
 
 
 // Example 2
-normalFunc(callbackFunc1, callbackFunc2) // "I am callback function2", "I am normal function", "I am callback function1"   
+normalFunc(callbackFunc1, callbackFunc2)  
 
 function callbackFunc1() {
   console.log('I am callback function1')
@@ -857,8 +873,14 @@ function normalFunc(callbackParam1, callbackParam2) {
   console.log('I am normal function')
   callbackParam1()
 }
+
+# Output: I am callback function2, 
+          I am normal function, 
+          I am callback function1" 
 ```
-Let's explain the callback function advantages of above codes
+
+Let's explain the callback function advantages from above codes,
+
 ###### i) CallbackFunc() is a callback function because it's passed as argument to normalFunc(callbackFunc) function
 ###### ii) CallbackFunc() function passed as argument to normalFunc(callbackFunc) function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
 ###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
@@ -875,7 +897,7 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1()
 }
 ```
-Here callback function invoked sequences are callbackParam2() and then next callbackParam1() and hence function call sequences are managed in a single function block.
+Here callback function invoked sequences are **callbackParam2()** and then next **callbackParam1()** and hence function call sequences are managed in a single function block.
 
 
 ###### ix) In Example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
@@ -884,15 +906,13 @@ Here callback function invoked sequences are callbackParam2() and then next call
 normalFunc(callbackFunc1, callbackFunc2)
 ```
 
-
 ###### x) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
-
 
 
 ##### b) Callback function syntax with parameter:
 ```javascript
 // Example 1: Callback function using arguments
-normalFunc(callbackFunc) // "I am normal function", "Are you callback function? Yes, I am..."  
+normalFunc(callbackFunc) 
 
 function callbackFunc(notifyParam) {
   console.log(notifyParam + 'Yes, I am...')
@@ -904,8 +924,13 @@ function normalFunc(callbackParam) {
   callbackParam(notify)
 }
 
+# Output: I am normal function,
+          Are you callback function? 
+          Yes, I am...
+
+
 // Example 2: Multiple callback function using arguments
-normalFunc(callbackFunc1, callbackFunc2) // "I am normal function", "Are you callback function? Yes, I am callback function2", "Are you callback function? Yes, I am callback function1"   
+normalFunc(callbackFunc1, callbackFunc2)   
 
 function callbackFunc1(notifyParam) {
   console.log(notifyParam + 'Yes, I am callback function1')
@@ -921,11 +946,20 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam2(notify)
   callbackParam1(notify)
 }
+
+# Output: I am normal function,
+          Are you callback function? 
+          Yes, I am callback function2, 
+          Are you callback function? 
+          Yes, I am callback function1
 ```
-Another advantages to use callback function. 
-###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature (parenthesis '()') rather when invoked inside parent body then need parameter.
+
+Another advantages to use callback function is,
+
+###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature 'parenthesis ()' rather when invoked inside parent body then need parameter.
+
 ```javascript
-// Example 1: Callback function using arguments - No need parameter (parenthesis '()') to pass in callbackFunc
+// Example 1: Callback function using arguments - No need parameter 'parenthesis ()' to pass in callbackFunc
 normalFunc(callbackFunc)
 
 function callbackFunc(notifyParam) {
@@ -934,12 +968,11 @@ function callbackFunc(notifyParam) {
 
 function normalFunc(callbackParam) {
   ...
-
   // Now need argument to pass
   callbackParam(notify)
 }
 
-// Example 2: Multiple callback function using arguments - No need to pass arguments (parenthesis '()') with callbackFunc1 and callbackFunc2
+// Example 2: Multiple callback function using arguments - No need to pass arguments 'parenthesis ()' with callbackFunc1 and callbackFunc2
 normalFunc(callbackFunc1, callbackFunc2) 
 
 function callbackFunc1(notifyParam) {
@@ -952,7 +985,6 @@ function callbackFunc2(notifyParam) {
 
 function normalFunc(callbackParam1, callbackParam2) {
   ...
-
   // Now need to pass arguments in both callback functions. i.e. callbackParam2(notify), callbackParam1(notify)
   callbackParam2(notify)
   callbackParam1(notify)
@@ -961,7 +993,6 @@ function normalFunc(callbackParam1, callbackParam2) {
 
 ##### c) Callback function syntax using Anonyumous and Arrow syntax:
 ```javascript
-
 // Example 1: Simple callback function call from Name Function
 function simpleFunc(callback) {
   console.log('I am simple function')
@@ -974,7 +1005,10 @@ function simpleCallbackFunc(message) {
   console.log(message)
 }
 
-simpleFunc(simpleCallbackFunc) // "I am simple function", "You are callback function"
+simpleFunc(simpleCallbackFunc) 
+
+# Output: I am simple function
+          You are callback function
 
 
 same as,
@@ -992,7 +1026,10 @@ function simpleCallbackFunc(message) {
   console.log(message)
 }
 
-simpleFunc(simpleCallbackFunc) // "I am anonymous function", "You are callback function"
+simpleFunc(simpleCallbackFunc) 
+
+# Output: I am anonymous function,
+          You are callback function
 
 
 same as,
@@ -1010,7 +1047,10 @@ function simpleCallbackFunc(message) {
   console.log(message)
 }
 
-simpleFunc(simpleCallbackFunc) // "I am arrow function", "You are callback function"
+simpleFunc(simpleCallbackFunc) 
+
+# Output: I am arrow function,
+          You are callback function
 
 
 same as,
@@ -1028,7 +1068,10 @@ const simpleCallbackFunc = function (message) {
   console.log(message)
 }
 
-simpleFunc(simpleCallbackFunc) // "I am anonymous function", "You are anonymous callback function"
+simpleFunc(simpleCallbackFunc) 
+
+# Output: I am anonymous function,
+          You are anonymous callback function
 
 
 same as,
@@ -1046,7 +1089,10 @@ const simpleCallbackFunc = message => {
   console.log(message)
 }
 
-simpleFunc(simpleCallbackFunc) // "I am arrow function", "You are arrow callback function"
+simpleFunc(simpleCallbackFunc) 
+
+# Output: I am arrow function,
+          You are arrow callback function
 
 
 same as,
@@ -1062,11 +1108,14 @@ const simpleFunc = callback => {
 
 simpleFunc(message => {
   console.log(message)
-}) // "I am parent function", "You are callback function"
+}) 
+
+# Output: I am parent function,
+          You are callback function
 ```
 
 
-It's seems little different with others in the above Example6 code. Callback function itself defined and passed concurrently as argument through parent parameter. Instead of passing the name of a function as an argument to another function, we can always pass a whole function instead.
+It's seems little different with others in the above **example6** code. Callback function itself defined and passed concurrently as argument through parent parameter. Instead of passing the name of a function as an argument to another function, we can always pass a whole function instead.
 ```javascript
 // Passing the whole function
 simpleFunc(message => {
@@ -1075,14 +1124,17 @@ simpleFunc(message => {
 ```
 
 
-Enough with the callback description.  
+Enough with the callback description. Now,  
 
-**Let's see some few more examples how callback function act with the Web API things like: setTimeout() function, after that we will leap to know about 'Multi-Threaded, Non-Blocking and Asynchronous Programming'**
+Let's see some few more examples how callback function act with the **Web API** things like: **setTimeout() function**. After that we will leap to know about **Multi-Threaded, Non-Blocking and Asynchronous Programming**
+
 ```javascript
 // Example 1: setTimeout function using callback
 setTimeout(a => {
   console.log('Print me after ' + a +  ' seconds')
-}, 3000, '3') // Print me after 3 seconds
+}, 3000, '3') 
+
+# Output: Print me after 3 seconds
 
 
 
@@ -1098,7 +1150,10 @@ const parentFunc = callback => {
   console.log('Parent calling callback')
 }
 
-parentFunc(anotherFunc) // "Parent calling callback", "I will come after 3 seconds"
+parentFunc(anotherFunc) 
+
+# Output: Parent calling callback,
+          I will come after 3 seconds
 
 
 
@@ -1116,9 +1171,13 @@ const bossFunc = callback => {
   console.log('Plz, come after 3 seconds')
 }
 
-bossFunc(employeeFunc) // "Boss calling employee", "Plz, come after 3 seconds", "Hurray! I am here after 3 seconds"
+bossFunc(employeeFunc) 
+
+# Output: Boss calling employee,
+          Plz, come after 3 seconds,
+          Hurray! I am here after 3 seconds
 ```
-Above code mentioning in Example3 will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
+Above code mentioning in **example3** will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
 Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself calling a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
 
@@ -1219,7 +1278,7 @@ const accounts = () => {
 accounts()
 
 
-// Output:
+# Output:
 "Timer 1: "
 "Branch2 has no deposit"
 "Branch1 has no deposit"
