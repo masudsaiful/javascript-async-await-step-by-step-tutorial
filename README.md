@@ -181,6 +181,7 @@ setTimeout(function (param1, param2) {
 
 
 NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
+
 Example:
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
