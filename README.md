@@ -35,7 +35,7 @@ I) **Recap everything at a glance**
 ##### Declaration or Definition:
 ```javascript
 
-***Function has a name and declared or defined as usually:***
+Function has a name and declared or defined as usually:
 
 function functionName (param1, param2, ...) {
 
@@ -176,13 +176,14 @@ m(param1, param2, ...)
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
-    console.log(param1 + param2) // 25; 
+    console.log(param1 + param2) 
 }, 1000, x, y);
 
+# Output: 25
 
 NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
 
-Example:
+// Example:
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 ```
@@ -213,34 +214,40 @@ m(param1, param2, ...)
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
-    console.log(param1 + param2) // 25; 
+    console.log(param1 + param2) 
 }, 1000, x, y);
 
+# Output: 25
 
 // Invoking function variable as a callback function to another function parameter
 let anonymousFunc = function (param1, param2) {
 	return param1+param2;
 }
 function anotherFunction(a, b, callback) { 
-	console.log(a + b + callback(a, b)) // 50;
+	console.log(a + b + callback(a, b))
 }
 anotherFunction(9, 16, anonymousFunc)
 
+# Output: 50
 
-Though often assigned to any variable while working, anonymous function variable invokation must be in function call format (functionName())
+Though often assigned to any variable while working, anonymous function variable invokation must be in function call format "functionName()":
 
 // This will return entire function
 const arrowFuncName = function () {
   return 'Something';
 }
-console.log(arrowFuncName) // () => { return 'Something'; }
+console.log(arrowFuncName) 
+
+# Output: () => { return 'Something'; }
 
 
 // This will return correct value
 const arrowFuncName = function () {
   return 'Something';
 }
-console.log( arrowFuncName() ) // Something
+console.log( arrowFuncName() )
+
+# Output: Something
 ```
 
 
@@ -251,53 +258,55 @@ console.log( arrowFuncName() ) // Something
 It's a shorter syntax for writing function expression. It's also short syntax of anonymous function:
 
 // Example 1
-# Anonymous Function
+Anonymous Function
 function () {
   return 'something';
 }
 
 same as,
 
-# Arrow Function
+Arrow Function
 () => {
   return 'something'
 }
 
 
 // Example 2
-# Anonymous Function Expression assigned to a variable
+Anonymous Function Expression assigned to a variable
 const m = function () {return 'something'};
 
 same as,
 
-# Arrow Function Expression assigned to a variable
+Arrow Function Expression assigned to a variable
 const m = () => { return 'something' };
 
 
 // Example 3
-# Anonymous Function Expression with parameter
+Anonymous Function Expression with parameter
 const m = function (param1, param2) {return param1 + param2};
 
 same as,
 
-# Arrow Function Expression with parameter
+Arrow Function Expression with parameter
 const m = (param1, param2) => { return param1 + param2 };
 
 
 // If Arrow function has single statement and return a value, it can be written as belows
-const m = (param1, param2) => param1 + param2; // Omitted curly brackets {} and 'return' keyword
+const m = (param1, param2) => param1 + param2; 
+NOTE: Omitted curly brackets {} and 'return' keyword
 
 
 // If Arrow function has single parameter and single statement, it can be written as belows
-const m = param1 => 'something' + param1; // Omitted curly brackets {}, 'return' keyword and parenthesis ()
+const m = param1 => 'something' + param1; 
+NOTE: Omitted curly brackets {}, 'return' keyword and parenthesis ()
 
 
 // If Arrow function use 'return' keyword, must use 'curly brackets {}'
-# Either a single statement
+Either a single statement
 const m = param1 => { return 'something' + param1 };
 
-or multiple statement
-# const m = param1 => {
+multiple statement
+const m = param1 => {
   // do something
   return 'something' + param1
 };
@@ -306,20 +315,24 @@ or multiple statement
 // Arrow Function invokations or Callings are same as those of Anonymous Function described above
 
 
-# Though often assigned to any variable while working, arrow function variable invokation must be in function call format (functionName())
+Though often assigned to any variable while working, arrow function variable invokation must be in function call format (functionName())
 
 // This will return entire function
 const arrowFuncName = () => {
   return 'Something';
 }
-console.log(arrowFuncName) // () => { return 'Something'; }
+console.log(arrowFuncName) 
+
+# Output: () => { return 'Something'; }
 
 
 // This will return correct value
 const arrowFuncName = () => {
   return 'Something';
 }
-console.log( arrowFuncName() ) // Something
+console.log( arrowFuncName() ) 
+
+# Output: Something
 
 
 NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, it's also can't be hoisted.
@@ -327,7 +340,7 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, i
 
 
 ### B) Single-threaded, blocking and synchronous
-(From now on towards we will use arrow functions of all examples)
+###### (From now on towards we will use arrow functions of all examples) ######
 
 
 #### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
@@ -352,19 +365,19 @@ In Javascript programming language while running code it can execute only one in
 ```
 According Javascript single-threaded architecture let's track the above code sample what's happening in the single **'Call Stack'**.
 
-a) Instructions of each line of code are added to the stack frame of single call stack in **LIFO (Last in first out)** way
+###### a) Instructions of each line of code are added to the stack frame of single call stack in **LIFO (Last in first out)** way
 
-b) Initial execution of **console.log(result)** as well as **z()** function
+###### b) Initial execution of **console.log(result)** as well as **z()** function
 
-c) **z()** will wait to return until **y()** completed tasks
+###### c) **z()** will wait to return until **y()** completed tasks
 
-d) then **y()** function
+###### d) then **y()** function
 
-e) then **x()** function
+###### e) then **x()** function
 
-f) so, code executed sequentially one by one in only one call stack and a single memory heap and only one execution at a time
+###### f) so, code executed sequentially one by one in only one call stack and a single memory heap and only one execution at a time
 
-g) when execution completed, releasing the call stack from this task to empty 
+###### g) when execution completed, releasing the call stack from this task to empty 
 
 
 ##### Blocking:
@@ -391,7 +404,9 @@ Though Javascript code work sequentially and in the single-threaded stack frame,
 
       let result = display()
       console.log('Result: ')
-      console.log(result) // 1000000000
+      console.log(result) 
+
+      # Output: 1000000000
 ```
 Run the program and you will see execution can take few moments to display result. 
 
@@ -427,10 +442,10 @@ In javascript code within the synchronous calls, all the work is done line by li
     func2()
     func3()
 
-    // "processing something1..."
-    // "something1"
-    // "something2"
-    // "something3"
+    # Output: processing something1...
+              something1
+              something2
+              something3
 
 
 
@@ -457,16 +472,15 @@ In javascript code within the synchronous calls, all the work is done line by li
     console.log(func1())
     func3()
 
-    // something2
-    // processing something1...
-    // something1
-    // something3
-
+    # Output: something2
+              processing something1...
+              something1
+              something3
 ```
-The code illustrated in **Example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
+The code illustrated in **example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the **Example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2**, **func3()** will wait until **func1()** has finished the work.
+In the **example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2**, **func3()** will wait until **func1()** has finished the work.
 
 
 ### C) Function Sequence and synchronous programming
@@ -532,6 +546,9 @@ console.log(firstFunc()); // First
 console.log(secondFunc()); // Second
 console.log(thirdFunc()); // Third
 
+# Output: First
+          Second
+          Third
 
 
 //Example 2: Nested function sequences
@@ -570,13 +587,13 @@ fifthFunc()
 let six = sixthFunc()
 seventhFunc(six)
 
-// First
-// Second
-// Third
-// Fourth
-// Fifth
-// Sixth
-// Seventh
+# Output: First
+          Second
+          Third
+          Fourth
+          Fifth
+          Sixth
+          Seventh
 ```
 **Example1** shows simple functions execution sequentially
 
