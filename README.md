@@ -35,7 +35,7 @@ I) **Recap everything at a glance**
 ##### Declaration or Definition:
 ```javascript
 
-# Function has a name and declared or defined as usually:
+Function has a name and declared or defined as usually:
 
 function functionName (param1, param2, ...) {
 
@@ -45,7 +45,7 @@ function functionName (param1, param2, ...) {
 ##### Invokation or Calling:
 ```javascript
 
-# Function will execute when they are called or invoked like belows:
+Function will execute when they are called or invoked like belows:
 
 // Inside Javascript code
 function functionName (param1, param2, ...) {
@@ -107,7 +107,7 @@ Obj.firstName;
 ##### Return Value and Catch the Value:
 ```javascript
 
-# Javascript Function can return value and catch the value in different ways:
+Javascript Function can return value and catch the value in different ways:
 
 // Returning value statement
 function functionName (param1, param2, ...) {
@@ -140,7 +140,7 @@ let n = 'Something' + functionName (param1, param2, ...)
 ##### Hoisting:
 ```javascript
 
-# Function call declaration can be happened before their definition. This is called Function hoisting:
+Function call declaration can be happened before their definition. This is called Function hoisting:
 
 // Calling before defining
 functionName (param1, param2, ...)
@@ -155,7 +155,7 @@ function functionName (param1, param2, ...) {
 ##### Declaration or Definition:
 ```javascript
 
-# Function with no name is called Anonymous Function:
+Function with no name is called Anonymous Function:
 
 // This function has no name so it is called Anonymous Function
 function (param1, param2, ...) {
@@ -180,9 +180,8 @@ setTimeout(function (param1, param2) {
 }, 1000, x, y);
 
 
-# NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
-
-**Example**
+NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
+Example:
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 ```
