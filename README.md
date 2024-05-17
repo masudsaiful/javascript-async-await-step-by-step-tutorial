@@ -466,7 +466,7 @@ In javascript code within the synchronous calls, all the work is done line by li
 The code illustrated in **Example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the **Example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that **func3()** will wait until **func2()** execution finished.
+In the **Example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2**, **func3()** will wait until **func1()** has finished.
 
 
 ### C) Function Sequence and synchronous programming
@@ -518,10 +518,11 @@ ix) Web APIs etc.
 
 
 #### Function Sequence:
-Functions are executed in the sequence they are called, not the sequence they are defined
-Let's examine the following examples.
+So, functions are executed in the sequence they are called, not the sequence they are defined
+
+Let's examine the following examples also.
 ```javascript
-//Example 1
+//Example 1: Simple function sequences
 const secondFunc = () =>  'Second';
 const thirdFunc = () =>  'Third';
 const firstFunc = () => 'First';
@@ -533,29 +534,55 @@ console.log(thirdFunc()); // Third
 
 
 
-//Example 2
-const firstFunc = () => 'First';
-const thirdFunc = () =>  'Third';
-const secondFunc = () =>  'Second';
+//Example 2: Nested function sequences
+const firstFunc = () => {
+  const secondFunc = () => {
+    const thirdFunc = () => {
+      console.log('Third')
+    }
+    console.log('Second')
+    thirdFunc()
+  }
+  console.log('First')
+  secondFunc()
+}
 
+const fourthFunc = () => {
+  console.log('Fourth')
+}
 
-console.log(firstFunc()); // First
-console.log(secondFunc()); // Second
-console.log(thirdFunc()); // Third
+const fifthFunc = () => {
+  fourthFunc()
+  console.log('Fifth')
+}
 
+const sixthFunc = () => {
+  return 'Sixth'
+}
 
+const seventhFunc = (param) => {
+  console.log(param)
+  return 'Seventh'
+}
 
-//Example 3
-const thirdFunc = () =>  'Third';
-const firstFunc = () => 'First';
-const secondFunc = () =>  'Second';
+firstFunc()
+fifthFunc()
+let six = sixthFunc()
+seventhFunc(six)
 
-
-console.log(thirdFunc()); // Third
-console.log(secondFunc()); // Second
-console.log(firstFunc()); // First
+// First
+// Second
+// Third
+// Fourth
+// Fifth
+// Sixth
+// Seventh
 ```
-Example1 and Example2 are always output the results i.e. 'First', 'Second' and 'Third' because functions are invoked sequentially like these, firstFunc(), secondFunc() and thirdFunc(). Whatever their declarations ordering are managed but result always depends on function call sequence.
+**Example1** shows simple function call sequences
+
+**Example2** shows the variations of nested function call sequences.
+
+Whatever their declaration ordering are managed but result always depends on function call sequences.
 
 
 
