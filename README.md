@@ -182,7 +182,7 @@ setTimeout(function (param1, param2) {
 
 # NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
 
-// Example
+**Example**
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 ```
@@ -703,7 +703,7 @@ const displayOrderStatusFunc = param => {
 }
 ```
 
-Moreover we let the each function to control other function call inside their bodies to reduce bulk function execution when initiate. Thus better controlling over when to execute the functions.
+Moreover, we let the each function to control other function call inside their bodies to reduce bulk function execution when initiate. Thus better controlling over when to execute the functions.
 
 ```javascript
 const orderFunc = (item1, item2) => {
@@ -804,7 +804,7 @@ const order = orderFunc('pizza', 'burger')
 console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
 ```
 
-##### The problems with the above Examples are:
+**The problems with the above Examples are**,
 a) We have to call four functions to display the result in **example1**. 
 ###### i) orderFunc(), 
 ###### ii) displayOrderStatusFunc(),
@@ -817,19 +817,17 @@ So, it will be nightmare to manage lots of function call in a larger application
 b) From the **example2** it is not possible to prevent the **orderFunc()**  function from displaying the greetings message. That means there need more flexible and efficient controlling to manage the function sequence.
 
 
-c) Blocking can make wait to display the result if delay happen in the order status function **orderStatusFunc(order)** of the above code. In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that behind the scene by writing asynchronous programming using browser based javascript engine and web API methods which we will discuss later in this article.
+c) Blocking can make wait to display the result if delay happen in the order status function **orderStatusFunc(order)** of the above codes. In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interruption create delay to the next function execution. So, need to handle that behind the scene by writing asynchronous programming using browser based javascript engine and web API methods which we will discuss later in this article.
 
 
-###### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
-
-
+##### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
 ### E) Javascript Callback Function
 Callback is a function passed as an urgument to another function. The parent function which is taken the argument will utilize it or invoke it later inside it's frame after completing the other tasks. 
 #### How to use Callback Function? 
 ##### a) Simple callback function syntax:
 ```javascript
 // Example 1
-normalFunc(callbackFunc) // "I am normal function", "I am callback function"  
+normalFunc(callbackFunc)  
 
 function callbackFunc() {
   console.log('I am callback function')
@@ -839,6 +837,8 @@ function normalFunc(callbackParam) {
   console.log('I am normal function')
   callbackParam()
 }
+// "I am normal function", "I am callback function"
+
 
 // Example 2
 normalFunc(callbackFunc1, callbackFunc2) // "I am callback function2", "I am normal function", "I am callback function1"   
