@@ -37,9 +37,10 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 Function has a name and declared or defined as usually:
 
 function functionName (param1, param2, ...) {
-
+  ...
 }
 ```
+
 
 ##### Invokation or Calling:
 ```javascript
@@ -54,7 +55,7 @@ Function will execute when they are called or invoked like belows:
 </script>
 
 
-// Basically above code will be invoked automatically by browser Window Object, so above code will be the same as belows:
+// Basically above code will be invoked automatically by browser Window Object, so above code will be the same as belows
 <script>
   function functionName (param1, param2, ...) {
     ...
@@ -63,28 +64,28 @@ Function will execute when they are called or invoked like belows:
 </script>
 
 
-// When an event occurs in HTML:
+// When an event occurs in HTML
 function functionName (param1, param2, ...) {
   ...
 }
 <p onclick="functionName (param1, param2, ...)" />
 
 
-// When an event occurs in Javascript:
+// When an event occurs in Javascript
 function functionName (param1, param2, ...) {
   ...
 }
 object.onclick = function(){functionName};
 
 
-// When an event occurs in Javascript using Event Handler:
+// When an event occurs in Javascript using Event Handler
 function functionName (param1, param2, ...) {
-
+  ...
 }
 object.addEventListener("click", functionName);
 
 
-// Invoking a function as method in Javascript Object:
+// Invoking a function as method in Javascript Object
 const Obj = {
   firstName:"f_name",
   lastName: "l_name",
@@ -95,16 +96,17 @@ const Obj = {
 Obj.functionName(param1, param2, ...);
 
 
-// Invoking using Function Constructor:
+// Invoking using Function Constructor
 function functionName(param1, param2, ...) {
   this.firstName = 'f_name';
   this.lastName  = "l_name";
-  this.param1Val = param1;
-  this.param2Val = param2;
+  this.param1Key = param1;
+  this.param2Key = param2;
 }
 const Obj = new functionName(param1, param2, ...);
-Obj.firstName;
+Obj.param1Key;
 ```
+
 
 ##### Return Value and Catch the Value:
 ```javascript
@@ -137,6 +139,7 @@ function functionName (param1, param2, ...) {
 }
 let n = 'Something' + functionName (param1, param2, ...)
 ```
+
 
 ##### Hoisting:
 ```javascript
@@ -171,7 +174,7 @@ const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 
 
-// Anonymous Function can be defined directly as a callback function in another function (i.e. in here Web API function setTimeout())
+// Anonymous Function can be defined directly as a callback function in another function. Web API function 'setTimeout' uses a full callback function body as it's urgument below
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -187,6 +190,7 @@ NOTE: Anonymous Function can not be hoisted. They only execute when calling afte
 const anonymousFunc = function (param1, param2, ...) {return param1 + param2};
 anonymousFunc(param1, param2, ...)
 ```
+
 
 ##### Invokation or Calling:
 ```javascript
@@ -210,7 +214,7 @@ m(param1, param2, ...)
 })(param1, param2, ...);
 
 
-// Invoking directly as a callback function to another function (i.e. in here browser based Web API function setTimeout()) parameter 
+// Invoking directly as a callback function to another function. In below browser based Web API function 'setTimeout()' invoked an anonymous function 
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -259,58 +263,59 @@ console.log( arrowFuncName() )
 It's a shorter syntax for writing function expression. It's also short syntax of anonymous function:
 
 // Example 1
-Anonymous Function
+Anonymous Function:
 function () {
   return 'something';
 }
 
 same as,
 
-Arrow Function
+Arrow Function:
 () => {
   return 'something'
 }
 
 
 // Example 2
-Anonymous Function Expression assigned to a variable
+Anonymous Function Expression assigned to a variable:
 const m = function () {return 'something'};
 
 same as,
 
-Arrow Function Expression assigned to a variable
+Arrow Function Expression assigned to a variable:
 const m = () => { return 'something' };
 
 
 // Example 3
-Anonymous Function Expression with parameter
+Anonymous Function Expression with parameter:
 const m = function (param1, param2) {return param1 + param2};
 
 same as,
 
-Arrow Function Expression with parameter
+Arrow Function Expression with parameter:
 const m = (param1, param2) => { return param1 + param2 };
 
 
 // If Arrow function has single statement and return a value, it can be written as belows
 const m = (param1, param2) => param1 + param2;
 
-NOTE: Omitted curly brackets '{}'' and 'return' keyword
+NOTE: Omitted curly brackets '{}' and 'return' keyword
 
 
 
 // If Arrow function has single parameter and single statement, it can be written as belows
 const m = param1 => 'something' + param1; 
+
 NOTE: Omitted curly brackets '{}', 'return' keyword and parenthesis '()'
 
 
 // If Arrow function use 'return' keyword, must use curly brackets '{}'
-Either a single statement
+Either a single statement:
 const m = param1 => { return 'something' + param1 };
 
 or,
 
-multiple statement
+multiple statement:
 const m = param1 => {
   // do something
   return 'something' + param1
@@ -320,7 +325,7 @@ const m = param1 => {
 // Arrow Function invokations or Callings are same as those of Anonymous Function described above
 
 
-Though often assigned to any variable while working, arrow function variable invokation must be in function call format "functionName()"
+Though often assigned to any variable while working, arrow function variable invokation must be in function call format 'functionName()'
 
 // This will return entire function
 const arrowFuncName = () => {
@@ -368,7 +373,9 @@ In Javascript programming language while running code it can execute only one in
 
       console.log(result);
 ```
-According Javascript single-threaded architecture let's track the above code sample what's happening in the single **'Call Stack'**.
+
+
+According Javascript single-threaded architecture let's track the above code sample what's happening in the single **'Call Stack'**
 
 ###### a) Instructions of each line of code are added to the stack frame of single call stack in **LIFO (Last in first out)** way
 
@@ -413,6 +420,8 @@ Though Javascript code work sequentially and in the single-threaded stack frame,
 
       # Output: 1000000000
 ```
+
+
 Run the program and you will see execution can take few moments to display the result. In here, 
 
 **display()** is blocked untill **y()** completed it's task.
@@ -481,6 +490,8 @@ In javascript code within the synchronous calls, all the work is done line by li
               something1
               something3
 ```
+
+
 The code illustrated in **example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
@@ -488,17 +499,16 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 
 
 ### C) Function Sequence and synchronous programming
-#### What we have learned let's recape those again, 
+#### What we have learned let's recape those again 
 
 
-##### Javascript is,
+##### Javascript is:
 
 ###### i) single-threaded in nature,
 
 ###### ii) blocking architecture and
 
 ###### ii) synchronous execution by default 
-
 
 
 ##### Javascript code execution happen,
@@ -512,8 +522,7 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 ###### iv) next instruction will wait untill the previous instruction completed it's task, which means blocking
 
 
-
-##### Javascript code execution based on following terminologies and Browser based engine
+##### Javascript code execution based on following terminologies and Browser based engine:
 ###### (We will not go in-depth discussion in this article about the terminologies)
 
 ###### i) Javascript run time environment
@@ -599,6 +608,8 @@ seventhFunc(six)
           Sixth
           Seventh
 ```
+
+
 **Example1** shows simple functions execution sequentially.
 
 **Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (see in **fifthFunc** ) or both calling and definition can be handle inside the parent body (**firstFunc**). 
@@ -693,26 +704,35 @@ If we look at in '**Synchronous Programming: Example1**' in this line,
 displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 ```
 
+
 it will display output the greetings message in first part and order status in second part,
 ```javascript
-console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+console.log(displayOrderStatus) 
+
+# Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
+
 Now change order status in first argument and greetings message in second arguments like below, 
-```
+```javascript
 displayOrderStatusFunc(orderStatusFunc(order), greetingsFunc())
 ```
 
+
 The display will change now,
 ```javascript
-console.log(displayOrderStatus) // "pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality"
+console.log(displayOrderStatus) 
+
+# Output: pizza, burger, Calzone, Ready to deliver. Warm hearted greetings for accepting our hospitality
 ```
+
 
 Furthermore, we can also discuss it in this way that we have called a function **orderFunc('pizza', 'burger')**, saved the result and called another function **displayOrderStatusFunc()** to use it and thus better controlling to output the result.
 ```javascript
 const order = orderFunc('pizza', 'burger')
 const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 ```
+
 
 Next examine the '**Synchronous Programming: Example2**'.
 
@@ -727,6 +747,7 @@ const displayOrderStatusFunc = param => {
 	}
 }
 ```
+
 
 Moreover, we let the each function to control other function call inside their bodies to reduce bulk function execution at the initialized time. Thus better controlling over when to execute the functions.
 
@@ -760,6 +781,8 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 ```
+
+
 So far here, I have just tried to explain how we can better control the function execution sequences when writing synchronous programming.
 
 
@@ -835,6 +858,7 @@ console.log(order)
 # Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 ```
 
+
 **The problems with the above Examples are**,
 
 a) We have to call four functions to display the result in **example1**. 
@@ -901,6 +925,7 @@ function normalFunc(callbackParam1, callbackParam2) {
           I am callback function1" 
 ```
 
+
 Let's explain the callback function advantages from above codes,
 
 ###### i) CallbackFunc() is a callback function because it's passed as argument to normalFunc(callbackFunc) function
@@ -919,6 +944,8 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1()
 }
 ```
+
+
 Here callback function invoked sequences are **callbackParam2()** and then next **callbackParam1()** and hence function call sequences are managed in a single function block.
 
 
@@ -927,6 +954,7 @@ Here callback function invoked sequences are **callbackParam2()** and then next 
 ```javascript
 normalFunc(callbackFunc1, callbackFunc2)
 ```
+
 
 ###### x) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
@@ -976,6 +1004,7 @@ function normalFunc(callbackParam1, callbackParam2) {
           Yes, I am callback function1
 ```
 
+
 Another advantages to use callback function is,
 
 ###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature 'parenthesis ()' rather when invoked inside parent body then need parameter.
@@ -1012,6 +1041,7 @@ function normalFunc(callbackParam1, callbackParam2) {
   callbackParam1(notify)
 }
 ```
+
 
 ##### c) Callback function syntax using Anonyumous and Arrow syntax:
 ```javascript
@@ -1199,6 +1229,8 @@ bossFunc(employeeFunc)
           Plz, come after 3 seconds,
           Hurray! I am here after 3 seconds
 ```
+
+
 Above code mentioning in **example3** will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
 
 Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself calling a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
@@ -1362,6 +1394,8 @@ accounts()
 "Branch1 has deposited amount2"
 "Branch3 has deposited amount2"
 ```
+
+
 **Javascript is a single-threaded programming language because**,
 
 1) Javascript run the above code in these function sequences according their call **accounts(), branch2(), branch1(), branch3() and notification()**.
