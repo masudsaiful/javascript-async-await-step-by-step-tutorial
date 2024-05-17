@@ -7,25 +7,25 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
-A) Javascript Functions
+A) **Javascript Functions**
 
-B) Single-threaded, blocking and synchronous
+B) **Single-threaded, blocking and synchronous**
 
-C) Function Sequence and synchronous programming
+C) **Function Sequence and synchronous programming**
 
-D) Problems with synchronous programming
+D) **Problems with synchronous programming**
 
-E) Callback
+E) **Callback**
 
-F) multi-threaded, non-blocking and asynchronous
+F) **multi-threaded, non-blocking and asynchronous**
 
-G) Problems with Asynchronous programing using Callback (Callback Hell)
+G) **Problems with Asynchronous programing using Callback (Callback Hell)**
 
-H) Javascript Promises
+H) **Javascript Promises**
 
-I) Async/Await
+I) **Async/Await**
 
-I) Recap everything at a glance
+I) **Recap everything at a glance**
 
 
 ## Let's a short overview all of them:
@@ -332,7 +332,7 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, i
 
 #### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
 ##### Single-threaded:
-In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single call stack, Javascript code is read and gets executed line by line. Call stack concept is same as stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and whenever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
+In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single **call stack**, Javascript code is read and gets executed line by line. Call stack concept is same as stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and whenever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
 ```javascript
       const x = () => {
         return 'something'
@@ -362,13 +362,13 @@ d) then **y()** function
 
 e) then **x()** function
 
-f) so, code executed sequentially in only one call stack and a single memory heap and only one execution at a time
+f) so, code executed sequentially one by one in only one call stack and a single memory heap and only one execution at a time
 
 g) when execution completed, releasing the call stack from this task to empty 
 
 
 ##### Blocking:
-Though Javascript code work sequentially and in the single-threaded stack frame, execution occur one instruction at a time, there may be very chance for the following line of instruction to wait untill it's previous execution completed. It is called blocking. Blocking is the nature of synchronous programming. Let's consider the following example.
+Though Javascript code work sequentially and in the single-threaded stack frame, execution occur one instruction at a time, there may be very chance for the following line of instruction to wait untill it's previous execution completed. It is called **blocking**. Blocking is the nature of synchronous programming. Let's consider the following example.
 ```javascript
       // Example
       const x = () => {
@@ -397,13 +397,13 @@ Run the program and you will see execution can take few moments to display resul
 
 **display()** is blocked untill **y()** completed it's task.
 
-Same to **x()** keeping wait the execution of **y()** where **x()** itself not yet finished it's task.
+Same to **x()** keeping wait the execution of **y()** where **x()** itself not yet finished the task.
 
-This time-consuming execution which can block it's following instruction may happen for the reason of any external **API call** or any **I/O operation** or any server end **dB connection** request or other similar reasons.
+This **time-consuming** execution which can block it's following instruction may happen for the reason of any external **API call** or any **I/O operation** or any server end **dB connection** request or other similar issues.
 
 
 ##### Synchronous:
-In javascript code within the synchronous calls, all the work is done line by line one after another i.e. the first task is executed then the second task is executed, no matter how much time one task will take. When one thread is locked, the thread following it in line is blocked. After escaping from block, execution will start for the next instruction. Look at this two illustrations below.
+In javascript code within the synchronous calls, all the work is done line by line one after another. The first task is executed then the second task is executed, no matter how much time one task will take. When one thread is locked, the thread following it in line is blocked. After escaping from block, execution will start for the next instruction. Look at this two illustrations below.
 ```javascript
     // Example 1
     const func1 = () => {
@@ -466,7 +466,7 @@ In javascript code within the synchronous calls, all the work is done line by li
 The code illustrated in **Example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the **Example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2**, **func3()** will wait until **func1()** has finished.
+In the **Example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2**, **func3()** will wait until **func1()** has finished the work.
 
 
 ### C) Function Sequence and synchronous programming
@@ -496,7 +496,7 @@ iv) next instruction will wait untill the previous instruction completed it's ta
 
 
 ##### Javascript code execution based on following terminologies and Browser based engine
-(We will not in depth discuss such terminologies in this article)
+(We will not go in-depth discussion in this article about the terminologies)
 
 i) Javascript run time environment
 
@@ -520,7 +520,7 @@ ix) Web APIs etc.
 #### Function Sequence:
 So, functions are executed in the sequence they are called, not the sequence they are defined.
 
-Let's examine the following examples also.
+Let's examine the following examples,
 ```javascript
 //Example 1: Simple function sequences
 const secondFunc = () =>  'Second';
@@ -578,9 +578,9 @@ seventhFunc(six)
 // Sixth
 // Seventh
 ```
-**Example1** shows simple function call sequences
+**Example1** shows simple functions execution sequentially
 
-**Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (**see fifthFunc()** ) or both calling and definition can be managed inside the parent body (**firstFunc()**). 
+**Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (**fifthFunc()** ) or both calling and definition can be handle inside the parent body (**firstFunc()**). 
 
 Whatever their declaration ordering are managed but result always depends on function call sequences.
 
@@ -624,7 +624,7 @@ console.log(displayOrderStatus) // "Warm hearted greetings for accepting our hos
 ```
 
 
-Or, we could call a order function (**orderFunc**), and let the order function call the order status function (**orderStatusFunc**), and then let the order status function call the order status display function (**displayOrderStatusFunc**). Then after let the order status display function call the greetings function. Let's re-write the above code as below.  
+Or, we could call a order function (**orderFunc**), and let the order function call the order status function (**orderStatusFunc**), and then let the order status function call the order status display function (**displayOrderStatusFunc**). Then after let the order status display function call the greetings function (**greetingsFunc**). Let's re-write the above code as below.  
 ```javascript
 // Synchronous Programing: Example 2
 const orderFunc = (item1, item2) => {
@@ -689,13 +689,21 @@ const order = orderFunc('pizza', 'burger')
 const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 ```
 
-Next examine the '**Synchronous Programming: Example2**'. We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed in this example.
+Next examine the '**Synchronous Programming: Example2**'.
+
+We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc()** there and passed status message to control everything.
 
 ```javascript
-console.log(order) // "Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver"
+const displayOrderStatusFunc = param => {
+	if (param) {
+		let greetings = greetingsFunc()
+		let display = greetings + '. ' + param 
+		return display
+	}
+}
 ```
 
-Moreover we let the each function to control other function call inside their body and thus better controlling over when to execute a function.
+Moreover we let the each function to control other function call inside their bodies to reduce bulk function execution when initiate. Thus better controlling over when to execute the functions.
 
 ```javascript
 const orderFunc = (item1, item2) => {
@@ -725,7 +733,7 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 ```
-This is how we can better control the function execution sequences when writing synchronous programming.
+This is what I am trying to show how we can better control the function execution sequences when writing synchronous programming.
 
 
 ### D) Problems with synchronous programming
