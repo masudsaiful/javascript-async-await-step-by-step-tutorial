@@ -733,13 +733,13 @@ const greetingsFunc = () => {
 
 const order = orderFunc('pizza', 'burger')
 ```
-This is what I am trying to show how we can better control the function execution sequences when writing synchronous programming.
+So far here I just want to show how we can better control the function execution sequences when writing synchronous programming.
 
 
 ### D) Problems with synchronous programming
-Synchronous programming is straightforward. It’s easier to write code. Basically, synchronous programming can be used when the aim is for simplicity rather than efficiency. Because synchronous programming is the default, developers don’t need to worry about whether or not it’s possible to build asynchronous applications. But when the code becomes incrementally larger it's hard to manage numerous actions, time-consuming waits, can't prevent to stop lots of execution where sequence are controlled previously, Worse user experience when massive hits of too many requests etc. We will now analyze the problems below.
+Synchronous programming is straightforward. It’s easier to write code. Basically, synchronous programming can be used when the aim is for simplicity rather than efficiency. Because synchronous programming is the default, developers don’t need to worry about whether or not it’s possible to build asynchronous applications. But when the code becomes incrementally larger it's hard to manage numerous actions, time-consuming waits, Preventing problems to stop lots of function execution sequences that are controlled internally from other functions, Worse user experience when massive hits of too many requests etc. We will now analyze the problems below.
 
-#### Please see the Synchronous Programming Examples again:
+**Let's see the synchronous programming examples again**,
 
 ```javascript
 // Synchronous Programing: Example 1
@@ -805,19 +805,19 @@ console.log(order) // "Warm hearted greetings for accepting our hospitality. piz
 ```
 
 ##### The problems with the above Examples are:
-a) We have to call four functions to display the result in Example1. 
-###### i) orderFunc('pizza', 'burger'), 
-###### ii) displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order)),
+a) We have to call four functions to display the result in **example1**. 
+###### i) orderFunc(), 
+###### ii) displayOrderStatusFunc(),
 ###### iii) greetingsFunc() and 
-###### iv) orderStatusFunc(order) 
+###### iv) orderStatusFunc() 
 
 So, it will be nightmare to manage lots of function call in a larger application.
 
 
-b) From the Example2 it is not possible to prevent the orderFunc('pizza', 'burger')  function from displaying the greetings message. That means there need more flexible and efficient controlling to manage the function sequence.
+b) From the **example2** it is not possible to prevent the **orderFunc()**  function from displaying the greetings message. That means there need more flexible and efficient controlling to manage the function sequence.
 
 
-c) Blocking can make wait to display the result if delay happen in the order status function of the above code i.e. orderStatusFunc(order). In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that by writing asynchronous programming using browser based javascript engine and web APIs which we will discuss later in this article.
+c) Blocking can make wait to display the result if delay happen in the order status function **orderStatusFunc(order)** of the above code. In practical world dependency functions can interact with external APIs or dB based data fetched tasks. It's obvious that time-consuming wait or blocking interrupt create delay to the next function execution. So, need to handle that behind the scene by writing asynchronous programming using browser based javascript engine and web API methods which we will discuss later in this article.
 
 
 ###### Now it's time to know about 'Callback' and next on to start the concept of 'Asynchronous'
