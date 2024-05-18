@@ -533,7 +533,7 @@ Run the program and you will see execution can take few moments to display the r
 
 **display()** is blocked untill **y()** completed it's task.
 
-Same to **x()** keeping wait the execution of **y()** where **x()** itself not yet finished the task.
+Same to **x()** keeping wait the execution of **y()** whereas **x()** itself not yet finished the task.
 
 This **time-consuming** execution which can block it's following instruction may happen for the reason of any external **API call** or any **I/O operation** or any server end **dB connection** request or other similar issues.
 
@@ -602,7 +602,7 @@ In javascript code within the synchronous calls, all the work is done line by li
 The code illustrated in **example1** will print output **'something1', 'something2' and 'something3'** sequentially no matter how long the blocking (**processing something1...** will take long to execute) occur in any part inside these functions but will execute according their call sequence i.e. **func1(), func2() and func3()**
 
 
-In the **example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2**, **func3()** will wait until **func1()** has finished the work.
+In the **example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2** function, the next instructed function **func1()** make delay to execute **func3()** function because **func1()** function yet not finished it's porcess.
 
 
 ### C) Function Sequence and synchronous programming
