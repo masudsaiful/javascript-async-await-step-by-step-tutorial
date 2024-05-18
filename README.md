@@ -252,7 +252,8 @@ console.log('something' + m(param1, param2, ...))
 })(param1, param2, ...);
 
 
-Anonymous function invokation directly as a full body function definition to another function argument. It is called callback function:
+Anonymous function invokation directly as a full body function definition to another function argument. 
+It is called callback function:
 
 // Full body anonymous function definition called to a web API function argument as a callback function
 let x = 16
