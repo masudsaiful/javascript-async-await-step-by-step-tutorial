@@ -170,16 +170,32 @@ const m = function (param1, param2, ...) {return param1 + param2};
 
 
 // Anonymous Function can be defined by assigning to a variable and later this variable will act as a function
-const m = function (param1, param2, ...) {return param1 + param2};
+const m = function (param1, param2, ...) {console.log(param1 + param2)};
 m(param1, param2, ...)
 
 
-// Anonymous Function can be defined directly as a callback function in another function. Web API function 'setTimeout' uses a full callback function body as it's urgument below
+Anonymous Function can be defined directly as a full body callback function to another function argument: 
+
+// Anonymous Function can be defined as a full body callback function to a web API function argument
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
     console.log(param1 + param2) 
 }, 1000, x, y);
+
+# Output: 25
+
+
+// Anonymous Function can be defined as a full body callback function to a Name function argument
+function nameFunc(param) {
+  return param()
+}
+
+let param1 = 16
+let param2 = 9
+nameFunc(function () {
+  console.log(param1+param2)
+})
 
 # Output: 25
 
@@ -194,27 +210,51 @@ anonymousFunc(param1, param2, ...)
 
 ##### Invokation or Calling:
 ```javascript
-// Function without name can be assigned to a variable using expression. The variable then can be used as function invokation
-const m = function (param1, param2, ...) {return param1 + param2};
-let n = m(param1, param2, ...)
-let o = 'something' + n
+Function without name can be assigned to a variable. The variable then can be used for invokation or calling purposes:
 
-
-// calling the variable directly In Javascript code without assigning to another variable
+// Anonymous function invokation using variable in Javascript code
+...
+...
 const m = function (param1, param2, ...) {return param1 + param2};
 m(param1, param2, ...)
 ...
 ...
 
 
-// Anonymous function can also be used as self-invoking function
+// Anonymous function invokation using variable and assigning the invokation to another variable
+const m = function (param1, param2, ...) {return param1 + param2};
+let n = m(param1, param2, ...)
+
+
+// Anonymous function invokation directly In Javascript code without assigning to any another variable
+...
+...
+const m = function (param1, param2, ...) {console.log (param1 + param2)};
+m(param1, param2, ...)
+...
+...
+
+
+// Anonymous function invokation directly In a statement
+const m = function (param1, param2, ...) {return param1 + param2};
+let n = 'something' + m(param1, param2, ...)
+
+
+// Anonymous function invokation directly In an expression
+const m = function (param1, param2, ...) {return param1 + param2};
+console.log('something' + m(param1, param2, ...))
+
+
+// Anonymous function invokation as a self-invoking function
 (function (param1, param2, ...) {
   let x = param1;
   let y = param2
 })(param1, param2, ...);
 
 
-// Invoking directly as a callback function to another function. In below browser based Web API function 'setTimeout()' invoked an anonymous function 
+Anonymous function invokation directly as a full body function definition to another function argument. It is called callback function:
+
+// Full body anonymous function definition called to a web API function argument as a callback function
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -224,7 +264,23 @@ setTimeout(function (param1, param2) {
 # Output: 25
 
 
-// Invoking function variable as a callback function to another function parameter
+// Full body anonymous function definition called to another function argument as a callback function
+function nameFunc(param) {
+  return param()
+}
+
+let param1 = 16
+let param2 = 9
+nameFunc(function () {
+  console.log(param1+param2)
+})
+
+# Output: 25
+
+
+Anonymous function invokation using function variable to another function argument as a callback function:
+
+// Anonymous function invokation using variable as a callback function to another function argument
 let anonymousFunc = function (param1, param2) {
 	return param1+param2;
 }
@@ -236,7 +292,7 @@ anotherFunction(9, 16, anonymousFunc)
 # Output: 50
 
 
-Though often assigned to any variable while coding, anonymous function variable invokation must be in function call format 'functionName()':
+Though often assigned to any variable in Javascript, anonymous function variable invokation must be in function call format 'functionName()':
 
 // This will return entire function definition
 const arrowFuncName = function () {
@@ -254,6 +310,20 @@ const arrowFuncName = function () {
 console.log( arrowFuncName() )
 
 # Output: Something
+
+
+Anonymous Function invokation using variable as a cllback function no need to use parenthesis '()' when passing but inside the parent function need to use parenthesis '()':
+
+// Anonymous function invokation using variable as a callback function to another function argument. 'anonymousFunc' function no need to use parenthesis '()' but inside the parent function 'callback()' need to use parenthesis.
+let anonymousFunc = function (param1, param2) {
+	return param1+param2;
+}
+function anotherFunction(a, b, callback) { 
+	console.log(a + b + callback(a, b))
+}
+anotherFunction(9, 16, anonymousFunc)
+
+# Output: 50
 ```
 
 
