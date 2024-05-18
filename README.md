@@ -1349,7 +1349,8 @@ From the above examples if we see in **example3**, it will display three message
 
 Firstly, it will display these two messages, 
 
-**Boss calling employee**, 
+**Boss calling employee**,
+
 **Plz, come after 3 seconds**.
 
 And secondly after 3 seconds it will display the following message,
