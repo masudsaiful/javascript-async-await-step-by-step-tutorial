@@ -1346,7 +1346,7 @@ bossFunc(employeeFunc)
 ```
 
 
-All of the above examples we have used **setTimeout** functions which are calling the whole callbacks in their arguments. The callback functions start execution after the providing time-out arguments given above meets criteria. 
+All of the above examples we have used **setTimeout** functions which are calling the whole callbacks in their arguments. The callback functions start execution after the providing time-out arguments given above are meets their criteria. 
 
 Consider the **example3**. Two scenarios you can have seen.
 
@@ -1383,9 +1383,13 @@ And secondly we will see **"Hurray! I am here after 3 seconds"** message after 3
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
-Imagine your are fetching huge size of dB request from backend API. In blocking and synchronous mechanism you have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious request happen to backend server in an application. Implementing callback action using asynchronous functions like: **fetch()** server requests will continue jobs behind the scene while Javascript code execution continue sequentially.
+Imagine your are fetching huge size of dB request from backend API. In blocking and synchronous mechanism you have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious request happen to backend server in an application. Implementing callback action using asynchronous functions like: **fetch()** server requests will continue jobs behind the scene while Javascript code execution continue sequentially. Browser finishing the asynchronous tasks let the response to callback to know Javascript that it has done. 
 
-**Using callback you have triggered an action.** 
+**It can simply says as below**,
+
+###### Using asynchronous function a callback action can be triggered to perform pre or subsequent related tasks
+
+###### Callback actions are kinda providing breeze between gaps of synchronous and asynchronous operations
 
 ###### i) The action (here callback function. i.e employeeFunc and callback(count)) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. These are also called Web APIs)
 
