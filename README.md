@@ -191,7 +191,7 @@ setTimeout(function (param1, param2) {
 
 
 // anonymous Function can be defined as a full body callback function 
-// to a Name function argument
+// to a name function argument
 function nameFunc(param) {
   return param()
 }
@@ -323,9 +323,9 @@ console.log( arrowFuncName() )
 Anonymous Function invokation using variable as a cllback function no need to use parenthesis '()' 
 when passing, but inside the parent function need to use parenthesis '()':
 
-// anonymous function invokation using variable as a callback function to another function argument. 
+// anonymous function invokation using variable as a callback function to another function argument 
 // here, 'anonymousFunc' function no need to use parenthesis '()' 
-// but inside the parent function 'callback()' need to use parenthesis.
+// but inside the parent function 'callback()' need to use parenthesis
 let anonymousFunc = function (param1, param2) {
 	return param1+param2;
 }
@@ -380,14 +380,15 @@ const m = (param1, param2) => { return param1 + param2 };
 // if Arrow function has single statement and return a value, it can be written as belows
 const m = (param1, param2) => param1 + param2;
 
-NOTE: Omitted curly brackets '{}' and 'return' keyword
+NOTE: Omitted curly brackets '{}' and 'return' keyword.
 
 
 
 // if Arrow function has single parameter and single statement, it can be written as belows
 const m = param1 => 'something' + param1; 
 
-NOTE: Omitted curly brackets '{}', 'return' keyword and parenthesis '()'
+NOTE: Omitted curly brackets '{}', 'return' keyword and parenthesis '()'.
+
 
 
 // if Arrow function use 'return' keyword, must use curly brackets '{}'
@@ -406,7 +407,8 @@ const m = param1 => {
 // arrow Function invokations or Callings are same as those of Anonymous Function described above
 
 
-Though often assigned to any variable while working, arrow function variable invokation must be in function call format 'functionName()'
+Though often assigned to any variable while working, 
+arrow function variable invokation must be in function call format 'functionName()':
 
 // this will return entire function
 const arrowFuncName = () => {
@@ -426,7 +428,8 @@ console.log( arrowFuncName() )
 # Output: Something
 
 
-NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, it's also can't be hoisted.
+NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, 
+      it's also can't be hoisted.
 ```
 
 
@@ -692,9 +695,9 @@ seventhFunc(six)
 ```
 
 
-**Example1** shows simple functions execution sequentially.
+**example1** shows simple functions execution sequentially.
 
-**Example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (see in **fifthFunc** ) or both calling and definition can be handle inside the parent body (**firstFunc**). 
+**example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (see in **fifthFunc** ) or both calling and definition can be handle inside the parent body (**firstFunc**). 
 
 Whatever their declaration ordering are managed but result always depends on function call sequences.
 
@@ -781,7 +784,7 @@ If you ever design patterns in OOP (Object-Oriented Programming), you may be fin
 
 Now let's try to understand how the two examples above are functioning and how we manage a better control over when to execute functions in synchronous programming. 
 
-If we look at in '**Synchronous Programming: Example1**' in this line,
+If we look at in '**Synchronous Programming: example1**' in this line,
 ```javascript
 displayOrderStatusFunc(greetingsFunc(), orderStatusFunc(order))
 ```
@@ -816,7 +819,7 @@ const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFu
 ```
 
 
-Next examine the '**Synchronous Programming: Example2**'.
+Next examine the '**Synchronous Programming: example2**'.
 
 We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc** there and passed status message to control the expected display.
 
@@ -941,7 +944,7 @@ console.log(order)
 ```
 
 
-**The problems with the above Examples are**,
+**The problems with the above examples are**,
 
 a) We have to call four functions to display the result in **example1**. 
 ###### i) orderFunc(), 
@@ -1016,8 +1019,8 @@ Let's explain the callback function advantages from above codes,
 ###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks or can be placed in any optimal position according development needs.
 ###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
 ###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, keeping consistency, neat and clean code.
-###### vii) In Example2, more than one callback can be passed. 
-###### viii) In Example2, more important is where the callback functions invoked, less important is argument sequences. See the following snippets in Example2.
+###### vii) In example2, more than one callback can be passed. 
+###### viii) In example2, more important is where the callback functions invoked, less important is argument sequences. See the following snippets in example2.
 
 ```javascript
 function normalFunc(callbackParam1, callbackParam2) {
@@ -1031,14 +1034,14 @@ function normalFunc(callbackParam1, callbackParam2) {
 Here callback function invoked sequences are **callbackParam2()** and then next **callbackParam1()** and hence function call sequences are managed in a single function block.
 
 
-###### ix) In Example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
+###### ix) In example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
 
 ```javascript
 normalFunc(callbackFunc1, callbackFunc2)
 ```
 
 
-###### x) In both Examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
+###### x) In both examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
 ##### b) Callback function syntax with parameter:
