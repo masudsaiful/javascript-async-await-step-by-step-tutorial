@@ -1345,7 +1345,9 @@ bossFunc(employeeFunc)
 ```
 
 
-From the above examples if we see in **example3**, it will display three messages.
+All of the above examples we have used 'setTimeout' functions which are calling the whole callbacks in their arguments. The callback functions start execution after the providing time-out arguments given above meets criteria. 
+
+Consider the **example3**. Two scenarios you can have seen.
 
 Firstly, it will display these two messages, 
 
@@ -1353,11 +1355,30 @@ Firstly, it will display these two messages,
 
 **Plz, come after 3 seconds**.
 
-And secondly after 3 seconds it will display the following message,
+Secondly, Javascript runtime environment engine (like: **v8** for **Chrome Browser**) take care to handle 'setTimeout' web API function.
+
+after 3 seconds it will display the following message,
 
 **Hurray! I am here after 3 seconds**
 
-Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself calling a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
+Though we have called 'callback(count)' function in the following line of code, 
+
+```javascript
+const bossFunc = callback => {
+  let count = 3
+  callback(count)
+  console.log('Boss calling employee')
+  console.log('Plz, come after 3 seconds')
+}
+```
+but these two lines will display first because of asynchronous function 'setTimeout'. Parallelly Javascript will continue its execution and Javascript engine will do it's jobs in the background. So, will see first these two messages.
+
+**Boss calling employee**,
+
+**Plz, come after 3 seconds**.
+
+Secondly, it will display **"Hurray! I am here after 3 seconds"** after 3 seconds.
+
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
