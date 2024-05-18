@@ -55,7 +55,8 @@ Function will execute when they are called or invoked like belows:
 </script>
 
 
-// Basically above code will be invoked automatically by browser Window Object, so above code will be the same as belows
+// Basically above code will be invoked automatically by browser Window Object 
+// So, above code will be the same as below
 <script>
   function functionName (param1, param2, ...) {
     ...
@@ -169,7 +170,8 @@ function (param1, param2, ...) {
 const m = function (param1, param2, ...) {return param1 + param2};
 
 
-// Anonymous Function can be defined by assigning to a variable and later this variable will act as a function
+/* Anonymous Function can be defined by assigning to a variable 
+and later this variable will act as a function */
 const m = function (param1, param2, ...) {console.log(param1 + param2)};
 m(param1, param2, ...)
 
