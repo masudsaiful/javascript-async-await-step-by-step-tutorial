@@ -325,7 +325,7 @@ when passing, but inside the parent function need to use parenthesis '()':
 
 // anonymous function invokation using variable as a callback function to another function argument 
 // here, 'anonymousFunc' function no need to use parenthesis '()' 
-// but inside the parent function 'callback()' need to use parenthesis
+// but inside the parent function anonymous function 'callback()' need to use parenthesis
 let anonymousFunc = function (param1, param2) {
 	return param1+param2;
 }
@@ -404,7 +404,9 @@ const m = param1 => {
 };
 
 
+
 // arrow Function invokations or Callings are same as those of Anonymous Function described above
+
 
 
 Though often assigned to any variable while working, 
@@ -419,6 +421,7 @@ console.log(arrowFuncName)
 # Output: () => { return 'Something'; }
 
 
+
 // this will return correct value
 const arrowFuncName = () => {
   return 'Something';
@@ -426,6 +429,23 @@ const arrowFuncName = () => {
 console.log( arrowFuncName() ) 
 
 # Output: Something
+
+
+
+Arrow Function invokation using variable as a cllback function don't use parenthesis '()' 
+when passing, but inside the parent function need to use parenthesis '()':
+
+// arrow function invokation using variable as a callback function to another function argument 
+// here, 'arrowFunc' function no need to use parenthesis '()' 
+// but inside the parent function 'callback()' need to use parenthesis
+let arrowFunc = (param1, param2) => {
+	return param1+param2;
+}
+function anotherNameFunction(a, b, callback) { 
+	console.log(a + b + callback(a, b))
+}
+anotherNameFunction(9, 16, arrowFunc)
+
 
 
 NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, 
