@@ -1387,11 +1387,11 @@ Imagine your are fetching huge size of dB request from backend API. In blocking 
 
 **It can simply says as belows**,
 
-###### Using asynchronous function a callback action can be triggered to perform pre or subsequent related tasks
+###### Using asynchronous function a callback action can be triggered to perform pre or subsequent related tasks.
 
 ###### Callback actions are kinda providing breeze between gaps of synchronous and asynchronous operations.
 
-###### Using asynchronous with callback the flow in execution will not be interrupted 
+###### Using asynchronous with callback the flow in execution will not be interrupted. 
 
 
 Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Developers can use it to control long running tasks in the background while the other instructions continue executing. Thus, the callback function really shine when use with asynchronoous programming.
