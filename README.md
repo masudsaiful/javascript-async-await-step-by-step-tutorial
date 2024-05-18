@@ -721,7 +721,7 @@ seventhFunc(six)
 
 **example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (see in **fifthFunc** ) or both calling and definition can be handle inside the parent body (**firstFunc**). 
 
-Whatever their declaration ordering are managed but result always depends on function call sequences.
+Whatever their declaration ordering are managed but result always depends on function call sequences. When doing synchronous programming it's sometimes challenging to handle and manage lots of function sequence with optimal ways. 
 
 
 #### Synchronous Programming:
@@ -804,7 +804,7 @@ console.log(order)
 
 If you ever design patterns in OOP (Object-Oriented Programming), you may be find some similar coherence with the above examples. 
 
-Now let's try to understand how the two examples above are functioning and how we manage a better control over when to execute functions in synchronous programming. 
+Now let's try to understand how the two simple examples above are functioning and how we manage a better control over when to execute functions in synchronous programming. 
 
 If we look at in '**Synchronous Programming: example1**' in this line,
 ```javascript
@@ -843,7 +843,7 @@ const displayOrderStatus = displayOrderStatusFunc(greetingsFunc(), orderStatusFu
 
 Next examine the '**Synchronous Programming: example2**'.
 
-We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc** there and passed status message to control the expected display.
+We always wanted to display warm greetings message in first place fixed and delivery status at second place fixed. We called **greetingsFunc** there and passed status message **param** to control the expected display always in fixed order.
 
 ```javascript
 const displayOrderStatusFunc = param => {
