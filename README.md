@@ -721,7 +721,7 @@ seventhFunc(six)
 
 **example2** shows the variations of nested function call sequences. We can call child function inside the parent body whereas child function defined outside the body (see in **fifthFunc** ) or both calling and definition can be handle inside the parent body (**firstFunc**). 
 
-Whatever their declaration ordering are managed but result always depends on function call sequences. When doing synchronous programming it's sometimes challenging to handle and manage lots of function sequence with optimal ways. 
+Whatever their declaration ordering are managed but result always depends on function call sequences. When doing synchronous programming it's sometimes challenging to handle and manage lots of function sequences with optimal ways. 
 
 
 #### Synchronous Programming:
@@ -1152,7 +1152,7 @@ function normalFunc(callbackParam1, callbackParam2) {
 ```
 
 
-##### c) Callback function syntax using Anonyumous and Arrow syntax:
+##### c) Callback function syntax using Anonymous and Arrow syntax:
 ```javascript
 // example 1: simple callback function call from name function
 function simpleFunc(callback) {
@@ -1372,22 +1372,22 @@ const bossFunc = callback => {
   console.log('Plz, come after 3 seconds')
 }
 ```
-but these two lines will display first because of using asynchronous function **setTimeout**. Parallelly Javascript will continue its execution and Javascript engine will do it's jobs in the background. So, will see first these two messages.
+but these two lines will display first because of using asynchronous function **setTimeout**. Parallelly Javascript will continue its execution and Javascript engine will do it's jobs in the background to handle asynchronous methods. So, will see these two messages  firstly.
 
 **Boss calling employee**,
 
 **Plz, come after 3 seconds**.
 
-And second we will see **"Hurray! I am here after 3 seconds"** message after 3 seconds.
+And secondly we will see **"Hurray! I am here after 3 seconds"** message after 3 seconds.
 
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
-Imagine your are fetching huge size of dB request from backend API using **fetch()** method instead of **setTimeout()** method. You have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious fetch request happen in an application. 
+Imagine your are fetching huge size of dB request from backend API. In blocking and synchronous mechanism you have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious request happen to backend server in an application. Implementing callback action using asynchronous functions like: **fetch()** server requests will continue jobs behind the scene while Javascript code execution continue sequentially.
 
 **Using callback you have triggered an action.** 
 
-###### i) The action (here callback function. i.e employeeFunc and callback(count)) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. these are also called Web APIs)
+###### i) The action (here callback function. i.e employeeFunc and callback(count)) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. These are also called Web APIs)
 
 ###### ii) Javascript will hand over the asynchronous function to browser based javascript engine ( In chrome it's' V8 ) to deal with these Web API using some terminologies like: Memory Heap, Call Stack, Call Stack Queue, Event Loop (Details of these out of scope in here) etc.
 
@@ -1395,7 +1395,7 @@ Imagine your are fetching huge size of dB request from backend API using **fetch
 
 ###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line. So, concurrently happening numerous tasks.
 
-###### v) Whenever 'setTimeout()' timer reached the destination, browser ended with dealing. It will blank this task from Callback Queue, back to Web API method, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Web API and lastly setTimeout() return an ID of timer to Javascript code.
+###### v) Whenever 'setTimeout()' started, browser started to dealing with tasks. It will execute from Callback Queue contexting by memory heap, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Web API and lastly setTimeout() return an ID of timer to Javascript code.
 
 ###### vi) Now the response are avilable to use in Javascript code later.
 
