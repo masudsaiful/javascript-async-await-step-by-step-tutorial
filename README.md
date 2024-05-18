@@ -29,6 +29,7 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 
 ## Let's a short overview all of them:
+###### (Please read all sections consecutively for ease of understanding. One section is inextricably linked with another section.)
 
 ### A) Javascript Function
 #### i) Name Function
@@ -1036,9 +1037,9 @@ Let's explain the callback function advantages from above codes,
 
 ###### i) 'callbackFunc' is a callback function because it's passed as argument to parent function
 ###### ii) 'callbackFunc' function passed as argument to parent function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
-###### iii) Receiving callback function can be any name 'callbackParam'
-###### iv) Receiving callback function can be utilize at any places as function invokation inside the parent function.
-###### v) Function as an argument without parenthesis '()' feel much as a normal parameter passing. So, keeping code consistency, neat and clean.
+###### iii) Receiving callback function can be of any name 'callbackParam'
+###### iv) Receiving callback function can be utilized at any places as function invokation inside the parent function.
+###### v) Function as an argument without parenthesis '()' feel much as a normal parameter passing. So, keeping code consistence, neat and clean.
 ###### vi) According example2, more than one callback can be passed. 
 ###### vii) In example2, more important is where the callback functions invoked, less important is argument sequences. See the following snippets in example2.
 
@@ -1112,7 +1113,7 @@ function normalFunc(callbackParam1, callbackParam2) {
 
 Another advantages to use callback function is,
 
-###### x) Both of the examples above we can also find that parametirized callback function also don't need to use parenthesis '()' at passing time. So, parenthesis '()' we will only use after receiving argument and invoked inside parent function
+###### x) Both of the examples above we can also find that parametirized callback function also don't need to use parenthesis '()' at passing time. After receiving argument and invokation time inside the parent function we have to use that.
 
 ```javascript
 // example 1: parametirized single callback function at passing time
@@ -1345,7 +1346,7 @@ bossFunc(employeeFunc)
 ```
 
 
-All of the above examples we have used 'setTimeout' functions which are calling the whole callbacks in their arguments. The callback functions start execution after the providing time-out arguments given above meets criteria. 
+All of the above examples we have used **setTimeout** functions which are calling the whole callbacks in their arguments. The callback functions start execution after the providing time-out arguments given above meets criteria. 
 
 Consider the **example3**. Two scenarios you can have seen.
 
@@ -1355,13 +1356,13 @@ Firstly, it will display these two messages,
 
 **Plz, come after 3 seconds**.
 
-Secondly, Javascript runtime environment engine (like: **v8** for **Chrome Browser**) take care to handle 'setTimeout' web API function.
+Secondly, Javascript runtime environment engine (like: **v8** for **Chrome Browser**) take care to handle **setTimeout** web API function.
 
 after 3 seconds it will display the following message,
 
 **Hurray! I am here after 3 seconds**
 
-Though we have called 'callback(count)' function in the following line of code, 
+Though we have called firstly **callback(count)** function in the following line of code, 
 
 ```javascript
 const bossFunc = callback => {
@@ -1371,18 +1372,18 @@ const bossFunc = callback => {
   console.log('Plz, come after 3 seconds')
 }
 ```
-but these two lines will display first because of asynchronous function 'setTimeout'. Parallelly Javascript will continue its execution and Javascript engine will do it's jobs in the background. So, will see first these two messages.
+but these two lines will display first because of using asynchronous function **setTimeout**. Parallelly Javascript will continue its execution and Javascript engine will do it's jobs in the background. So, will see first these two messages.
 
 **Boss calling employee**,
 
 **Plz, come after 3 seconds**.
 
-Secondly, it will display **"Hurray! I am here after 3 seconds"** after 3 seconds.
+And second we will see **"Hurray! I am here after 3 seconds"** message after 3 seconds.
 
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
-Imagine your are fetching huge size of dB request from backend API in replace of setTimeout() method. i.e. 'fetch()'. You have to wait for full response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious fetch request happen in an application. 
+Imagine your are fetching huge size of dB request from backend API using **fetch()** method instead of **setTimeout()** method. You have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious fetch request happen in an application. 
 
 **Using callback you have triggered an action.** 
 
