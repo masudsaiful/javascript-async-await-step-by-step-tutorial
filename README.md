@@ -1394,7 +1394,9 @@ Imagine your are fetching huge size of dB request from backend API. In blocking 
 ###### Using asynchronous with callback the flow in execution will not be interrupted 
 
 
-**Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Developers can use it to control long running tasks in the background while the other instructions continue executing. Thus, the callback function really shine when use with asynchronoous programming.**
+Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Developers can use it to control long running tasks in the background while the other instructions continue executing. Thus, the callback function really shine when use with asynchronoous programming.
+
+
 
 
 ### F) Multi-threaded, Non-Blocking and Asynchronous
