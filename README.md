@@ -46,7 +46,7 @@ function functionName (param1, param2, ...) {
 ```javascript
 Function will execute when they are called or invoked like belows:
 
-// Inside Javascript code
+// inside Javascript code
 <script>
   function functionName (param1, param2, ...) {
     ...
@@ -55,8 +55,8 @@ Function will execute when they are called or invoked like belows:
 </script>
 
 
-// Basically above code will be invoked automatically by browser Window Object 
-// So, above code will be the same as below
+// basically above code will be invoked automatically by browser Window Object 
+// so, above code will be the same as below
 <script>
   function functionName (param1, param2, ...) {
     ...
@@ -65,28 +65,28 @@ Function will execute when they are called or invoked like belows:
 </script>
 
 
-// When an event occurs in HTML
+// when an event occurs in HTML
 function functionName (param1, param2, ...) {
   ...
 }
 <p onclick="functionName (param1, param2, ...)" />
 
 
-// When an event occurs in Javascript
+// when an event occurs in Javascript
 function functionName (param1, param2, ...) {
   ...
 }
 object.onclick = function(){functionName};
 
 
-// When an event occurs in Javascript using Event Handler
+// when an event occurs in Javascript using Event Handler
 function functionName (param1, param2, ...) {
   ...
 }
 object.addEventListener("click", functionName);
 
 
-// Invoking a function as method in Javascript Object
+// invoking a function as method in Javascript Object
 const Obj = {
   firstName:"f_name",
   lastName: "l_name",
@@ -97,7 +97,7 @@ const Obj = {
 Obj.functionName(param1, param2, ...);
 
 
-// Invoking using Function Constructor
+// invoking using Function Constructor
 function functionName(param1, param2, ...) {
   this.firstName = 'f_name';
   this.lastName  = "l_name";
@@ -113,20 +113,20 @@ Obj.param1Key;
 ```javascript
 Javascript Function can return value and catch the value in different ways:
 
-// Returning value statement
+// returning value statement
 function functionName (param1, param2, ...) {
   return param1 + param2;
 }
 
 
-// Returning value can assign to a variable where function is called
+// returning value can assign to a variable where function is called
 function functionName (param1, param2, ...) {
   return param1 + param2;
 }
 let m = functionName (param1, param2, ...)
 
 
-// The result value can be used in any statement or expression
+// the result value can be used in any statement or expression
 function functionName (param1, param2, ...) {
   return param1 + param2;
 }
@@ -134,7 +134,7 @@ let m = functionName (param1, param2, ...)
 let n = 'Something' + m
 
 
-// Function call can be used directly as variable value where it is invoked
+// function call can be used directly as variable value where it is invoked
 function functionName (param1, param2, ...) {
   return param1 + param2;
 }
@@ -146,7 +146,7 @@ let n = 'Something' + functionName (param1, param2, ...)
 ```javascript
 Function call declaration can be happened before their definition. This is called Function hoisting:
 
-// Calling before defining
+// calling before defining
 functionName (param1, param2, ...)
 
 function functionName (param1, param2, ...) {
@@ -160,25 +160,27 @@ function functionName (param1, param2, ...) {
 ```javascript
 Function with no name is called Anonymous Function:
 
-// This function has no name so it is called Anonymous Function
+// this function has no name so it is called Anonymous Function
 function (param1, param2, ...) {
   ...
 }
 
 
-// Anonymous Function can be defined using an expression
+// anonymous Function can be defined using an expression
 const m = function (param1, param2, ...) {return param1 + param2};
 
 
-/* Anonymous Function can be defined by assigning to a variable 
-and later this variable will act as a function */
+// anonymous Function can be defined by assigning to a variable 
+// and later this variable will act as a function
 const m = function (param1, param2, ...) {console.log(param1 + param2)};
 m(param1, param2, ...)
 
 
-Anonymous Function can be defined directly as a full body callback function to another function argument: 
+Anonymous Function can be defined directly as a full body callback function 
+to another function argument: 
 
-// Anonymous Function can be defined as a full body callback function to a web API function argument
+// anonymous Function can be defined as a full body callback function 
+// to a web API function argument
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -188,7 +190,8 @@ setTimeout(function (param1, param2) {
 # Output: 25
 
 
-// Anonymous Function can be defined as a full body callback function to a Name function argument
+// anonymous Function can be defined as a full body callback function 
+// to a Name function argument
 function nameFunc(param) {
   return param()
 }
@@ -204,7 +207,7 @@ nameFunc(function () {
 
 NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
 
-// Example: anonymous function call only work after declaration like below
+// example: anonymous function call only work after declaration like below
 const anonymousFunc = function (param1, param2, ...) {return param1 + param2};
 anonymousFunc(param1, param2, ...)
 ```
@@ -212,9 +215,10 @@ anonymousFunc(param1, param2, ...)
 
 ##### Invokation or Calling:
 ```javascript
-Function without name can be assigned to a variable. The variable then can be used for invokation or calling purposes:
+Function without name can be assigned to a variable. 
+The variable then can be used for invokation or calling purposes:
 
-// Anonymous function invokation using variable in Javascript code
+// anonymous function invokation using variable in Javascript code
 ...
 ...
 const m = function (param1, param2, ...) {return param1 + param2};
@@ -223,12 +227,12 @@ m(param1, param2, ...)
 ...
 
 
-// Anonymous function invokation using variable and assigning the invokation to another variable
+// anonymous function invokation using variable and assigning the invokation to another variable
 const m = function (param1, param2, ...) {return param1 + param2};
 let n = m(param1, param2, ...)
 
 
-// Anonymous function invokation directly In Javascript code without assigning to any another variable
+// anonymous function invokation directly In Javascript code without assigning to any another variable
 ...
 ...
 const m = function (param1, param2, ...) {console.log (param1 + param2)};
@@ -237,17 +241,17 @@ m(param1, param2, ...)
 ...
 
 
-// Anonymous function invokation directly In a statement
+// anonymous function invokation directly In a statement
 const m = function (param1, param2, ...) {return param1 + param2};
 let n = 'something' + m(param1, param2, ...)
 
 
-// Anonymous function invokation directly In an expression
+// anonymous function invokation directly In an expression
 const m = function (param1, param2, ...) {return param1 + param2};
 console.log('something' + m(param1, param2, ...))
 
 
-// Anonymous function invokation as a self-invoking function
+// anonymous function invokation as a self-invoking function
 (function (param1, param2, ...) {
   let x = param1;
   let y = param2
@@ -257,7 +261,7 @@ console.log('something' + m(param1, param2, ...))
 Anonymous function invokation directly as a full body function definition to another function argument. 
 It is called callback function:
 
-// Full body anonymous function definition called to a web API function argument as a callback function
+// full body anonymous function definition called to a web API function argument as a callback function
 let x = 16
 let y = 9
 setTimeout(function (param1, param2) { 
@@ -267,7 +271,7 @@ setTimeout(function (param1, param2) {
 # Output: 25
 
 
-// Full body anonymous function definition called to another function argument as a callback function
+// full body anonymous function definition called to another function argument as a callback function
 function nameFunc(param) {
   return param()
 }
@@ -283,7 +287,7 @@ nameFunc(function () {
 
 Anonymous function invokation using function variable to another function argument as a callback function:
 
-// Anonymous function invokation using variable as a callback function to another function argument
+// anonymous function invokation using variable as a callback function to another function argument
 let anonymousFunc = function (param1, param2) {
 	return param1+param2;
 }
@@ -295,9 +299,10 @@ anotherFunction(9, 16, anonymousFunc)
 # Output: 50
 
 
-Though often assigned to any variable in Javascript, anonymous function variable invokation must be in function call format 'functionName()':
+Though often assigned to any variable in Javascript, anonymous function variable invokation must be in 
+function call format 'functionName()':
 
-// This will return entire function definition
+// this will return entire function definition
 const arrowFuncName = function () {
   return 'Something';
 }
@@ -306,7 +311,7 @@ console.log(arrowFuncName)
 # Output: () => { return 'Something'; }
 
 
-// This will return correct value
+// this will return correct value
 const arrowFuncName = function () {
   return 'Something';
 }
@@ -315,9 +320,12 @@ console.log( arrowFuncName() )
 # Output: Something
 
 
-Anonymous Function invokation using variable as a cllback function no need to use parenthesis '()' when passing but inside the parent function need to use parenthesis '()':
+Anonymous Function invokation using variable as a cllback function no need to use parenthesis '()' 
+when passing, but inside the parent function need to use parenthesis '()':
 
-// Anonymous function invokation using variable as a callback function to another function argument. 'anonymousFunc' function no need to use parenthesis '()' but inside the parent function 'callback()' need to use parenthesis.
+// anonymous function invokation using variable as a callback function to another function argument. 
+// here, 'anonymousFunc' function no need to use parenthesis '()' 
+// but inside the parent function 'callback()' need to use parenthesis.
 let anonymousFunc = function (param1, param2) {
 	return param1+param2;
 }
@@ -335,7 +343,7 @@ anotherFunction(9, 16, anonymousFunc)
 ```javascript
 It's a shorter syntax for writing function expression. It's also short syntax of anonymous function:
 
-// Example 1
+// example 1
 Anonymous Function:
 function () {
   return 'something';
@@ -349,7 +357,7 @@ Arrow Function:
 }
 
 
-// Example 2
+// example 2
 Anonymous Function Expression assigned to a variable:
 const m = function () {return 'something'};
 
@@ -359,7 +367,7 @@ Arrow Function Expression assigned to a variable:
 const m = () => { return 'something' };
 
 
-// Example 3
+// example 3
 Anonymous Function Expression with parameter:
 const m = function (param1, param2) {return param1 + param2};
 
@@ -369,20 +377,20 @@ Arrow Function Expression with parameter:
 const m = (param1, param2) => { return param1 + param2 };
 
 
-// If Arrow function has single statement and return a value, it can be written as belows
+// if Arrow function has single statement and return a value, it can be written as belows
 const m = (param1, param2) => param1 + param2;
 
 NOTE: Omitted curly brackets '{}' and 'return' keyword
 
 
 
-// If Arrow function has single parameter and single statement, it can be written as belows
+// if Arrow function has single parameter and single statement, it can be written as belows
 const m = param1 => 'something' + param1; 
 
 NOTE: Omitted curly brackets '{}', 'return' keyword and parenthesis '()'
 
 
-// If Arrow function use 'return' keyword, must use curly brackets '{}'
+// if Arrow function use 'return' keyword, must use curly brackets '{}'
 Either a single statement:
 const m = param1 => { return 'something' + param1 };
 
@@ -395,12 +403,12 @@ const m = param1 => {
 };
 
 
-// Arrow Function invokations or Callings are same as those of Anonymous Function described above
+// arrow Function invokations or Callings are same as those of Anonymous Function described above
 
 
 Though often assigned to any variable while working, arrow function variable invokation must be in function call format 'functionName()'
 
-// This will return entire function
+// this will return entire function
 const arrowFuncName = () => {
   return 'Something';
 }
@@ -409,7 +417,7 @@ console.log(arrowFuncName)
 # Output: () => { return 'Something'; }
 
 
-// This will return correct value
+// this will return correct value
 const arrowFuncName = () => {
   return 'Something';
 }
@@ -430,21 +438,22 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function, i
 ##### Single-threaded:
 In Javascript programming language while running code it can execute only one instruction at a time where multi-threaded programming languages can run multiple instructions at once. For single-threaded nature within the single **call stack**, Javascript code is read and gets executed line by line. Call stack concept is same as stack data structure. If you know the data structure, you will know the concept of Call stack. Whenever a line of code gets inside the call stack and whenever it's time to execute it gets executed and moves out of the stack and then next line of code and then next line of code and thus maintaining sequential execution. Let's have a look of the following example.
 ```javascript
-      const x = () => {
-        return 'something'
-      }
+// example
+const x = () => {
+  return 'something'
+}
 
-      const y = () => {
-        return x()
-      }
+const y = () => {
+  return x()
+}
 
-      const z = () => {
-        return y()
-      }
+const z = () => {
+  return y()
+}
 
-      let result = z()
+let result = z()
 
-      console.log(result);
+console.log(result);
 ```
 
 
@@ -468,7 +477,7 @@ According Javascript single-threaded architecture let's track the above code sam
 ##### Blocking:
 Though Javascript code work sequentially and in the single-threaded stack frame, execution occur one instruction at a time, there may be very chance for the following line of instruction to wait untill it's previous execution completed. It is called **blocking**. Blocking is the nature of synchronous programming. Let's consider the following example.
 ```javascript
-      // Example
+      // example
       const x = () => {
           console.log('processing...')
           for (let p = 0; p >= 0; p++) {
@@ -507,7 +516,7 @@ This **time-consuming** execution which can block it's following instruction may
 ##### Synchronous:
 In javascript code within the synchronous calls, all the work is done line by line one after another. The first task is executed then the second task is executed, no matter how much time one task will take. When one thread is locked, the thread following it in line is blocked. After escaping from block, execution will start for the next instruction. Look at this two illustrations below.
 ```javascript
-    // Example 1
+    // example 1
     const func1 = () => {
         console.log('processing something1...')
         for (let p = 0; p >= 0; p++) {
@@ -536,7 +545,7 @@ In javascript code within the synchronous calls, all the work is done line by li
 
 
 
-    // Example 2
+    // example 2
     const func1 = () => {
         console.log('processing something1...')
         for (let p = 0; p >= 0; p++) {
@@ -622,7 +631,7 @@ So, functions are executed in the sequence they are called, not the sequence the
 Let's examine the following examples,
 
 ```javascript
-//Example 1: Simple function sequences
+// example 1: Simple function sequences
 const secondFunc = () =>  'Second';
 const thirdFunc = () =>  'Third';
 const firstFunc = () => 'First';
@@ -637,7 +646,7 @@ console.log(thirdFunc());
           Third
 
 
-//Example 2: Nested function sequences
+// example 2: Nested function sequences
 const firstFunc = () => {
   const secondFunc = () => {
     const thirdFunc = () => {
@@ -697,7 +706,7 @@ As we already knew Javascript execute functions sequentially but sometimes we wo
 Suppose we want to do an order in a restaurant, and then update the order status, and then display the order status with greetings.
 We can call an order function (**orderFunc**), save the order items with extra complimentary items, and then call the status function (**orderStatusFunc**), save the order status, and then call another function (**displayOrderStatusFunc**) to display the order status using greetings function (**greetingsFunc**) to display greetings besides order status.
 ```javascript
-// Synchronous Programing: Example 1
+// synchronous Programing: example 1
 const orderFunc = (item1, item2) => {
 	let complimentaryItem = 'Calzone'
 	let items = item1 + ', ' + item2 + ', ' + complimentaryItem 
@@ -733,7 +742,7 @@ console.log(displayOrderStatus)
 
 Or, we could call a order function (**orderFunc**), and let the order function call the order status function (**orderStatusFunc**), and then let the order status function call the order status display function (**displayOrderStatusFunc**). Then after let the order status display function call the greetings function (**greetingsFunc**). Let's re-write the above code as below.  
 ```javascript
-// Synchronous Programing: Example 2
+// synchronous Programing: example 2
 const orderFunc = (item1, item2) => {
 	let complimentaryItem = 'Calzone'
 	let items = item1 + ', ' + item2 + ', ' + complimentaryItem
@@ -865,7 +874,7 @@ Synchronous programming is straightforward. It’s easier to write code. Basical
 **Let's see the synchronous programming examples again**,
 
 ```javascript
-// Synchronous Programing: Example 1
+// synchronous programing: example 1
 const orderFunc = (item1, item2) => {
 	let complimentaryItem = 'Calzone'
 	let items = item1 + ', ' + item2 + ', ' + complimentaryItem 
@@ -897,7 +906,7 @@ console.log(displayOrderStatus)
 # Output: Warm hearted greetings for accepting our hospitality. pizza, burger, Calzone, Ready to deliver
 
 
-// Synchronous Programing: Example 2
+// synchronous programing: example 2
 const orderFunc = (item1, item2) => {
 	let complimentaryItem = 'Calzone'
 	let items = item1 + ', ' + item2 + ', ' + complimentaryItem
@@ -960,7 +969,7 @@ Callback is a function passed as an urgument to another function. The parent fun
 ##### a) Simple callback function syntax:
 
 ```javascript
-// Example 1
+// example 1
 normalFunc(callbackFunc)  
 
 function callbackFunc() {
@@ -976,7 +985,7 @@ function normalFunc(callbackParam) {
           I am callback function
 
 
-// Example 2
+// example 2
 normalFunc(callbackFunc1, callbackFunc2)  
 
 function callbackFunc1() {
@@ -1034,7 +1043,7 @@ normalFunc(callbackFunc1, callbackFunc2)
 
 ##### b) Callback function syntax with parameter:
 ```javascript
-// Example 1: Callback function using arguments
+// example 1: callback function using arguments
 normalFunc(callbackFunc) 
 
 function callbackFunc(notifyParam) {
@@ -1052,7 +1061,7 @@ function normalFunc(callbackParam) {
           Yes, I am...
 
 
-// Example 2: Multiple callback function using arguments
+// example 2: multiple callback function using arguments
 normalFunc(callbackFunc1, callbackFunc2)   
 
 function callbackFunc1(notifyParam) {
@@ -1083,7 +1092,7 @@ Another advantages to use callback function is,
 ###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature 'parenthesis ()' rather when invoked inside parent body then need parameter.
 
 ```javascript
-// Example 1: Callback function using arguments - No need parameter 'parenthesis ()' to pass in callbackFunc
+// example 1: callback function using arguments - no need parameter 'parenthesis ()' to pass in callbackFunc
 normalFunc(callbackFunc)
 
 function callbackFunc(notifyParam) {
@@ -1092,11 +1101,11 @@ function callbackFunc(notifyParam) {
 
 function normalFunc(callbackParam) {
   ...
-  // Now need argument to pass
+  // now need argument to pass
   callbackParam(notify)
 }
 
-// Example 2: Multiple callback function using arguments - No need to pass arguments 'parenthesis ()' with callbackFunc1 and callbackFunc2
+// example 2: multiple callback function using arguments - no need to pass arguments 'parenthesis ()' with callbackFunc1 and callbackFunc2
 normalFunc(callbackFunc1, callbackFunc2) 
 
 function callbackFunc1(notifyParam) {
@@ -1109,7 +1118,7 @@ function callbackFunc2(notifyParam) {
 
 function normalFunc(callbackParam1, callbackParam2) {
   ...
-  // Now need to pass arguments in both callback functions. i.e. callbackParam2(notify), callbackParam1(notify)
+  // now need to pass arguments in both callback functions. i.e. callbackParam2(notify), callbackParam1(notify)
   callbackParam2(notify)
   callbackParam1(notify)
 }
@@ -1118,7 +1127,7 @@ function normalFunc(callbackParam1, callbackParam2) {
 
 ##### c) Callback function syntax using Anonyumous and Arrow syntax:
 ```javascript
-// Example 1: Simple callback function call from Name Function
+// example 1: simple callback function call from name function
 function simpleFunc(callback) {
   console.log('I am simple function')
   let message = 'You are callback function'
@@ -1139,7 +1148,7 @@ simpleFunc(simpleCallbackFunc)
 same as,
 
 
-// Example 2: Simple callback function call from Anonymous Function
+// example 2: simple callback function call from anonymous function
 const simpleFunc = function(callback) {
   console.log('I am anonymous function')
   let message = 'You are callback function'
@@ -1160,7 +1169,7 @@ simpleFunc(simpleCallbackFunc)
 same as,
 
 
-// Example 3: Simple callback function call from Arrow Function
+// example 3: simple callback function call from arrow function
 const simpleFunc = callback => {
   console.log('I am arrow function')
   let message = 'You are callback function'
@@ -1181,7 +1190,7 @@ simpleFunc(simpleCallbackFunc)
 same as,
 
 
-// Example 4: Anonymous callback function call from Anonymous Function
+// example 4: anonymous callback function call from anonymous function
 const simpleFunc = function(callback) {
   console.log('I am anonymous function')
   let message = 'You are anonymous callback function'
@@ -1202,7 +1211,7 @@ simpleFunc(simpleCallbackFunc)
 same as,
 
 
-// Example 5: Arrow callback function call from Arrow Function
+// example 5: arrow callback function call from arrow function
 const simpleFunc = callback => {
   console.log('I am arrow function')
   let message = 'You are arrow callback function'
@@ -1223,7 +1232,7 @@ simpleFunc(simpleCallbackFunc)
 same as,
 
 
-// Example 6: Callback Function defined and passed as arguments simultaneously from Parent Function 
+// example 6: callback function defined and passed as arguments simultaneously from parent function 
 const simpleFunc = callback => {
   console.log('I am parent function')
   let message = 'You are callback function'
@@ -1242,7 +1251,7 @@ simpleFunc(message => {
 
 It's seems little different with others in the above **example6** code. Callback function itself defined and passed concurrently as argument through parent parameter. Instead of passing the name of a function as an argument to another function, we can always pass a whole function instead.
 ```javascript
-// Passing the whole function
+// passing the whole function
 simpleFunc(message => {
   console.log(message)
 })
@@ -1254,7 +1263,7 @@ Enough with the callback description. Now,
 Let's see some few more examples how callback function act with the **Web API** things like: **setTimeout() function**. After that we will leap to know about **Multi-Threaded, Non-Blocking and Asynchronous Programming**
 
 ```javascript
-// Example 1: setTimeout function using callback
+// example 1: setTimeout function using callback
 setTimeout(a => {
   console.log('Print me after ' + a +  ' seconds')
 }, 3000, '3') 
@@ -1263,7 +1272,7 @@ setTimeout(a => {
 
 
 
-// Example 2: setTimeout function using callback inside from another function
+// example 2: setTimeout function using callback inside from another function
 const anotherFunc = () => {
   setTimeout(a => {
     console.log('I will come after ' + a +  ' seconds')
@@ -1282,7 +1291,7 @@ parentFunc(anotherFunc)
 
 
 
-// Example 3: setTimeout function using callback inside from another function with arguments
+// example 3: setTimeout function using callback inside from another function with arguments
 const employeeFunc = countParam1 => {
   setTimeout(countParam2 => {
     console.log('Hurray! I am here after ' + countParam2 +  ' seconds')
@@ -1340,7 +1349,7 @@ Lot of tasks simultaneously execution in a programming language is called multi-
 
 Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display the status. Let's see the example code below.
 ```javascript
-// Example:
+// example:
 const accounts = () => {
   let branch1Deposit = ''
   let branch2Deposit = ''
@@ -1483,7 +1492,7 @@ accounts()
 
 **Above code we can modified as belows**.
 ```javascript
-// Example
+// example
 let message = ''
 let timer = 0
 
