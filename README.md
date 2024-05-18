@@ -1383,27 +1383,18 @@ And secondly we will see **"Hurray! I am here after 3 seconds"** message after 3
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
-Imagine your are fetching huge size of dB request from backend API. In blocking and synchronous mechanism you have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious request happen to backend server in an application. Implementing callback action using asynchronous functions like: **fetch()** server requests will continue jobs behind the scene while Javascript code execution continue sequentially. Browser finishing the asynchronous tasks let the response to callback to know Javascript that it has done. 
+Imagine your are fetching huge size of dB request from backend API. In blocking and synchronous mechanism you have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious request happen to backend server in an application. Implementing callback action using asynchronous functions like: **fetch()** server requests will continue jobs behind the scene while Javascript code execution continue sequentially. Browser finishing the asynchronous tasks let the response to callback to know Javascript that it has done the works. 
 
-**It can simply says as below**,
+**It can simply says as belows**,
 
 ###### Using asynchronous function a callback action can be triggered to perform pre or subsequent related tasks
 
-###### Callback actions are kinda providing breeze between gaps of synchronous and asynchronous operations
+###### Callback actions are kinda providing breeze between gaps of synchronous and asynchronous operations.
 
-###### i) The action (here callback function. i.e employeeFunc and callback(count)) will found asynchronous function (here, setTimeout(). There are others like: fetch(), setInterval, geolocation, promises etc. These are also called Web APIs)
+###### Using asynchronous with callback the flow in execution will not be interrupted 
 
-###### ii) Javascript will hand over the asynchronous function to browser based javascript engine ( In chrome it's' V8 ) to deal with these Web API using some terminologies like: Memory Heap, Call Stack, Call Stack Queue, Event Loop (Details of these out of scope in here) etc.
 
-###### iii) Now Javascript for it's single-threaded architectural nature will start to execute the next instructions of code.
-
-###### iv) In one side browser is dealing with Web APIs and other side javascript doing it's work by executing following instructions line by line. So, concurrently happening numerous tasks.
-
-###### v) Whenever 'setTimeout()' started, browser started to dealing with tasks. It will execute from Callback Queue contexting by memory heap, started to help the Javascript to properly execute setTimeout() callback function, release it's activity from Web API and lastly setTimeout() return an ID of timer to Javascript code.
-
-###### vi) Now the response are avilable to use in Javascript code later.
-
-**Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Thus, the callback function really shine when use with asynchronoous programming.**
+**Handling asynchronous functions using callback is a popular solution to make Javascript code non-blocking. Developers can use it to control long running tasks in the background while the other instructions continue executing. Thus, the callback function really shine when use with asynchronoous programming.**
 
 
 ### F) Multi-threaded, Non-Blocking and Asynchronous
