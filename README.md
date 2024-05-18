@@ -432,8 +432,9 @@ console.log( arrowFuncName() )
 
 
 
-Arrow Function invokation using variable as a cllback function don't use parenthesis '()' 
-when passing, but inside the parent function need to use parenthesis '()':
+Arrow Function invokation using variable as a cllback function, 
+No need use parenthesis '()' when passing, 
+but inside the parent function need to use parenthesis '()':
 
 // arrow function invokation using variable as a callback function to another function argument 
 // here, 'arrowFunc' function no need to use parenthesis '()' 
