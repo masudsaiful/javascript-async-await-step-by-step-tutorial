@@ -858,7 +858,7 @@ const displayOrderStatusFunc = param => {
 Moreover, we let the each function to control other function call inside their bodies to reduce bulk function execution at the initialized time. Thus better controlling over when to execute the functions.
 
 ```javascript
-Previous example overview how the function call inside other functions:
+Previous example overview how the function called inside other functions:
 
 const orderFunc = (item1, item2) => {
 	...
@@ -1034,14 +1034,13 @@ function normalFunc(callbackParam1, callbackParam2) {
 
 Let's explain the callback function advantages from above codes,
 
-###### i) CallbackFunc() is a callback function because it's passed as argument to normalFunc(callbackFunc) function
-###### ii) CallbackFunc() function passed as argument to normalFunc(callbackFunc) function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
-###### iii) CallbackFunc() function is received as argument to normalFunc(callbackParam) function. When received callback function as argument any name can be used. i.e. callbackParam
-###### iv) Inside normalFunc(callbackParam) function callbackParam() function is called after completing the parent function's other tasks or can be placed in any optimal position according development needs.
-###### v) Inside normalFunc(callbackParam) function the callback argument i.e. callbackParam is now invoked as a function by using parenthesis '()' i.e. callbackParam()
-###### vi) Function as a argument without parenthesis '()' i.e. normalFunc(callbackFunc) feel much as a normal parameter. So, keeping consistency, neat and clean code.
-###### vii) In example2, more than one callback can be passed. 
-###### viii) In example2, more important is where the callback functions invoked, less important is argument sequences. See the following snippets in example2.
+###### i) 'callbackFunc' is a callback function because it's passed as argument to parent function
+###### ii) 'callbackFunc' function passed as argument to parent function without using parenthesis '()'. When passed callback function as argument remember not to use parenthesis.
+###### iii) Receiving callback function can be any name 'callbackParam'
+###### iv) Receiving callback function can be utilize at any places as function invokation inside the parent function.
+###### v) Function as an argument without parenthesis '()' feel much as a normal parameter passing. So, keeping code consistency, neat and clean.
+###### vi) According example2, more than one callback can be passed. 
+###### vii) In example2, more important is where the callback functions invoked, less important is argument sequences. See the following snippets in example2.
 
 ```javascript
 function normalFunc(callbackParam1, callbackParam2) {
@@ -1052,17 +1051,17 @@ function normalFunc(callbackParam1, callbackParam2) {
 ```
 
 
-Here callback function invoked sequences are **callbackParam2()** and then next **callbackParam1()** and hence function call sequences are managed in a single function block.
+Here callback function call sequences are **callbackParam2()** and then next **callbackParam1()** and hence function call sequences are managed in a single function block.
 
 
-###### ix) In example2, only one function call to display the result, thus hassell free when comparing to bulk functions call. 
+###### viii) In example2, only one function call to display the result, thus hassell free when comparing to bulk functions call at the program initializing time. 
 
 ```javascript
 normalFunc(callbackFunc1, callbackFunc2)
 ```
 
 
-###### x) In both examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
+###### ix) In both examples, we can prevent the parent function from displaying the result by not passing callback arguments. So, more fine control over the functions call. 
 
 
 ##### b) Callback function syntax with parameter:
@@ -1113,10 +1112,11 @@ function normalFunc(callbackParam1, callbackParam2) {
 
 Another advantages to use callback function is,
 
-###### xi) Both of the examples we can see when callback function passed as argument from parent call no need to mention parameter signature 'parenthesis ()' rather when invoked inside parent body then need parameter.
+###### x) Both of the examples above we can also find that parametirized callback function also don't need to use parenthesis '()' at passing time. So, parenthesis '()' we will only use after receiving argument and invoked inside parent function
 
 ```javascript
-// example 1: callback function using arguments - no need parameter 'parenthesis ()' to pass in callbackFunc
+// example 1: parametirized single callback function at passing time
+// no need to use parenthesis '()'
 normalFunc(callbackFunc)
 
 function callbackFunc(notifyParam) {
@@ -1129,7 +1129,8 @@ function normalFunc(callbackParam) {
   callbackParam(notify)
 }
 
-// example 2: multiple callback function using arguments - no need to pass arguments 'parenthesis ()' with callbackFunc1 and callbackFunc2
+// example 2: parametirized multiple callback function at passing time
+// no need to use parenthesis '()'
 normalFunc(callbackFunc1, callbackFunc2) 
 
 function callbackFunc1(notifyParam) {
@@ -1142,7 +1143,8 @@ function callbackFunc2(notifyParam) {
 
 function normalFunc(callbackParam1, callbackParam2) {
   ...
-  // now need to pass arguments in both callback functions. i.e. callbackParam2(notify), callbackParam1(notify)
+  // now need to pass arguments in both callback functions. 
+  // i.e. callbackParam2(notify), callbackParam1(notify)
   callbackParam2(notify)
   callbackParam1(notify)
 }
@@ -1256,15 +1258,15 @@ simpleFunc(simpleCallbackFunc)
 same as,
 
 
-// example 6: callback function defined and passed as arguments simultaneously from parent function 
-const simpleFunc = callback => {
+// example 6: callback function defined and passed simultaneously as arguments to parent function 
+const parentFunc = callback => {
   console.log('I am parent function')
   let message = 'You are callback function'
   callback(message)
 
 }
 
-simpleFunc(message => {
+parentFunc(message => {
   console.log(message)
 }) 
 
@@ -1273,12 +1275,18 @@ simpleFunc(message => {
 ```
 
 
-It's seems little different with others in the above **example6** code. Callback function itself defined and passed concurrently as argument through parent parameter. Instead of passing the name of a function as an argument to another function, we can always pass a whole function instead.
+It's seems little different with others in the above **example6** code. Callback function itself defined and passed concurrently as argument through parent function. Instead of passing the name of a function as an argument to another function, we can always pass a whole function instead.
 ```javascript
 // passing the whole function
-simpleFunc(message => {
+parentFunc(message => {
   console.log(message)
 })
+
+
+// passing the whole function to setTimeout web API function
+setTimeout((message) => {
+  console.log(message)
+}, 1000, message)
 ```
 
 
@@ -1337,7 +1345,16 @@ bossFunc(employeeFunc)
 ```
 
 
-Above code mentioning in **example3** will display These two result first, **"Boss calling employee", "Plz, come after 3 seconds"**
+From the above examples if we see in **example3**, it will display three messages.
+
+Firstly, it will display these two messages, 
+
+**Boss calling employee**, 
+**Plz, come after 3 seconds**.
+
+And secondly after 3 seconds it will display the following message,
+
+**Hurray! I am here after 3 seconds**
 
 Second, it will display **"Hurray! I am here after 3 seconds"**. Though **"callback(count)"** is called at first but will back with result after 3 seconds. This is because **setTimeout()** itself calling a full body callback function as first parameters and time count start in milisecond at second parameter. After timing reached its destination the full body callback function will execute.
 
