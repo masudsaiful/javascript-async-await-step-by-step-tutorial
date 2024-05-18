@@ -1474,7 +1474,6 @@ const accounts = () => {
 
 accounts()
 
-
 # Output:
 "Timer 1: "
 "Branch2 has no deposit"
