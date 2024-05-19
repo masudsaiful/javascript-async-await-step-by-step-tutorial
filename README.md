@@ -1490,6 +1490,7 @@ accounts()
 
 
 # Output:
+
 "Timer 1: "
 "Branch2 has no deposit"
 "Branch1 has no deposit"
