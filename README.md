@@ -1417,46 +1417,57 @@ Suppose an Accounts software performs auto transaction from it's branches. Two b
 ```javascript
 // example:
 const accounts = () => {
-  let branch1Deposit = ''
-  let branch2Deposit = ''
-  let branch3Deposit = ''
+  let depositResult = ''
 
-  const branch1 = () => {
-    branch1Deposit = 'Branch1 has no deposit'
+  const branch1 = (param) => {
+    depositResult += param + ' has no deposit \n'
 
     const branch1Account = amount => {
-      branch1Deposit = amount
+      depositResult = depositResult.split('\n').map(function(line) {
+        if (line.indexOf(param) == -1) {
+          return line
+        } else {
+          return line.replace(line, amount)
+        }
+      }).join('\n')
     }
 
     setTimeout(branch1Account, 5000, 'Branch1 has deposited amount1')
-
     setTimeout(branch1Account, 10000, 'Branch1 has deposited amount2')
   }
 
-  const branch2 = () => {
-    branch2Deposit = 'Branch2 has no deposit'
+  const branch2 = (param) => {
+    depositResult += param + ' has no deposit \n'
 
     const branch2Account = amount => {
-      branch2Deposit = amount
+      depositResult = depositResult.split('\n').map(function(line) {
+        if (line.indexOf(param) == -1) {
+          return line
+        } else {
+          return line.replace(line, amount)
+        }
+      }).join('\n')
     }
 
     setTimeout(branch2Account, 5000, 'Branch2 has deposited amount1')
-
     setTimeout(branch2Account, 10000, 'Branch2 has deposited amount2')
-
   }
 
-  const branch3 = () => {
-    branch3Deposit = 'Branch3 has no deposit'
+  const branch3 = (param) => {
+    depositResult += param + ' has no deposit \n'
 
     const branch3Account = amount => {
-      branch3Deposit = amount
+      depositResult = depositResult.split('\n').map(function(line) {
+        if (line.indexOf(param) == -1) {
+          return line
+        } else {
+          return line.replace(line, amount)
+        }
+      }).join('\n')
     }
 
     setTimeout(branch3Account, 4000, 'Branch3 has deposited amount1')
-
     setTimeout(branch3Account, 8000, 'Branch3 has deposited amount2')
-
   }
 
   let timer = 0
@@ -1464,20 +1475,19 @@ const accounts = () => {
     timer += 1
     if (timer <= 15) {
       console.log('Timer ' + timer + ": ")
-      console.log(branch2Deposit)
-      console.log(branch1Deposit)
-      console.log(branch3Deposit)
+      console.log(depositResult)
       setTimeout(notification, 1000)
     }
   }
 
-  branch2()
-  branch1()
-  branch3()
+  branch2('Branch2')
+  branch1('Branch1')
+  branch3('Branch3')
   notification()
 }
 
 accounts()
+
 
 # Output:
 "Timer 1: "
@@ -1545,9 +1555,45 @@ accounts()
 
 **Javascript is a single-threaded programming language because**,
 
-1) Javascript run the above code in these function sequences according their call **accounts(), branch2(), branch1(), branch3() and notification()**.
+1) Javascript run the above code in these function sequences according their call 
 
-2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start.
+**accounts()**, 
+
+**branch2()**,
+
+**branch1()**, 
+
+**branch3()** and 
+
+**notification()**
+
+2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start like as follows.
+
+**accounts()** started execution 
+
+**branch2()** started to process it's block code
+
+      assigning message to variable
+
+      initializing asynchronous function
+
+      browser taking responsibility to handle asynchronous task contexting by memory heap
+
+      callback waiting to take responsibility when web API is done
+
+      Javascript won't wait during asynchronous task rather continue **branch1** execution
+
+      Javascript will response the callback result
+
+**branch1()** execution similarly ...
+
+**branch3()** execution similarly ...
+
+**notification()** will loop through **setTimeout** callback in every second 
+
+
+
+
 
 3) Blocking may occur to stop the following processes. i.e. If **accounts()** not work for some reasons all others next execution will be hold off.
 
