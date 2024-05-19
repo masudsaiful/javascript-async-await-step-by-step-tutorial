@@ -1413,7 +1413,9 @@ Lot of tasks simultaneously execution in a programming language is called multi-
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 
-Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display updated status of when which branch performed auto transaction. Let's see the example code below.
+Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display updated status of when which branch performed auto transaction. 
+
+**Let's see the example code below**,
 ```javascript
 // example:
 const accounts = () => {
@@ -1562,29 +1564,29 @@ accounts()
 
 **notification()**
 
-2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start like as follows.
+2) only one process at a time, one after another. It can't process all of the above methods simultaneously. If previous one completed then next will start it's tasks as follows,
 
-**accounts()** started execution 
+**accounts()** initialize the execution 
 
-**branch2()** started to process it's block code
+**branch2()** start to process it's code block
 
-      assigning message to variable
+      1) assigning message to variable
 
-      initializing asynchronous function
+      2) initializing asynchronous function
 
-      browser taking responsibility to handle asynchronous task contexting by memory heap
+      3) browser taking responsibility to handle asynchronous task contexting by memory heap
 
-      callback waiting to take responsibility when web API is done
+      4) callback waiting to take responsibility when web API is done
 
-      Javascript won't wait during asynchronous task rather continue next **branch1** execution
+      5) Javascript won't wait during asynchronous task rather continue next **branch1** execution
 
-      Javascript will talk to the callback response
+      6) Javascript will talk to the callback response
 
-**branch1()** will execute next ...
+**branch1()** will start next ...
 
-**branch3()** will execute next ...
+**branch3()** will start next ...
 
-**notification()** running on a loop through **setTimeout** function as a callback in every second and will display updated messages
+**notification()** running on a loop through **setTimeout** function as a callback in every second will display updated messages
 
 All the **branches** function execution occured according Javascript single-threaded architecture that's why we are getting transaction results in every second by these sequences,
 
@@ -1596,15 +1598,15 @@ All the **branches** function execution occured according Javascript single-thre
 
 meanwhile, all the **branches** asynchronous functions that are doing auto transacton tasks are running in the background using **setTimeout** periods and thus updating the notification messages of that periods.
 
-So, it can easily be detect from the above lines of code that, despite of it's single-threaded architecture Javascript also come to light with it's multi-threaded architectural flavour using aynchronous mechanism.
+So, it can easily be detect from the above lines of code that, despite of it's single-threaded architecture, Javascript also come to light with it's multi-threaded architectural flavour using aynchronous mechanism.
 
 
 
-#### i) non-blocking
+#### ii) non-blocking
 
 
 
-#### i) asynchronous
+#### iii) asynchronous
 
 
 
