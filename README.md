@@ -1372,7 +1372,11 @@ const bossFunc = callback => {
   console.log('Plz, come after 3 seconds')
 }
 ```
-but these two lines will display first,
+instead of displaying the following line first,
+
+**Hurray! I am here after 3 seconds**
+
+these two lines is displaying first,
 
 **Boss calling employee**,
 
