@@ -494,9 +494,9 @@ According Javascript single-threaded architecture let's track the above code sam
 
 ###### e) then **x()** function
 
-###### f) so, code executed sequentially one by one in only one call stack and a single memory heap and only one execution at a time
+###### f) so, code executed sequentially one by one in only one call stack contexting by a single memory heap only one execution at a time
 
-###### g) when execution completed, releasing the call stack from this task to empty 
+###### g) when execution completed, releasing the call stack as well as call stack frame, stack queue, event loop all are releasig from this task to empty 
 
 
 ##### Blocking:
@@ -1372,14 +1372,15 @@ const bossFunc = callback => {
   console.log('Plz, come after 3 seconds')
 }
 ```
-but these two lines will display first because of using asynchronous function **setTimeout**. Parallelly Javascript will continue its execution and Javascript engine will do it's jobs in the background to handle asynchronous methods. So, will see these two messages  firstly.
+but these two lines will display first,
 
 **Boss calling employee**,
 
 **Plz, come after 3 seconds**.
 
-And secondly we will see **"Hurray! I am here after 3 seconds"** message after 3 seconds.
+it is because of using asynchronous function **setTimeout**. 
 
+Parallelly Javascript will continue its execution synchronously and let the Javascript engine to do it's jobs in the background to handle asynchronous methods. By taking control of the result of asynchronous operations using a callback mechanism, synchronous JavaScript greatly improves execution efficiency.
 
 **Did you see the shining parts are on the above codes? Let's find out the sun.**
 
