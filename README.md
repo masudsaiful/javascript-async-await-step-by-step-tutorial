@@ -1568,7 +1568,7 @@ accounts()
 
 **accounts()** initialize the execution 
 
-**branch2()** start to process it's code block
+**branch2()** start to process it's code block like below,
 
       1) assigning message to variable
 
@@ -1595,10 +1595,10 @@ All the **branches** function execution occured according Javascript single-thre
 **branch1()**
 
 **branch3()**
-
+s
 meanwhile, all the **branches** asynchronous functions that are doing auto transacton tasks are running in the background using **setTimeout** periods and thus updating the notification messages of that periods.
 
-So, it can easily be detect from the above lines of code that, despite of it's single-threaded architecture, Javascript also come to light with it's multi-threaded architectural flavour using aynchronous mechanism.
+So, it can easily be detect from the above lines of code that, despite of it's single-threaded architecture, Javascript also come to light in with it's multi-threaded architectural flavour using aynchronous mechanism.
 
 
 
