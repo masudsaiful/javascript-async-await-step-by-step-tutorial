@@ -1413,23 +1413,29 @@ Lot of tasks simultaneously execution in a programming language is called multi-
 
 **Have a look in the following codebase that I am trying to express the Javascript's multi-threaded nature despite of it's single-threaded architecture**.
 
-Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display the status. Let's see the example code below.
+Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display updated status of when which branch performed auto transaction. Let's see the example code below.
 ```javascript
 // example:
 const accounts = () => {
   let depositResult = ''
 
+  const accountHelper = (param, amount) => {
+    const helper = depositResult.split('\n').map(function(line) {
+      if (line.indexOf(param) == -1) {
+        return line
+      } else {
+        return line.replace(line, amount)
+      }
+    }).join('\n')
+
+    return helper
+  }
+
   const branch1 = (param) => {
     depositResult += param + ' has no deposit \n'
 
     const branch1Account = amount => {
-      depositResult = depositResult.split('\n').map(function(line) {
-        if (line.indexOf(param) == -1) {
-          return line
-        } else {
-          return line.replace(line, amount)
-        }
-      }).join('\n')
+      depositResult = accountHelper(param, amount)
     }
 
     setTimeout(branch1Account, 5000, 'Branch1 has deposited amount1')
@@ -1440,13 +1446,7 @@ const accounts = () => {
     depositResult += param + ' has no deposit \n'
 
     const branch2Account = amount => {
-      depositResult = depositResult.split('\n').map(function(line) {
-        if (line.indexOf(param) == -1) {
-          return line
-        } else {
-          return line.replace(line, amount)
-        }
-      }).join('\n')
+      depositResult = accountHelper(param, amount)
     }
 
     setTimeout(branch2Account, 5000, 'Branch2 has deposited amount1')
@@ -1457,13 +1457,7 @@ const accounts = () => {
     depositResult += param + ' has no deposit \n'
 
     const branch3Account = amount => {
-      depositResult = depositResult.split('\n').map(function(line) {
-        if (line.indexOf(param) == -1) {
-          return line
-        } else {
-          return line.replace(line, amount)
-        }
-      }).join('\n')
+      depositResult = accountHelper(param, amount)
     }
 
     setTimeout(branch3Account, 4000, 'Branch3 has deposited amount1')
@@ -1582,113 +1576,36 @@ accounts()
 
       callback waiting to take responsibility when web API is done
 
-      Javascript won't wait during asynchronous task rather continue **branch1** execution
+      Javascript won't wait during asynchronous task rather continue next **branch1** execution
 
-      Javascript will response the callback result
+      Javascript will talk to the callback response
 
-**branch1()** execution similarly ...
+**branch1()** will execute next ...
 
-**branch3()** execution similarly ...
+**branch3()** will execute next ...
 
-**notification()** will loop through **setTimeout** callback in every second 
+**notification()** running on a loop through **setTimeout** function as a callback in every second and will display updated messages
 
+All the **branches** function execution occured according Javascript single-threaded architecture that's why we are getting transaction results in every second by these sequences,
 
+**branch2()**
 
+**branch1()**
 
+**branch3()**
 
-3) Blocking may occur to stop the following processes. i.e. If **accounts()** not work for some reasons all others next execution will be hold off.
+meanwhile, all the **branches** asynchronous functions that are doing auto transacton tasks are running in the background using **setTimeout** periods and thus updating the notification messages of that periods.
 
-
-**JavaScript can create the impression of being a multi-threaded programming language because**,
-
-
-**Above code we can modified as belows**.
-```javascript
-// example
-let message = ''
-let timer = 0
-
-const autoTrans = () => {
-  let cnt = 0
-  let branch1Deposit = ''
-  let branch2Deposit = ''
-  let branch3Deposit = ''
-
-  const branch1 = () => {
-    branch1Deposit = 'Branch1 has no deposit'
-
-    const branch1Account = amount => {
-      branch1Deposit = amount
-    }
-
-    setTimeout(branch1Account, 5000, 'Branch1 has deposited amount1')
-
-    setTimeout(branch1Account, 10000, 'Branch1 has deposited amount2')
-  }
-
-  const branch2 = () => {
-    branch2Deposit = 'Branch2 has no deposit'
-
-    const branch2Account = amount => {
-      branch2Deposit = amount
-    }
-
-    setTimeout(branch2Account, 5000, 'Branch2 has deposited amount1')
-
-    setTimeout(branch2Account, 10000, 'Branch2 has deposited amount2')
-
-  }
-  
- 	const branch3 = () => {
-    branch3Deposit = 'Branch3 has no deposit'
-
-    const branch3Account = amount => {
-      branch3Deposit = amount
-    }
-
-    setTimeout(branch3Account, 4000, 'Branch3 has deposited amount1')
-
-    setTimeout(branch3Account, 8000, 'Branch3 has deposited amount2')
-
-  }
-  
-  const notification = () => {
-    cnt += 1
-    if (cnt <= 15) {
-      message = branch1Deposit +  '\n' + branch2Deposit + '\n' + branch3Deposit + '\n'
-      setTimeout(notification, 1000)
-    }
-  }
-  
-  branch1()
-  branch2()
-  branch3()
-  notification()
-}
-
-const display = () => {
-  timer += 1
-  if (timer <= 15) {
-  	console.log('Timer ' + timer + ":")
-    console.log(message)
-    setTimeout(display, 1000)
-  }
-}
-
-const accounts = (callback1, callback2) => {
-	callback1()
-  callback2()
-}
-
-accounts(autoTrans, display)
-```
+So, it can easily be detect from the above lines of code that, despite of it's single-threaded architecture Javascript also come to light with it's multi-threaded architectural flavour using aynchronous mechanism.
 
 
-#### i) Non-Blocking
 
-```javascript
+#### i) non-blocking
 
-```
+
+
+#### i) asynchronous
+
 
 
 ## Conclusion
