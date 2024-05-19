@@ -1552,7 +1552,7 @@ accounts()
 
 **Javascript is a single-threaded programming language because**,
 
-1) Javascript run the above code in these function sequences according their call 
+1) Javascript run the above code in these function sequences according their call, 
 
 **accounts()**, 
 
@@ -1586,9 +1586,9 @@ accounts()
 
 **branch3()** will start next ...
 
-**notification()** running on a loop through **setTimeout** function as a callback in every second will display updated messages
+**notification()** running on a loop through **setTimeout** function as a callback in every second will display updated messages.
 
-All the **branches** function execution occured according Javascript single-threaded architecture that's why we are getting transaction results in every second by these sequences,
+All the **branches**' function execution occured according Javascript single-threaded architecture that's why we are getting transaction results in every second by these sequences,
 
 **branch2()**
 
