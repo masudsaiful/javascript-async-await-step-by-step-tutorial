@@ -1382,7 +1382,7 @@ it is because of using asynchronous function **setTimeout** which will execute a
 
 Parallelly Javascript will continue its execution synchronously and let the Javascript engine to do it's jobs in the background to handle asynchronous methods. By taking control of the result of asynchronous operations using a callback mechanism, synchronous JavaScript greatly improves execution efficiency.
 
-**Now you may have seen the callback function greatly shine when it is executed by an asynchronous function**
+**Now you may have seen the callback function greatly shine when it is executed by an asynchronous function**.
 
 Imagine your are fetching huge size of dB request from backend API. In blocking and synchronous mechanism you have to wait for full dB response but in between the times there make no sense to postponed other stuffs as because the software will become slow even it can be night ghost if numerious request happen to backend server in an application. Implementing callback action using asynchronous functions like: **fetch()**, server requests will continue jobs behind the scene while Javascript code execution continue sequentially. Browser finishing the asynchronous tasks let the response to take over by callback to know Javascript that it has done the works. 
 
@@ -1441,8 +1441,8 @@ const accounts = () => {
     setTimeout(branch2Account, 10000, 'Branch2 has deposited amount2')
 
   }
-  
- 	const branch3 = () => {
+
+  const branch3 = () => {
     branch3Deposit = 'Branch3 has no deposit'
 
     const branch3Account = amount => {
