@@ -1588,21 +1588,51 @@ accounts()
 
 **notification()** running on a loop through **setTimeout** function as a callback in every second will display updated messages.
 
-All the **branches**' function execution occured according Javascript single-threaded architecture that's why we are getting transaction results in every second by these sequences,
+All the **branch** functions execution occured according Javascript single-threaded architecture that's why we are getting transaction results in every second by these sequences,
 
 **branch2()**
 
 **branch1()**
 
 **branch3()**
-s
-meanwhile, all the **branches** asynchronous functions that are doing auto transacton tasks are running in the background using **setTimeout** periods and thus updating the notification messages of that periods.
+
+meanwhile, all the **branch** asynchronous functions that are doing auto transacton tasks are running in the background using **setTimeout** periods and thus updating the notification messages of that periods which we get to know in every seconds.
 
 So, it can easily be detect from the above lines of code that, despite of it's single-threaded architecture, Javascript also come to light in with it's multi-threaded architectural flavour using aynchronous mechanism.
 
 
 
 #### ii) non-blocking
+Consider a manufacturing company. They maintain an automation system to their quality standards line up with the following procedure. Every item of below pass the production stage a step ahead.
+
+A. **Requirements Standard** Check
+
+B. **Raw Materials** Check
+
+C. **Tools and Equipment** Checks
+
+D. **Corrective Actions** Implementation Check
+
+E. **Production** Line Check
+
+F. **Packaging** check
+
+G. Ready to **warehouse**
+
+H. Ready to **Shipment**
+
+We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking things.
+
+**Let's do the simple synchronous code first using callback**,
+
+```javascript
+
+```
+
+
+
+
+
 
 
 
