@@ -1619,7 +1619,7 @@ B. **Quality Standard**
 
 C. Ready to **Packaging**
 
-  **Defects at packaging time** Check
+  i) **Defects at packaging time** Check
 
 D. **warehouse**
 
