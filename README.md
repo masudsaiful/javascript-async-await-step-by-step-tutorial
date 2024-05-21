@@ -1603,27 +1603,27 @@ So, it can easily be detect from the above lines of code that, despite of it's s
 
 
 #### ii) non-blocking
-Consider a manufacturing company of their daily production capacity they maintain an automation system from production to shipping for quality standards line up with the following procedure. Suppose the company has 100 production capacity daily if the all quality standards are meet.
+Consider a manufacturing company of their daily production capacity, they maintain an automation system from production to shipping for quality standards line up with the following procedure. Suppose the company has 100 production capacity daily if the all quality standards are meet. Below are the automation workflow,
 
-A. Quality Check
+A. **Quality Check**
 
-    i. **Requirements Standard** Check
+    **Requirements Standard** Check
 
-    ii. **Raw Materials** Check
+    **Raw Materials** Check
 
-    i. **Tools and Equipment** Checks
+    **Tools and Equipment** Checks
 
-    iv. **Corrective Actions** Implementation Check
+    **Corrective Actions** Implementation Check
 
-E. Ready to **Production** Line 
+B. Ready to **Production** Line up
 
-F. Ready to **Packaging**
+C. Ready to **Packaging**
 
-    i. **Defects at packaging time** check
+    **Defects at packaging time** check
 
-G. Ready to **warehouse**
+D. Ready to **warehouse**
 
-H. Ready to **Shipment**
+E. Ready to **Shipment**
 
 
 We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking things.
