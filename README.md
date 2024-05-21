@@ -1609,17 +1609,17 @@ A. **Production**
 
 B. **Quality Standard**
 
-  ###### i) Requirements Standard Check
+  i) **Requirements Standard** Check
 
-  ###### ii) Raw Materials Check
+  ii) **Raw Materials** Check
 
-  ###### iii) Tools and Equipments Check
+  iii) **Tools and Equipments** Check
 
-  ###### iv) Corrective Actions and Implementation Check
+  iv) **Corrective Actions and Implementation** Check
 
 C. Ready to **Packaging**
 
-  ###### Defects Check at packaging time
+  **Defects at packaging time** Check
 
 D. **warehouse**
 
