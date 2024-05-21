@@ -1607,19 +1607,19 @@ Consider a manufacturing company of their daily production capacity, they mainta
 
 A. **Quality Check**
 
-    **Requirements Standard** Check
+  ###### Requirements Standard Check
 
-    **Raw Materials** Check
+  ###### Raw Materials Check
 
-    **Tools and Equipment** Checks
+  ###### Tools and Equipment Checks
 
-    **Corrective Actions** Implementation Check
+  ###### Corrective Actions and Implementation Check
 
 B. Ready to **Production** Line up
 
 C. Ready to **Packaging**
 
-    **Defects at packaging time** check
+###### Defects at packaging time check
 
 D. Ready to **warehouse**
 
