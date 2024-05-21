@@ -1291,7 +1291,7 @@ setTimeout((message) => {
 ```
 
 
-Enough with the callback description. Now,  
+#### Web APIs and Callback Function?   
 
 Let's see some few more examples how callback function act with the **Web API** things like: **setTimeout() function**. After that we will leap to know about **Multi-Threaded, Non-Blocking and Asynchronous Programming**
 
@@ -1631,7 +1631,7 @@ Consider a manufacturing company of their daily production capacity, they mainta
 
 We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking things.
 
-**Let's do the simple synchronous code first using callback**,
+**Let's do first the simple synchronous code using callback**,
 
 ```javascript
 const automation = (productionCallback, shipmentCallback) => {
@@ -1722,7 +1722,103 @@ Shipment Status: Ready
 Warehouse Status: Ready 
 Packaging Status: Ready 
   reurrence for defects: no 
+```
 
+**Now if we break down the above program we will see**,
+
+###### 'automation()' function called with two whole arrow callback arguments
+```javascript
+const display = automation(() => {
+  ...
+  ...
+}, () => {
+  ...
+  ...
+})
+```
+
+###### Arguments are received in 'automation()' function definition as 'productionCallback' and 'shipmentCallback'.
+```javascript
+const automation = (productionCallback, shipmentCallback) => {
+  ...
+  ...
+}
+```
+
+
+###### Then 'productionCallback()' and 'shipmentCallback()' will be called sequentially
+```javascript
+const automation = (productionCallback, shipmentCallback) => {
+  const prodstatus = productionCallback()
+  return shipmentCallback(prodstatus)
+}
+```
+
+###### 'shipmentCallback()' will be called by accepting 'productionCallback()' function return value
+```javascript
+const automation = (productionCallback, shipmentCallback) => {
+  const prodstatus = productionCallback()
+  return shipmentCallback(prodstatus)
+}
+```
+
+###### 'productionCallback()' function call will execute itself as a first argument of 'automation()' function call and consecutively will execute 'production()', 'quality()'. Inside 'quality()' function call there will be also execute  'requirements()', 'materials()', 'equipments()' and 'correctives()' functions.
+```javascript
+const display = automation(() => {
+  return production((quantity) => {
+    return quality((qualityStatus) => {
+      const requirements = (status) => {
+        return status + '  requirements: pass \n'
+      }
+
+      const materials = (status) => {
+        return status + '  materials: pass \n'
+      }
+
+      const equipments = (status) => {
+        return status + '  equipments: pass \n'
+      }
+
+      const correctives = (status) => {
+        return status + '  correctives: pass \n'
+      }
+
+      let status = qualityStatus
+      status = requirements(status)
+      status = materials(status)
+      status = equipments(status)
+      status = correctives(status)
+
+      return status
+    }, quantity)
+  })
+}, (prodstatus) => {
+  ...
+  ...
+})
+```
+
+###### The same goes for the 'shipmentCallback()' callback argument by passing 'prodstatus' value and finally we got the display
+```javascript
+const display = automation(() => {
+  ...
+  ...
+
+}, (prodstatus) => {
+  return shipment((shipmentStatus) => {
+    return warehouse((warehouseStatus) => {
+      return packaging((packagingStatus) => {
+        const recurrences = (status) => {
+          return status + '  reurrence for defects: no \n'
+        }
+
+        let status = packagingStatus
+        status = recurrences(status)
+        return status
+      }, warehouseStatus)
+    }, shipmentStatus)
+  }, prodstatus)
+})
 ```
 
 
