@@ -1762,7 +1762,7 @@ const automation = (productionCallback, shipmentCallback) => {
 }
 ```
 
-###### 'productionCallback()' function call will execute itself as a first argument of 'automation()' function call and consecutively will execute 'production()', 'quality()'. Inside 'quality()' function call there will be also execute  'requirements()', 'materials()', 'equipments()' and 'correctives()' functions.
+###### 'productionCallback()' function call will execute the first argument of 'automation()' function call where it was wholly defined.
 ```javascript
 const display = automation(() => {
   return production((quantity) => {
@@ -1795,6 +1795,28 @@ const display = automation(() => {
 }, (prodstatus) => {
   ...
   ...
+})
+```
+
+###### 'shipmentCallback()' function call will execute the second argument of 'automation()' function call where it was wholly defined.
+```javascript
+const display = automation(() => {
+  ...
+  ...
+}, (prodstatus) => {
+  return shipment((shipmentStatus) => {
+    return warehouse((warehouseStatus) => {
+      return packaging((packagingStatus) => {
+        const recurrences = (status) => {
+          return status + '  reurrence for defects: no \n'
+        }
+
+        let status = packagingStatus
+        status = recurrences(status)
+        return status
+      }, warehouseStatus)
+    }, shipmentStatus)
+  }, prodstatus)
 })
 ```
 
