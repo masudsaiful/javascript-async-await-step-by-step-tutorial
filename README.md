@@ -1603,29 +1603,122 @@ So, it can easily be detect from the above lines of code that, despite of it's s
 
 
 #### ii) non-blocking
-Consider a manufacturing company. They maintain an automation system to their quality standards line up with the following procedure. Every item of below pass the production stage a step ahead.
+Consider a manufacturing company of their daily production capacity they maintain an automation system from production to shipping for quality standards line up with the following procedure. Suppose the company has 100 production capacity daily if the all quality standards are meet.
 
-A. **Requirements Standard** Check
+A. Quality Check
 
-B. **Raw Materials** Check
+    i. **Requirements Standard** Check
 
-C. **Tools and Equipment** Checks
+    ii. **Raw Materials** Check
 
-D. **Corrective Actions** Implementation Check
+    i. **Tools and Equipment** Checks
 
-E. **Production** Line Check
+    iv. **Corrective Actions** Implementation Check
 
-F. **Packaging** check
+E. Ready to **Production** Line 
+
+F. Ready to **Packaging**
+
+    i. **Defects at packaging time** check
 
 G. Ready to **warehouse**
 
 H. Ready to **Shipment**
+
 
 We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking things.
 
 **Let's do the simple synchronous code first using callback**,
 
 ```javascript
+const automation = (productionCallback, shipmentCallback) => {
+  const prodstatus = productionCallback()
+  return shipmentCallback(prodstatus)
+}
+
+const production = (qualityCallback) => {
+  const quantity = 'Production Quantity: 100 \n'
+  return qualityCallback(quantity)
+}
+
+const quality = (callback, quantity) => {
+  const qualityStatus = quantity + 'Quality Standard Status: \n'
+  return callback(qualityStatus)
+}
+
+const shipment = (warehouseCallback, prodstatus) => {
+  const shipmentStatus = prodstatus + 'Shipment Status: Ready \n'
+  return warehouseCallback(shipmentStatus)
+}
+
+const warehouse = (packagingCallback, shipmentStatus) => {
+  const warehouseStatus = shipmentStatus + 'Warehouse Status: Ready \n'
+  return packagingCallback(warehouseStatus)
+}
+
+const packaging = (callback, warehouseStatus) => {
+  const packagingStatus = warehouseStatus + 'Packaging Status: Ready \n'
+  return callback(packagingStatus)
+}
+
+const display = automation(() => {
+  return production((quantity) => {
+    return quality((qualityStatus) => {
+      const requirements = (status) => {
+        return status + '  requirements: pass \n'
+      }
+
+      const materials = (status) => {
+        return status + '  materials: pass \n'
+      }
+
+      const equipments = (status) => {
+        return status + '  equipments: pass \n'
+      }
+
+      const correctives = (status) => {
+        return status + '  correctives: pass \n'
+      }
+
+      let status = qualityStatus
+      status = requirements(status)
+      status = materials(status)
+      status = equipments(status)
+      status = correctives(status)
+
+      return status
+    }, quantity)
+  })
+}, (prodstatus) => {
+  return shipment((shipmentStatus) => {
+    return warehouse((warehouseStatus) => {
+      return packaging((packagingStatus) => {
+        const recurrences = (status) => {
+          return status + '  reurrence for defects: no \n'
+        }
+
+        let status = packagingStatus
+        status = recurrences(status)
+        return status
+      }, warehouseStatus)
+    }, shipmentStatus)
+  }, prodstatus)
+})
+
+console.log(display)
+
+# Output:
+
+Production Quantity: 100 
+Quality Standard Status: 
+  requirements: pass 
+  materials: pass 
+  equipments: pass 
+  correctives: pass 
+Shipment Status: Ready 
+Warehouse Status: Ready 
+Packaging Status: Ready 
+  reurrence for defects: no 
 
 ```
 
