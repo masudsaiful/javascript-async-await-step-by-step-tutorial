@@ -1603,14 +1603,14 @@ So, it can easily be detect from the above lines of code that, despite of it's s
 
 
 #### ii) non-blocking
-Consider a manufacturing company of their daily production capacity, they maintain an automation system from production to shipping for quality standards line up with the following procedure. Suppose the company has 100 production capacity daily if the all quality standards are meet.
+Consider a manufacturing company. For their regular production they have to maintain an automation system to monitor the quality standards line up with the following procedure. The quality standard tests are several steps and depends on each other. If one step delay then other following steps will be off until the previous step passed. 
 
 
-**Below are the automation workflow**,
+**The automation flow should be like this**,
 
     Production
 
-        Quality Standard
+        Quality Standard Test
 
             - Requirements Standard Check
 
@@ -1620,234 +1620,176 @@ Consider a manufacturing company of their daily production capacity, they mainta
 
             - Corrective Actions and Implementation Check
 
-        Packaging
-
-            - Defects at packaging time Check
-
-        warehouse
-
-        Shipment
+        Quality Standard Check Completed
 
 
-We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking things.
+We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking scopes.
 
-**Let's do first the simple synchronous code using callback**,
+**Let's do the code in synchronous way using callback**,
 
 ```javascript
-const automation = (productionCallback, shipmentCallback) => {
-  const prodstatus = productionCallback()
-  return shipmentCallback(prodstatus)
+const automation = (productionCallback) => {
+  return productionCallback()
 }
 
 const production = (qualityCallback) => {
-  const quantity = 'Production Quantity: 100 \n'
+  const quantity = 'Production Capacity: 100 \n\n'
   return qualityCallback(quantity)
 }
 
 const quality = (callback, quantity) => {
-  const qualityStatus = quantity + 'Quality Standard Status: \n'
+  const qualityStatus = quantity + 'Quality Standard Status: \n\n'
   return callback(qualityStatus)
-}
-
-const shipment = (warehouseCallback, prodstatus) => {
-  const shipmentStatus = prodstatus + 'Shipment Status: Ready \n'
-  return warehouseCallback(shipmentStatus)
-}
-
-const warehouse = (packagingCallback, shipmentStatus) => {
-  const warehouseStatus = shipmentStatus + 'Warehouse Status: Ready \n'
-  return packagingCallback(warehouseStatus)
-}
-
-const packaging = (callback, warehouseStatus) => {
-  const packagingStatus = warehouseStatus + 'Packaging Status: Ready \n'
-  return callback(packagingStatus)
 }
 
 const display = automation(() => {
   return production((quantity) => {
     return quality((qualityStatus) => {
+      let status = ''
       const requirements = (status) => {
-        return status + '  requirements: pass \n'
+        for (let i = 0; i >= 0; i++) {
+          if (i == 1999999999) {
+            return status + 'requirements: pass \n\n'
+          }
+        }
       }
 
       const materials = (status) => {
-        return status + '  materials: pass \n'
+        return status + 'materials: pass \n'
       }
 
       const equipments = (status) => {
-        return status + '  equipments: pass \n'
+        return status + 'equipments: pass \n'
       }
 
       const correctives = (status) => {
-        return status + '  correctives: pass \n'
+        return status + 'correctives: pass \n'
       }
 
-      let status = qualityStatus
-      status = requirements(status)
       status = materials(status)
       status = equipments(status)
       status = correctives(status)
+      status = requirements(status)
 
-      return status
+      console.log(qualityStatus)
+      console.log(status)
+      console.log('Quality Standard Check Completed')
+
+      return ''
+
     }, quantity)
   })
-}, (prodstatus) => {
-  return shipment((shipmentStatus) => {
-    return warehouse((warehouseStatus) => {
-      return packaging((packagingStatus) => {
-        const recurrences = (status) => {
-          return status + '  reurrence for defects: no \n'
-        }
-
-        let status = packagingStatus
-        status = recurrences(status)
-        return status
-      }, warehouseStatus)
-    }, shipmentStatus)
-  }, prodstatus)
 })
 
 console.log(display)
 
+
 # Output:
 
-Production Quantity: 100 
+Production Capacity: 100 
 Quality Standard Status: 
-  requirements: pass 
-  materials: pass 
-  equipments: pass 
-  correctives: pass 
-Shipment Status: Ready 
-Warehouse Status: Ready 
-Packaging Status: Ready 
-  reurrence for defects: no 
+
+materials: pass 
+equipments: pass 
+correctives: pass 
+requirements: pass 
+
+Quality Standard Check Completed
+```
+If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while 'requirements' quality standard test is running. This causes the next lines of instructions remaining off. Here actually occured 'blocking' in these lines of code. The code fall in a loop in the 'requirements' functions to take sometimes to return the value. When loop ended it will return value and thus chain of other function blocks will start execution.
+
+```javascript
+  const requirements = (status) => {
+    for (let i = 0; i >= 0; i++) {
+      if (i == 1999999999) {
+        return status + 'requirements: pass \n\n'
+      }
+    }
+  }
 ```
 
-**Now if we break down the above program we will see**,
+Before converting the above code snippet in asynchronous way let's first think what should be the desire output that we are expecting. Well, Though there are several quality standard testing the company prefer their production line up to go smoothly thats are 'requirements', 'materials', 'equipments', and 'correctives'. We sure don't want to be off the others QA checking rather 'requirements' will continue it's delay result and others QA standard testing will be running on paralally. When all of the testing results come the QA standards completed. We will be able to output the result by using web API method with callback mechanism.
 
-###### 'automation()' function called with two whole arrow callback arguments
-```javascript
-const display = automation(() => {
-  ...
-  ...
-}, () => {
-  ...
-  ...
-})
-```
+**Let's customize the code in aynchronous way using web API method and callback function**,
 
-###### Arguments are received in 'automation()' function definition as 'productionCallback' and 'shipmentCallback'.
 ```javascript
-const automation = (productionCallback, shipmentCallback) => {
-  ...
-  ...
+const automation = (productionCallback) => {
+  return productionCallback()
 }
-```
 
-
-###### Then 'productionCallback()' and 'shipmentCallback()' will be called sequentially
-```javascript
-const automation = (productionCallback, shipmentCallback) => {
-  const prodstatus = productionCallback()
-  return shipmentCallback(prodstatus)
+const production = (qualityCallback) => {
+  const quantity = 'Production Capacity: 100 \n\n'
+  return qualityCallback(quantity)
 }
-```
 
-###### 'shipmentCallback()' will be called by accepting 'productionCallback()' function return value
-```javascript
-const automation = (productionCallback, shipmentCallback) => {
-  const prodstatus = productionCallback()
-  return shipmentCallback(prodstatus)
+const quality = (callback, quantity) => {
+  const qualityStatus = quantity + 'Quality Standard Status: \n\n'
+  return callback(qualityStatus)
 }
-```
 
-###### 'productionCallback()' function call will execute the first argument of 'automation()' function call where it was wholly defined.
-```javascript
 const display = automation(() => {
   return production((quantity) => {
     return quality((qualityStatus) => {
+      let status = ''
       const requirements = (status) => {
-        return status + '  requirements: pass \n'
+        for (let i = 0; i >= 0; i++) {
+          if (i == 1999999999) {
+            return status + 'requirements: pass \n\n'
+          }
+        }
       }
 
       const materials = (status) => {
-        return status + '  materials: pass \n'
+        return status + 'materials: pass \n'
       }
 
       const equipments = (status) => {
-        return status + '  equipments: pass \n'
+        return status + 'equipments: pass \n'
       }
 
       const correctives = (status) => {
-        return status + '  correctives: pass \n'
+        return status + 'correctives: pass \n'
       }
 
-      let status = qualityStatus
-      status = requirements(status)
       status = materials(status)
       status = equipments(status)
       status = correctives(status)
 
-      return status
+      console.log(qualityStatus)
+      console.log(status)
+
+      reqStatus = ''
+      const intervalID = setInterval(() => {
+        reqStatus = requirements('')
+        if (reqStatus !== '') {
+          console.log(reqStatus)
+          console.log('Quality Standard Check Completed')
+          clearInterval(intervalID)
+        }
+      }, 1000)
+
+      return ''
+
     }, quantity)
   })
-}, (prodstatus) => {
-  ...
-  ...
 })
+
+console.log(display)
+
+## Output1: First time it will display as below:
+
+Production Capacity: 100 
+Quality Standard Status: 
+materials: pass 
+equipments: pass 
+correctives: pass 
+
+
+## Output2: After a while it will display as below:
+
+requirements: pass 
+Quality Standard Check Completed
 ```
-
-###### 'shipmentCallback()' function call will execute the second argument of 'automation()' function call where it was wholly defined.
-```javascript
-const display = automation(() => {
-  ...
-  ...
-}, (prodstatus) => {
-  return shipment((shipmentStatus) => {
-    return warehouse((warehouseStatus) => {
-      return packaging((packagingStatus) => {
-        const recurrences = (status) => {
-          return status + '  reurrence for defects: no \n'
-        }
-
-        let status = packagingStatus
-        status = recurrences(status)
-        return status
-      }, warehouseStatus)
-    }, shipmentStatus)
-  }, prodstatus)
-})
-```
-
-###### The same goes for the 'shipmentCallback()' callback argument by passing 'prodstatus' value and finally we got the display
-```javascript
-const display = automation(() => {
-  ...
-  ...
-
-}, (prodstatus) => {
-  return shipment((shipmentStatus) => {
-    return warehouse((warehouseStatus) => {
-      return packaging((packagingStatus) => {
-        const recurrences = (status) => {
-          return status + '  reurrence for defects: no \n'
-        }
-
-        let status = packagingStatus
-        status = recurrences(status)
-        return status
-      }, warehouseStatus)
-    }, shipmentStatus)
-  }, prodstatus)
-})
-```
-
-
-
-
-
-
 
 
 #### iii) asynchronous
