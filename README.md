@@ -1819,6 +1819,11 @@ Despite of its single-threaded architecture, Javascript perform paralally multip
 
 
 
+### G) Problems with Asynchronous programing using Callback (Callback Hell)
+
+
+
+
 ## Conclusion
 
 I've endeavored to provide a concise overview of the transition from legacy JavaScript to the contemporary async/await model in this article. Instead of delving into intricate technical discussions about single-threaded or multi-threaded systems, I've focused on presenting theoretical insights alongside practical examples in a manner that's clear, elegant, and succinct.
