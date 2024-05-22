@@ -1623,7 +1623,7 @@ Consider a manufacturing company. For their regular production they have to main
         Quality Standard Check Completed
 
 
-We will first try to do a simple sample code in synchronous way and then asynchronous way for better understanding the difference of Javascript blocking and non-blocking scopes.
+We will first try to do a simple sample code in **synchronous** way and then **asynchronous** way for better understanding the difference of Javascript **blocking** and **non-blocking** scopes.
 
 **Let's do the code in synchronous way using callback**,
 
@@ -1696,7 +1696,7 @@ requirements: pass
 
 Quality Standard Check Completed
 ```
-If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while 'requirements' quality standard test is running. This causes the next lines of instructions remaining off. Here actually occured 'blocking' in these lines of code. The code fall in a loop in the 'requirements' functions to take sometimes to return the value. When loop ended it will return value and thus chain of other function blocks will start execution.
+If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while **requirements** quality standard testing function is running. This causes the next lines of instructions remaining off. Here actually occured **blocking** in these lines of code. The code fall in a loop in the **requirements** function to take sometimes to return the value. When loop ended it will return value and thus chain of other functions blocks will be executed.
 
 ```javascript
   const requirements = (status) => {
@@ -1708,7 +1708,7 @@ If we run the programme we can see that the output will take few seconds to disp
   }
 ```
 
-Before converting the above code snippet in asynchronous way let's first think what should be the desire output that we are expecting. Well, Though there are several quality standard testing the company prefer their production line up to go smoothly thats are 'requirements', 'materials', 'equipments', and 'correctives'. We sure don't want to be off the others QA checking rather 'requirements' will continue it's delay result and others QA standard testing will be running on paralally. When all of the testing results come the QA standards completed. We will be able to output the result by using web API method with callback mechanism.
+Before converting the above code snippet in **asynchronous** way and **non-blocking** let's first think what should be the desire output that we are expecting. Well, Though there are several quality standard testing the company prefer their production line up to go smoothly thats are **requirements**, **materials**, **equipments**, and **correctives**. We sure don't want to be off the others QA checking rather **requirements** will continue it's delay result and others QA standard testing will be running on paralally. When all of the testing results will come the QA standards Testing will be completed. We only be able to output the result **asynchronously** with the help of **web API** method and by using **callback** mechanism.
 
 **Let's customize the code in aynchronous way using web API method and callback function**,
 
