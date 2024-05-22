@@ -1696,9 +1696,11 @@ requirements: pass
 
 Quality Standard Check Completed
 ```
-If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while **requirements** quality standard testing function is running. This causes the next lines of instructions remaining off. Here actually occured **blocking** in these lines of code. The code fall in a loop in the **requirements** function to take sometimes to return the value. When loop ended it will return value and thus chain of other functions blocks will be executed.
+If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while **requirements** quality standard testing function is running. This causes the next lines of instructions and logs remaining off. Here actually occured **blocking** for the following lines of code. The returning value fell in a loop condition in the **requirements** function to take sometimes to return the value. When the loop ends, it will return a value, and consequently, a chain of other function blocks will be executed.
 
 ```javascript
+  ...
+  ...
   const requirements = (status) => {
     for (let i = 0; i >= 0; i++) {
       if (i == 1999999999) {
@@ -1706,9 +1708,11 @@ If we run the programme we can see that the output will take few seconds to disp
       }
     }
   }
+  ...
+  ...
 ```
 
-Before converting the above code snippet in **asynchronous** way and **non-blocking** let's first think what should be the desire output that we are expecting. Well, Though there are several quality standard testing the company prefer their production line up to go smoothly thats are **requirements**, **materials**, **equipments**, and **correctives**. We sure don't want to be off the others QA checking rather **requirements** will continue it's delay result and others QA standard testing will be running on paralally. When all of the testing results will come the QA standards Testing will be completed. We only be able to output the result **asynchronously** with the help of **web API** method and by using **callback** mechanism.
+Before converting the above code snippet in **asynchronous** way and **non-blocking** let's first think what should be the desire output that we are expecting. Well, Though there are several quality standard testing the company prefer for their production line up to go smoothly thats are **requirements**, **materials**, **equipments**, and **correctives**. We surely don't want to be off the others QA checking rather **requirements** will continue it's delay result and others QA standard testing will be running on paralally. When all of the testing results will come, the QA standards Testing will be completed. We only be able to output the result **asynchronously** with the help of **web API** method and by using **callback** mechanism.
 
 **Let's customize the code in aynchronous way using web API method and callback function**,
 
@@ -1755,9 +1759,6 @@ const display = automation(() => {
       status = equipments(status)
       status = correctives(status)
 
-      console.log(qualityStatus)
-      console.log(status)
-
       reqStatus = ''
       const intervalID = setInterval(() => {
         reqStatus = requirements('')
@@ -1767,6 +1768,10 @@ const display = automation(() => {
           clearInterval(intervalID)
         }
       }, 1000)
+
+      console.log(qualityStatus)
+      console.log(status)
+      console.log('Quality Standard Check Incomplete')
 
       return ''
 
@@ -1783,16 +1788,34 @@ Quality Standard Status:
 materials: pass 
 equipments: pass 
 correctives: pass 
-
+Quality Standard Check Incomplete
 
 ## Output2: After a while it will display as below:
 
 requirements: pass 
 Quality Standard Check Completed
 ```
+From the article we have already learned many times that Javascript execute it's code line by line, one after another sequentially and only one execution at a time. That's why the automation system above will execute these three functions sequentially **materials**, **equipments**, **correctives**. In previous example the next sequence was **requirements** function that causes **blocking** for the rest of the code chain and logs. In here **requirements** function call implemented by a **web API** method **setInterval** which will run in every second and checks for any particular value returned by the **requirements** function. 
+```javascript
+    ...
+    ...
+    reqStatus = ''
+    const intervalID = setInterval(() => {
+      reqStatus = requirements('')
+      if (reqStatus !== '') {
+        console.log(reqStatus)
+        console.log('Quality Standard Check Completed')
+        clearInterval(intervalID)
+      }
+    }, 1000)
+    ...
+    ...
+```
 
+Paralally Javascript executing finctions line by line sequentially and web APIs asynchronous methods executing time-taking functions by browser based Javascript engine with the help of event loop, call stack and memory heap. So, we can see all of the desire output and logs in non-blocking manner yet the time-consuming **requirements** function is dealing with **setInterval** web APIs without blocking the others. Thus we can realize how Javascript act as a non-blocking architectural language. 
 
 #### iii) asynchronous
+Despite of its single-threaded architecture, Javascript perform paralally multiple executions using web API methods that we have just seen in the above code example. So, sequentially lots of tasks executing simultaneously handling by browser based Javascript run time environment technically minimize the blocking issues and given output feel like multi-threaded programming behind the scene but still be able to be responsive to other events while that task runs is called asynchronous programming.
 
 
 
