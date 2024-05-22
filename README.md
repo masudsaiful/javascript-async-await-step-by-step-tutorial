@@ -57,7 +57,7 @@ Function will execute when they are called or invoked like belows:
 
 
 // basically above code will be invoked automatically by browser Window Object 
-// so, above code will be the same as below
+// so, above code will be the same as belows
 <script>
   function functionName (param1, param2, ...) {
     ...
@@ -208,7 +208,7 @@ nameFunc(function () {
 
 NOTE: Anonymous Function can not be hoisted. They only execute when calling after declaration.
 
-// example: anonymous function call only work after declaration like below
+// example: anonymous function call only work after declaration like belows
 const anonymousFunc = function (param1, param2, ...) {return param1 + param2};
 anonymousFunc(param1, param2, ...)
 ```
@@ -456,7 +456,7 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function,
 
 
 ### B) Single-threaded, blocking and synchronous
-#### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in below.
+#### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in belows.
 ###### (From now on towards we will use arrow functions of all following examples) ######
 
 
@@ -539,7 +539,7 @@ This **time-consuming** execution which can block it's following instruction may
 
 
 ##### Synchronous:
-In javascript code within the synchronous calls, all the work is done line by line one after another. The first task is executed then the second task is executed, no matter how much time one task will take. When one thread is locked, the thread following it in line is blocked. After escaping from block, execution will start for the next instruction. Look at this two illustrations below.
+In javascript code within the synchronous calls, all the work is done line by line one after another. The first task is executed then the second task is executed, no matter how much time one task will take. When one thread is locked, the thread following it in line is blocked. After escaping from block, execution will start for the next instruction. Look at this two illustrations belows.
 ```javascript
     // example 1
     const func1 = () => {
@@ -765,7 +765,7 @@ console.log(displayOrderStatus)
 ```
 
 
-Or, we could call a order function (**orderFunc**), and let the order function call the order status function (**orderStatusFunc**), and then let the order status function call the order status display function (**displayOrderStatusFunc**). Then after let the order status display function call the greetings function (**greetingsFunc**). Let's re-write the above code as below.  
+Or, we could call a order function (**orderFunc**), and let the order function call the order status function (**orderStatusFunc**), and then let the order status function call the order status display function (**displayOrderStatusFunc**). Then after let the order status display function call the greetings function (**greetingsFunc**). Let's re-write the above code as belows.  
 ```javascript
 // synchronous Programing: example 2
 const orderFunc = (item1, item2) => {
@@ -820,7 +820,7 @@ console.log(displayOrderStatus)
 ```
 
 
-Now change order status in first argument and greetings message in second arguments like below, 
+Now change order status in first argument and greetings message in second arguments like belows, 
 ```javascript
 displayOrderStatusFunc(orderStatusFunc(order), greetingsFunc())
 ```
@@ -894,7 +894,7 @@ So far here, I have just tried to explain how we can better control the function
 
 
 ### D) Problems with synchronous programming
-Synchronous programming is straightforward. It’s easier to write code. Basically, synchronous programming can be used when the aim is for simplicity rather than efficiency. Because synchronous programming is the default, developers don’t need to worry about whether or not it’s possible to build asynchronous applications. But when the code becomes incrementally larger it's hard to manage numerous actions, time-consuming waits, Preventing problems to stop lots of function execution sequences that are controlled internally from other functions, Worse user experience when massive hits of too many requests etc. We will now analyze the problems below.
+Synchronous programming is straightforward. It’s easier to write code. Basically, synchronous programming can be used when the aim is for simplicity rather than efficiency. Because synchronous programming is the default, developers don’t need to worry about whether or not it’s possible to build asynchronous applications. But when the code becomes incrementally larger it's hard to manage numerous actions, time-consuming waits, Preventing problems to stop lots of function execution sequences that are controlled internally from other functions, Worse user experience when massive hits of too many requests etc. We will now analyze the problems belows.
 
 **Let's see the synchronous programming examples again**,
 
@@ -1415,7 +1415,7 @@ Lot of tasks simultaneously execution in a programming language is called multi-
 
 Suppose an Accounts software performs auto transaction from it's branches. Two branches act transaction in every 5 second and another branch in every 4 second. All transactions happen twice a daily. A notification system generate transaction message in every second. Accounts software got the message to display updated status of when which branch performed auto transaction. 
 
-**Let's see the example code below**,
+**Let's see the example code belows**,
 ```javascript
 // example:
 const accounts = () => {
@@ -1568,7 +1568,7 @@ accounts()
 
 **accounts()** initialize the execution 
 
-**branch2()** start to process it's code block like below,
+**branch2()** start to process it's code block like belows,
 
       1) assigning message to variable
 
@@ -1696,7 +1696,7 @@ requirements: pass
 
 Quality Standard Check Completed
 ```
-If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while **requirements** quality standard testing function is running. This causes the next lines of instructions and logs remaining off. Here actually occured **blocking** for the following lines of code. The returning value fell in a loop condition in the **requirements** function to take sometimes to return the value. When the loop ends, it will return a value, and consequently, a chain of other function blocks will be executed.
+If we run the programme we can see that the output will take few seconds to display the result as there are some delay happening while **requirements** quality standard testing function is running. This causes the next lines of instructions and logs remaining off. Here actually occured **blocking** for the following lines of execution. The returning value fell in a loop condition in the **requirements** function to take sometimes to return the value. When the loop ends, it will return a value, and consequently, a chain of other function blocks will be executed.
 
 ```javascript
   ...
@@ -1781,7 +1781,7 @@ const display = automation(() => {
 
 console.log(display)
 
-## Output1: First time it will display as below:
+## Output1: First time it will display as belows:
 
 Production Capacity: 100 
 Quality Standard Status: 
@@ -1790,7 +1790,7 @@ equipments: pass
 correctives: pass 
 Quality Standard Check Incomplete
 
-## Output2: After a while it will display as below:
+## Output2: After a while it will display as belows:
 
 requirements: pass 
 Quality Standard Check Completed
