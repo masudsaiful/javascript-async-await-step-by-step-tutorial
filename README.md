@@ -652,7 +652,7 @@ In the **example2** we can now seen that the output sequence orders are **'somet
 
 
 #### Function Sequence:
-So, functions are executed in the sequence they are called, not the sequence they are defined.
+So, functions are also executed in the sequence they are called, not the sequence they are defined.
 Let's examine the following examples,
 
 ```javascript
@@ -1820,8 +1820,121 @@ Despite of its single-threaded architecture, Javascript perform paralally multip
 
 
 ### G) Problems with Asynchronous programing using Callback (Callback Hell)
+From here on, the sections will get a bit longer as we dive into transforming a basic program into a more complex one. Eventually, we will explore how callback hell can complicate our coding experience significantly. Now, let's get started. But first, let's understand the story that our program will be based on.
+
+**Story: Chapter1** - Imagine a club asks its coach to select a team using a lottery system and then use another lottery system to assign dressing room lockers to the chosen players. Player selection will occur sequentially, as will locker selection.
+```javascript
+    const parentFunc = () => {
+      setTimeout(() => {
+        console.log('Player Selection Lottery System: \n')
+        console.log('Player1: A')
+      }, 1000)
+
+      setTimeout(() => {
+        console.log('Player2: B')
+      }, 2000)
+
+      setTimeout(() => {
+        console.log('Player3: C')
+      }, 3000)
+
+      setTimeout(() => {
+        console.log('Locker Selection Lottery System:')
+        console.log('Player1: X')
+      }, 4000)
+
+      setTimeout(() => {
+        console.log('Player2: Y')
+      }, 5000)
+
+      setTimeout(() => {
+        console.log('Player3: Z')
+      }, 6000)
+    }
+
+    parentFunc()
 
 
+# Output:
+
+Player Selection Lottery System: 
+Player1: A
+Player2: B
+Player3: C
+
+Locker Selection Lottery System:
+Player1: X
+Player2: Y
+Player3: Z
+```
+Very simple example. We just used **setTimeout** of different time-out parameters to manage display sequentially.
+
+**Story: Chapter2** - Upon reviewing the program, it appears that after manual selection, only the information is sequentially presented, which isn't automated. So, the programmers decided the selection part will be processed using a random method to ensure that the desired players are chosen from a pool of many players and thus the lockers for the selected players.
+```javascript
+const parentFunc = () => {
+  players = ['A', 'B', 'C', 'D']
+  lockers = ['W', 'X', 'Y', 'Z']
+
+  setTimeout(() => {
+    console.log('Player Selection Lottery System:')
+    selected = Math.floor(Math.random() * players.length)
+    selected = players[selected]
+    console.log('Player1: ' + selected)
+    players.splice(players.indexOf(selected), 1)
+  }, 1000)
+
+  setTimeout(() => {
+    selected = Math.floor(Math.random() * players.length)
+    selected = players[selected]
+    console.log('Player2: ' + selected)
+    players.splice(players.indexOf(selected), 1)
+  }, 2000)
+
+  setTimeout(() => {
+    selected = Math.floor(Math.random() * players.length)
+    selected = players[selected]
+    console.log('Player3: ' + selected)
+    players.splice(players.indexOf(selected), 1)
+  }, 3000)
+
+  setTimeout(() => {
+    console.log('Locker Selection Lottery System:')
+    selected = Math.floor(Math.random() * lockers.length)
+    selected = lockers[selected]
+    console.log('Player1: ' + selected)
+    lockers.splice(lockers.indexOf(selected), 1)
+  }, 4000)
+
+  setTimeout(() => {
+    selected = Math.floor(Math.random() * lockers.length)
+    selected = lockers[selected]
+    console.log('Player2: ' + selected)
+    lockers.splice(lockers.indexOf(selected), 1)
+  }, 5000)
+
+  setTimeout(() => {
+    selected = Math.floor(Math.random() * lockers.length)
+    selected = lockers[selected]
+    console.log('Player3: ' + selected)
+    lockers.splice(lockers.indexOf(selected), 1)
+  }, 6000)
+}
+
+parentFunc()
+
+
+# Output:
+Player Selection Lottery System:
+Player1: D
+Player2: A
+Player3: B
+
+Locker Selection Lottery System:
+Player1: X
+Player2: Z
+Player3: W
+```
+**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using random functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the repetition of the random function won't be permissible. It must be encapsulated within a method. 
 
 
 ## Conclusion
