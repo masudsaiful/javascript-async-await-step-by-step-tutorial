@@ -1820,9 +1820,9 @@ Despite of its single-threaded architecture, Javascript perform paralally multip
 
 
 ### G) Problems with Asynchronous programing using Callback (Callback Hell)
-From here on, the sections will get a bit longer as we dive into transforming a basic program into a more complex one. Eventually, we will explore how callback hell can complicate our coding experience significantly. Now, let's get started. But first, let's understand the story that our program will be based on.
+From here on, the sections will get a bit longer as we dive into transforming a basic program into a more complex one. Eventually, we will explore how callback hell can complicate our coding experience significantly. Now, Let's begin side by side with a story upon which we'll base our program's transformation step by step.
 
-**Story: Chapter1** - Imagine a club asks its coach to select a team using a lottery system and then use another lottery system to assign dressing room lockers to the chosen players. Player selection will occur sequentially, as will locker selection.
+**Story: Chapter1** - Imagine a Club asks its coach to select a team using a lottery system and then use another lottery system to assign dressing room lockers to the chosen players. Player selection will occur sequentially, as will locker selection.
 ```javascript
     const parentFunc = () => {
       setTimeout(() => {
@@ -1924,6 +1924,7 @@ parentFunc()
 
 
 # Output:
+
 Player Selection Lottery System:
 Player1: D
 Player2: A
@@ -1934,7 +1935,70 @@ Player1: X
 Player2: Z
 Player3: W
 ```
-**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using random functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the repetition of the random function won't be permissible. It must be encapsulated within a method. 
+
+**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using random functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the repetition of the random function won't be permissible. It must be encapsulated within a method. So, let's do it.
+
+```javascript
+const parentFunc = () => {
+players = ['A', 'B', 'C', 'D']
+const randomPlayers = (players) => {
+  selected = Math.floor(Math.random() * players.length)
+  selected = players[selected]
+  players.splice(players.indexOf(selected), 1)
+  return selected
+}
+
+lockers = ['W', 'x', 'Y', 'Z']
+const randomLockers = (lockers) => {
+  selected = Math.floor(Math.random() * lockers.length)
+  selected = lockers[selected]
+  lockers.splice(lockers.indexOf(selected), 1)
+  return selected
+}
+
+setTimeout(() => {
+  console.log('Player Selection Lottery System:')
+  console.log('Player1: ' + randomPlayers(players))
+}, 1000)
+
+setTimeout(() => {
+  console.log('Player2: ' + randomPlayers(players))
+}, 2000)
+
+setTimeout(() => {
+  console.log('Player3: ' + randomPlayers(players))
+}, 3000)
+
+setTimeout(() => {
+  console.log('locker Selection Lottery System:')
+  console.log('Player1: ' + randomLockers(lockers))
+}, 4000)
+
+setTimeout(() => {
+  console.log('Player2: ' + randomLockers(lockers))
+}, 5000)
+
+setTimeout(() => {
+  console.log('Player3: ' + randomLockers(lockers))
+}, 6000)
+}
+
+parentFunc()
+
+
+# Output:
+
+Player Selection Lottery System:
+Player1: D
+Player2: C
+Player3: B
+
+locker Selection Lottery System:
+Player1: W
+Player2: Z
+Player3: x
+```
+
 
 
 ## Conclusion
