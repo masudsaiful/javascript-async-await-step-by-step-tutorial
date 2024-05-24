@@ -1999,9 +1999,195 @@ Player2: Z
 Player3: x
 ```
 
-**Story: Chapter4** - Inspite of separating the **randomLockers** and **randomPlayers** functions, developers find themselves facing the team leader again, receiving feedback from code reviewers. Now, the random functions which are executing to output the lottery system result need to be defined as separate independent functions outside the **parent** function entirely. Besides these it's not looking so good that all **setTimeout** functions are defined serially. So, need also them to encapsulate such a way that all **setTimeout** functions are compact in a centrally managed **callback** function for better control.
+**Story: Chapter4** - Inspite of separating the **randomLockers** and **randomPlayers** functions, developers find themselves facing the team leader again, receiving feedback from code reviewers. Now, the random functions which are executing to output the lottery system result need to be defined as separate independent functions outside the **parent** function scope entirely. Besides these it's not looking so good that all **setTimeout** functions are defined serially with different time-out parameter. So, these need to be encapsulated in such a way that all **setTimeout** functions are compacted into a centrally managed **callback** function, which receives a **timeout** parameter that can be passed to all its **nested child** functions. This way lottery display should maintain by the **setTinmeout** function sequentially.
+```javascript
+players = ['A', 'B', 'C', 'D']
+const randomPlayers = (param1 = null) => {
+  selected = Math.floor(Math.random() * param1.length)
+  selected = param1[selected]
+  param1.splice(param1.indexOf(selected), 1)
+  return selected
+}
+
+lockers = ['W', 'x', 'Y', 'Z']
+const randomLockers = (param2) => {
+  selected = Math.floor(Math.random() * param2.length)
+  selected = param2[selected]
+  param2.splice(param2.indexOf(selected), 1)
+  return selected
+}
+
+const parentFunc = (callback1, callback2, param1, param2, timeout) => {
+  setTimeout(() => {
+    console.log('Player Selection Lottery System:')
+    console.log('Player1: ' + callback1(param1))
+    setTimeout(() => {
+      console.log('Player2: ' + callback1(param1))
+      setTimeout(() => {
+        console.log('Player3: ' + callback1(param1))
+        setTimeout(() => {
+          console.log('Lockers Selection Lottery System:')
+          console.log('Player1: ' + callback2(param2))
+          setTimeout(() => {
+            console.log('Player2: ' + callback2(param2))
+            setTimeout(() => {
+              console.log('Player3: ' + callback2(param2))
+            }, timeout)
+          }, timeout)
+        }, timeout)
+      }, timeout)
+    }, timeout)
+  }, timeout)
+}
+
+parentFunc(randomPlayers, randomLockers, players, lockers, 1000)
+
+# Output :
+
+Player Selection Lottery System:
+Player1: B
+Player2: A
+Player3: D
+
+Lockers Selection Lottery System:
+Player1: W
+Player2: Y
+Player3: x
+```
+
+**Story: Chapter5** - The review team remarked that the code looks much better than before, and a pyramid structure seems to be forming. After discussing with the team leader, it was decided that the display logs should be managed through a separate **display** function and the **setTimeout** functions should only produce sequential output. The client also decided that the lottery system should be automated to handle 7-8 players. Besides these it was also decided that the selected locker should indicate the related player. Developer started their work In full swing.
+```javascript
+players = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+const randomPlayers = (param1 = null) => {
+  selected = Math.floor(Math.random() * param1.length)
+  selected = param1[selected]
+  param1.splice(param1.indexOf(selected), 1)
+  return selected
+}
+
+lockers = ['S', 'T', 'U', 'V', 'W', 'x', 'Y', 'Z']
+const randomLockers = (param2) => {
+  selected = Math.floor(Math.random() * param2.length)
+  selected = param2[selected]
+  param2.splice(param2.indexOf(selected), 1)
+  return selected
+}
+
+const display = (displayCallback1, displayCallback2, displayParam1, displayParam2) => {
+  playerName = displayCallback1(displayParam1)
+  lockerName = displayCallback2(displayParam2)
+  console.log('Player ' + playerName + ' : ' + 'Locker ' + lockerName)
+}
+
+const parentFunc = (callback1, callback2, param1, param2, timeout) => {
+  console.log('Players : Lockers')
+  setTimeout(() => {
+    display(callback1, callback2, param1, param2)
+    setTimeout(() => {
+      display(callback1, callback2, param1, param2)
+      setTimeout(() => {
+        display(callback1, callback2, param1, param2)
+        setTimeout(() => {
+          display(callback1, callback2, param1, param2)
+          setTimeout(() => {
+            display(callback1, callback2, param1, param2)
+            setTimeout(() => {
+              display(callback1, callback2, param1, param2)
+              setTimeout(() => {
+                display(callback1, callback2, param1, param2)
+                setTimeout(() => {
+                  display(callback1, callback2, param1, param2)
+                }, timeout)
+              }, timeout)
+            }, timeout)
+          }, timeout)
+        }, timeout)
+      }, timeout)
+    }, timeout)
+  }, timeout)
+}
+
+parentFunc(randomPlayers, randomLockers, players, lockers, 1000)
 
 
+# Output:
+
+Player : Locker
+Player C : Locker x
+Player F : Locker T
+Player D : Locker V
+Player B : Locker Z
+Player H : Locker Y
+Player A : Locker U
+Player G : Locker W
+Player E : Locker S
+```
+Befor on next story chapter, Let's dig into what this code is doing. 
+
+We have called **parentFunc**,
+```javascript
+parentFunc(randomPlayers, randomLockers, players, lockers, 1000) 
+```
+
+The function received the arguments,
+```javascript
+const parentFunc = (callback1, callback2, param1, param2, timeout) => { 
+  ...
+  ...
+}
+```
+
+A chain of **setTimeout** functions inside each other of their **callback** to display sequentially,
+```javascript
+const parentFunc = (callback1, callback2, param1, param2, timeout) => {
+  console.log('Players : Lockers')
+  setTimeout(() => {
+    display(callback1, callback2, param1, param2)
+    setTimeout(() => {
+      display(callback1, callback2, param1, param2)
+      ...
+      ...
+    }, timeout)
+  }, timeout)
+```
+
+Each **setTimeout** function called **display** function by passing arguments that are received by **parentFunc** function,
+```javascript
+const parentFunc = (callback1, callback2, param1, param2, timeout) => {
+  console.log('Players : Lockers')
+  setTimeout(() => {
+    display(callback1, callback2, param1, param2)
+    setTimeout(() => {
+      display(callback1, callback2, param1, param2)
+      ...
+      ...
+    }, timeout)
+  }, timeout)
+```
+
+Each **setTimeout** function called **display** function by passing arguments that are received by **parentFunc** function,
+```javascript
+const parentFunc = (callback1, callback2, param1, param2, timeout) => {
+  console.log('Players : Lockers')
+  setTimeout(() => {
+    display(callback1, callback2, param1, param2)
+    setTimeout(() => {
+      display(callback1, callback2, param1, param2)
+      ...
+      ...
+    }, timeout)
+  }, timeout)
+}
+```
+
+**display** function received these arguments where **displayCallback1** is actually calling **randomPlayers**, **displayCallback2** actually calling **randomLockers**, **displayParam1** actually calling **players** array and **displayParam2** calling **lockers** array. 
+```javascript
+const display = (displayCallback1, displayCallback2, displayParam1, displayParam2) => {
+  playerName = displayCallback1(displayParam1)
+  lockerName = displayCallback2(displayParam2)
+  console.log('Player ' + playerName + ' : ' + 'Locker ' + lockerName)
+}
+```
 
 
 ## Conclusion
