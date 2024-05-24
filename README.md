@@ -1936,7 +1936,7 @@ Player2: Z
 Player3: W
 ```
 
-**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using random functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the repetition of the random function won't be permissible. It must be encapsulated within a method. So, let's do it.
+**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using **random** functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the repetition of the random function won't be permissible. It must be encapsulated within a method. So, let's do it.
 
 ```javascript
 const parentFunc = () => {
@@ -1999,7 +1999,7 @@ Player2: Z
 Player3: x
 ```
 
-**Story: Chapter4** - Inspite of separating the **randomLockers** and **randomPlayers** functions, developers find themselves facing the team leader again, receiving feedback from code reviewers. Now, the random functions which are executing to output the lottery system result need to be defined as separate independent functions outside the **parent** function entirely. Besides these it's not looking good also that all **setTimeout** functions are defined serially. So, need also them to encapsulate such a way that all setTimeout functions are compact in a centrally managed callback function.
+**Story: Chapter4** - Inspite of separating the **randomLockers** and **randomPlayers** functions, developers find themselves facing the team leader again, receiving feedback from code reviewers. Now, the random functions which are executing to output the lottery system result need to be defined as separate independent functions outside the **parent** function entirely. Besides these it's not looking so good that all **setTimeout** functions are defined serially. So, need also them to encapsulate such a way that all **setTimeout** functions are compact in a centrally managed **callback** function for better control.
 
 
 
