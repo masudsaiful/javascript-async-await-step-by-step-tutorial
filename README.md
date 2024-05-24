@@ -2257,10 +2257,11 @@ Player A : Locker W
 Player C : Locker V
 Player B : Locker T
 ```
-**We will now dissect the code to understand what's happening and how it's structured**. Before that if you forgot, 
-You can quickly review the sections described earlier in this article, particularly how an whole body callback function is passed as an argument to another function and how that argument can later be used. 
+**We will now dissect the code to understand what's happening and how it's structured**. 
 
-**parentFunct** function calling and also passing a whole callback function as it's argument. The structure is,
+Before that if you forgot, You can quickly review the sections described earlier in this article, particularly how an whole body callback function is passed as an argument to another function and how that argument can later be used. 
+
+**parentFunct** function is calling and also passing a whole callback function as it's argument. The structure is,
 ```javascript
 parentFunc(() => {
   ...
