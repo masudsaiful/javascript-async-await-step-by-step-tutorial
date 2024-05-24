@@ -1869,7 +1869,7 @@ Player3: Z
 ```
 Very simple example. We just used **setTimeout** of different time-out parameters to manage display sequentially.
 
-**Story: Chapter2** - Upon reviewing the program, it appears that after manual selection, only the information is sequentially presented, which isn't automated. So, the programmers decided the selection part will be processed using a random method to ensure that the desired players are chosen from a pool of many players and thus the lockers for the selected players.
+**Story: Chapter2** - Upon reviewing the program, it appears that after manual selection, only the information is sequentially presented, which isn't automated. So, the programmers decided the selection part will be processed using a **random method** to ensure that the desired players are chosen from a pool of many players and thus the lockers for the selected players.
 ```javascript
 const parentFunc = () => {
   players = ['A', 'B', 'C', 'D']
@@ -1936,7 +1936,7 @@ Player2: Z
 Player3: W
 ```
 
-**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using **random** functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the repetition of the random function won't be permissible. It must be encapsulated within a method. So, let's do it.
+**Story: Chapter3** - Team has performed well. They are delighted that both players and lockers are being automatically selected from the pool using **random** functions. But the code reviewers team didn't happy. Their point is clear: we will provide our clients with the best product possible. Here, the **repetition** of the **random function** won't be permissible. It must be encapsulated within a method. So, let's do it.
 
 ```javascript
 const parentFunc = () => {
@@ -1999,7 +1999,7 @@ Player2: Z
 Player3: x
 ```
 
-**Story: Chapter4** - Inspite of separating the **randomLockers** and **randomPlayers** functions in the above code, developers find themselves facing the team leader again, receiving feedback from code reviewers. Now, the random functions which are executing to output the lottery system result need to be defined as separate independent functions outside the **parent** function scope entirely. Besides these it's not looking so good that all **setTimeout** functions are defined serially with different time-out parameter. So, these need to be encapsulated in such a way that all **setTimeout** functions are compacted into a centrally managed **callback** function, which receives a **timeout** parameter that can be passed to all its **nested child** functions parameter also. This way lottery display should maintain by the **setTimeout** function sequentially.
+**Story: Chapter4** - Inspite of separating the **randomLockers** and **randomPlayers** functions in the above code, developers find themselves facing the team leader again, receiving feedback from code reviewers. Now, the **random functions** which are executing to output the lottery system result need to be defined as separate independent functions outside the **parent** function scope entirely. Besides these it's not looking so good that all **setTimeout** functions are defined serially with different time-out parameter. So, these need to be encapsulated in such a way that all **setTimeout** functions are compacted into a **centrally managed** **callback** function, which receives a **timeout** parameter that can be passed to all its **nested child** functions parameter also. This way lottery display should maintain by the **setTimeout** function sequentially.
 ```javascript
 players = ['A', 'B', 'C', 'D']
 const randomPlayers = (param1 = null) => {
@@ -2122,7 +2122,7 @@ Player A : Locker U
 Player G : Locker W
 Player E : Locker S
 ```
-Befor on next story chapter, Let's dig into what the above code is doing. 
+Befor on next story chapters, Let's dig into what the above code is doing. 
 
 We have called **parentFunc**,
 ```javascript
@@ -2137,7 +2137,7 @@ const parentFunc = (callback1, callback2, param1, param2, timeout) => {
 }
 ```
 
-A chain of **setTimeout** functions inside each other of their **callback** to display sequentially,
+A chain of **setTimeout** functions inside each other of their **callback** to display output sequentially,
 ```javascript
 const parentFunc = (callback1, callback2, param1, param2, timeout) => {
   console.log('Players : Lockers')
@@ -2186,7 +2186,7 @@ const parentFunc = (callback1, callback2, param1, param2, timeout) => {
 ...
 ...
 ```
-Additionally, it was mentioned that everything should be controlled through a centrally managed callback function. By using centrally managed callback function, extra features or logs can be attached without interference inside the **parentFunc** function definition and thus it will be executed standalonely. The developer team jumped back into work, determined to get everything perfect this time. As they started handling **nested callback**, they suddenly lost track. Maintaining the code became challenging. They frequently confront tough challenges when reviewing their own code, despite it being their own creation. At the end they were able to produce an output.
+Additionally, it was mentioned that everything should be controlled through a **centrally managed callback function**. By using centrally managed callback function, extra features or logs can be attached without interference inside the **parentFunc** function definition and thus it will be executed standalonely. The developer team jumped back into work, determined to get everything perfect this time. As they started handling **nested callback**, they suddenly **lost track**. **Maintaining** the code became **challenging**. They frequently confront tough challenges when reviewing their own code, despite it being their own creation. At the end they were able to produce an output.
 ```javascript
 players = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 const randomPlayers = (param1) => {
@@ -2257,7 +2257,52 @@ Player A : Locker W
 Player C : Locker V
 Player B : Locker T
 ```
+**We will now dissect the code to understand what's happening and how it's structured**. Before that if you forgot, 
+You can quickly review the sections described earlier in this article, particularly how an whole body callback function is passed as an argument to another function and how that argument can later be used. 
 
+**parentFunct** function calling and also passing a whole callback function as it's argument. The structure is,
+```javascript
+parentFunc(() => {
+  ...
+  ...
+})
+```
+
+**parentFunc** function receiving this whole callback argument as **parentCallback**,
+```javascript
+const parentFunc = (parentCallback) => {
+  ...
+  ...
+}
+```
+
+The receiving callback argument **parentCallback** is now called and also passing a whole callback function as it's argument.
+```javascript
+const parentFunc = (parentCallback) => {
+  parentCallback(() => {
+    ...
+    ...
+  }
+}
+```
+
+
+Though **parentCallback** is now called, it will execute it's function definition. This function definition is where the **parentFunc** function uses it as an whole callback argument.
+```javascript
+parentFunc(() => {
+  ...
+  ...
+})
+```
+
+
+Though **parentCallback** function also uses a whole callback function as an argument in it's calling time, this argument will be received by **parentCallback** function definition as it's parameter named **parentNestedCallback**. This definition is actually the whole callback argument of **parentFunc** function at the time it was called. 
+```javascript
+parentFunc((parentNestedCallback) => {
+  ...
+  ...
+})
+```
 
 
 ## Conclusion
