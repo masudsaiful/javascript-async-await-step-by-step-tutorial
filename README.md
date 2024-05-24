@@ -2186,7 +2186,7 @@ const parentFunc = (callback1, callback2, param1, param2, timeout) => {
 ...
 ...
 ```
-Additionally, it was mentioned that everything should be controlled through a **centrally managed callback function**. By using centrally managed callback function, extra features or logs can be attached without interference inside the **parentFunc** function definition and thus it will be executed standalonely. The developer team jumped back into work, determined to get everything perfect this time. As they started handling **nested callback**, they suddenly **lost track**. **Maintaining** the code became **challenging**. They frequently confront tough challenges when reviewing their own code, despite it being their own creation. At the end they were able to produce an output.
+Additionally, it was mentioned that everything should be controlled through a **centrally managed callback function**. By using centrally managed callback function, extra features or logs can be attached without interference inside the **parentFunc** function definition and thus it will be executed standalonely. The developer team jumped back into work, determined to get everything perfect this time. As they started handling **nested callback**, they suddenly **lost track**. **Maintaining** the code became **challenging**. They frequently confront **tough challenges** when reviewing their own code, despite it being their own creation. At the end they were able to produce an output.
 ```javascript
 players = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 const randomPlayers = (param1) => {
