@@ -35,12 +35,12 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 #### i) Name Function
 ##### Declaration or Definition:
 ```javascript
-##
+#
     Function has a name and declared or defined as usually:
 
-function functionName (param1, param2, ...) {
-  ...
-}
+    function functionName (param1, param2, ...) {
+      ...
+    }
 ```
 
 
