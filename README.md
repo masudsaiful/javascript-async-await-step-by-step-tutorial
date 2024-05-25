@@ -40,8 +40,6 @@ Function has a name and declared or defined as usually:
 function functionName (param1, param2, ...) {
   ...
 }
-
-<script src="_scripts/custom-scripts.js"></script>
 ```
 
 
