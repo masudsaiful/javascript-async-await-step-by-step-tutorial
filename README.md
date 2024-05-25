@@ -2261,7 +2261,7 @@ Player B : Locker T
 
 Before that if you forgot, You can quickly review the sections described earlier in this article, particularly how an whole body callback function is passed as an argument to another function and how that argument can later be used. 
 
-**parentFunct** function is calling and also passing a whole callback function as it's argument. The structure is,
+**parentFunc** function is calling and also passing a whole callback function as it's argument. The structure is,
 ```javascript
 parentFunc(() => {
   ...
@@ -2269,7 +2269,7 @@ parentFunc(() => {
 })
 ```
 
-**parentFunc** function receiving this whole callback argument as **parentCallback**,
+**parentFunc** function declaration will be executed and receive this whole callback argument as **parentCallback**,
 ```javascript
 const parentFunc = (parentCallback) => {
   ...
@@ -2288,7 +2288,7 @@ const parentFunc = (parentCallback) => {
 ```
 
 
-Though **parentCallback** is now called, it will execute it's function definition. This function definition is where the **parentFunc** function uses it as an whole callback argument.
+After calling **parentCallback** function, it will execute it's function definition which is the callback argument of **parentFunc** function. 
 ```javascript
 parentFunc(() => {
   ...
@@ -2297,13 +2297,70 @@ parentFunc(() => {
 ```
 
 
-Though **parentCallback** function also uses a whole callback function as an argument in it's calling time, this argument will be received by **parentCallback** function definition as it's parameter named **parentNestedCallback**. This definition is actually the whole callback argument of **parentFunc** function at the time it was called. 
+Though **parentCallback** function also passing a whole callback argument in it's calling time, this argument will be received by **parentCallback** function definition as **parentNestedCallback** that means in the place where **parentFunc** passing a callback argument. 
 ```javascript
+// 'parentCallback' passing a whole callback argument
+const parentFunc = (parentCallback) => {
+  parentCallback(() => {
+
+  }
+}
+
+// 'parentCallback' receiving the whole callback argument as 'parentNestedCallback' inside the 'parentFunc' callback argument
 parentFunc((parentNestedCallback) => {
   ...
   ...
 })
 ```
+
+
+Now **parentNestedCallback** function is called with passing some arguments, 
+```javascript
+parentFunc((parentNestedCallback) => {
+  ...
+  ...
+  parentNestedCallback(randomPlayers, randomLockers, players, lockers, 1000)
+})
+```
+
+**parentNestedCallback** will execute it's function definition which is actually the eintire callback argument of **parentCallback**. This entire callback now will receive the **parentNestedCallback** function arguments. 
+```javascript
+const parentFunc = (parentCallback) => {
+  parentCallback((callback1, callback2, param1, param2, timeout) => {
+
+  }
+}
+```
+
+
+Using the above nested calbacks circulation, **display** getting all the necessary parameters to execute and output logs where **stTimeout** sequentially calling these **display** functions. 
+```javascript
+const parentFunc = (parentCallback) => {
+  parentCallback((callback1, callback2, param1, param2, timeout) => {
+    setTimeout(() => {
+      display(callback1, callback2, param1, param2)
+      setTimeout(() => {
+        display(callback1, callback2, param1, param2)
+        ...
+        ...
+      }
+    }
+  })
+}
+```
+
+
+Now a centralized nested callback system handling all of the next instructions, moreover extra functionalities or logs can be added before or after the lottery automation system. 
+```javascript
+parentFunc((parentNestedCallback) => {
+  console.log('Players : Lockers')
+  parentNestedCallback(randomPlayers, randomLockers, players, lockers, 1000)
+})
+```
+After studying the sections above and reviewing the code, it becomes evident that the more nested callbacks are used, the harder the code is to understand. This complexity is especially apparent to those working with Node.js. Because of this, most modern asynchronous JavaScript methods don't use callbacks. Instead, in JavaScript, asynchronous programming is solved using Promises instead.
+
+
+
 
 
 ## Conclusion
