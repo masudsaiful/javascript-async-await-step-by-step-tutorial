@@ -34,15 +34,15 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 ### A) Javascript Function
 #### i) Name Function
 ##### Declaration or Definition:
-<pre>
 ```javascript
+<pre>
 Function has a name and declared or defined as usually:
 
 function functionName (param1, param2, ...) {
   ...
 }
-```
 </pre>
+```
 
 
 ##### Invokation or Calling:
