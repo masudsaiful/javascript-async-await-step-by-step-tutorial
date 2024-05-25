@@ -13,7 +13,37 @@
 
     {% seo %}
     {% include head-custom.html %}
-
+	
+	<script>
+		// Imports
+import copy from "copy-to-clipboard";
+import { onMount } from "svelte";
+/**
+ * This function will go through all the 'pre' elements
+ * on the page and add a copy button to them.
+ */
+onMount(() => {
+  const codeBlocks = document.querySelectorAll("pre");
+  codeBlocks.forEach((block) => {
+    const copyPrompt = document.createElement("div");
+    copyPrompt.className = "copy-prompt";
+    const copyPromptText = document.createElement("p");
+    copyPromptText.innerHTML = "👆 Click here to copy";
+    const copyIcon = document.createElement("img");
+    copyIcon.src = "/icons/ic_copy.svg";
+    copyPrompt.appendChild(copyIcon);
+    copyPrompt.appendChild(copyPromptText);
+    block.appendChild(copyPrompt);
+    block.querySelector(".copy-prompt > p").addEventListener("click", (evt) => {
+      copy(block.querySelector("code").textContent);
+      block.querySelector(".copy-prompt > p").innerHTML = "Copied!";
+      setTimeout(() => {
+        block.querySelector(".copy-prompt > p").innerHTML = "👆 Click to copy";
+      }, 1000);
+    });
+  });
+});
+	</script>
     <style>
     	#main_content h2 {
 		    font-size: 32px;
@@ -84,6 +114,53 @@
 		h6#please-read-all-sections-consecutively-for-ease-of-understanding-one-section-is-inextricably-linked-with-another-section {
 			margin-bottom: 30px;
 		}
+
+		.content :global(pre) {
+    background-color: rgba(42, 42, 42, 0.863);
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+    padding: 0.5em;
+    padding-left: 1em;
+    border-radius: 2px;
+    overflow-x: auto;
+    line-height: 1.7em;
+    border-left: 2px dashed rgba(106, 106, 106, 0.379);
+    transition: 0.1s all ease-in;
+    position: relative;
+
+    :global(.dark-mode) & {
+      background: none;
+      color: rgb(223, 223, 223);
+    }
+    :global(.copy-prompt) {
+      position: absolute;
+      right: 1em;
+      color: white;
+      top: 0em;
+      margin: 0.2em 0 0 0;
+      transition: 0.2s all ease-in;
+
+      :global(p) {
+        display: none;
+        margin: 0;
+        cursor: pointer;
+      }
+      :global(img) {
+        display: block;
+        height: 35px;
+        width: 20px;
+        left: 0;
+      }
+    }
+
+    &:hover {
+      :global(.copy-prompt > p) {
+        display: block;
+      }
+      :global(.copy-prompt > img) {
+        display: none;
+      }
+    }
+  }
     </style>
 	<meta name="google-site-verification" content="vgbr_tBBr8S1z_i_3qWQj5AcfRU9lc6r5v9CdX962ZU" />
   </head>
