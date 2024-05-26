@@ -2363,7 +2363,7 @@ After studying the sections above and reviewing the code, it becomes evident tha
 
 
 ### A) Javascript Promises
-##### Comparing Side by side of Callback and Promises:
+##### i) Comparing Side by side of Callback and Promises:
 
 Understanding JavaScript **callback**s and **promises** is fundamental to mastering asynchronous programming in JavaScript. We have already learned lot about Callback from the upper sections of this article. Below, we will compare callbacks and promises side by side, and then we will dive into an in-depth exploration of promises.
 
@@ -2839,6 +2839,37 @@ Promise.all([task1(), task2()]).then(results => {
   console.log(results);
 });
 ``` 
+
+
+**Work Flow** :- 
+
+###### Callback Work Flow,
+
+1) Start Asynchronous Operation: Initiate an asynchronous operation (e.g., fetching data).
+
+2) Pass Callback: Provide a callback function to handle the result once the operation is complete.
+
+3) Execute Callback: Once the operation completes, execute the callback with the result.
+
+Executing multiple asynchronous operations in parallel using callback is done by 
+
+
+###### Promises Work Flow,
+
+1) Create Promise: Create a new promise, which starts the asynchronous operation.
+
+2) Resolve or Reject: The promise is either resolved (successful completion) or rejected (failure).
+
+3) Handle Result: Use .then() to handle the resolved value and .catch() to handle any errors.
+
+4) Chain Operations: Chain multiple asynchronous operations together. 
+
+
+
+
+##### ii) Introduction to Promises:
+
+A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allowing us to chain operations.
 
 
 
