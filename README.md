@@ -2599,7 +2599,7 @@ Comparing both **callback hell** and **promises** code samples described above, 
 
 **Readability** :- How easy it is to read and understand the code. We don't need to burden about **Nested Callbacks**.
 ```javascript
-// Example: Callback
+// Example: Callback readability
 fetchData((data) => {
   fetchMoreData(data, (data) => {
     fetchEvenMoreData(data, (data) => {
@@ -2611,7 +2611,7 @@ fetchData((data) => {
 });
 
 
-// Example: promise
+// Example: promise readability
 fetchData()
   .then(data => {
     return fetchMoreData(data)
@@ -2630,7 +2630,7 @@ fetchData()
 
 **Purpose** :- **Callback** Handle async operations by passing a function. **Promises** handle async operations with more control.
 ```javascript
-// Example: Callback
+// Example: Callback always by passing functions
 const fetchData = (callback) => {
   setTimeout(() => {
     const data = {
@@ -2653,7 +2653,7 @@ fetchData((data) => {
 });
 
 
-// Example: promise
+// Example: promise without passing functions
 const fetchData = () => {
   const result = new Promise((resolved, rejected) => {
     setTimeout(() => {
@@ -2791,13 +2791,13 @@ Executing multiple asynchronous operations in parallel using promise is done by 
 // Logs both results when both tasks are done
 function task1(callback) {
   setTimeout(() => {
-      callback('Task 1 result');
+    callback('Task 1 result');
   }, 1000);
 }
 
 function task2(callback) {
   setTimeout(() => {
-      callback('Task 2 result');
+    callback('Task 2 result');
   }, 1000);
 }
 
@@ -2805,14 +2805,14 @@ let results = [];
 task1(result1 => {
   results.push(result1);
   if (results.length === 2) {
-      console.log(results);
+    console.log(results);
   }
 });
 task2(result2 => {
-    results.push(result2);
-    if (results.length === 2) {
-        console.log(results);
-    }
+  results.push(result2);
+  if (results.length === 2) {
+    console.log(results);
+  }
 });
 
 
@@ -2820,23 +2820,23 @@ task2(result2 => {
 // Example: Promises parallel execution
 // Logs both results when both tasks are done
 function task1() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve('Task 1 result');
-        }, 1000);
-    });
+  return new Promise((resolve) => {
+    setTimeout(() => {
+        resolve('Task 1 result');
+    }, 1000);
+  });
 }
 
 function task2() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve('Task 2 result');
-        }, 1000);
-    });
+  return new Promise((resolve) => {
+    setTimeout(() => {
+        resolve('Task 2 result');
+    }, 1000);
+  });
 }
 
 Promise.all([task1(), task2()]).then(results => {
-    console.log(results);
+  console.log(results);
 });
 ``` 
 
