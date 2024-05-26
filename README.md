@@ -2363,23 +2363,32 @@ After studying the sections above and reviewing the code, it becomes evident tha
 
 
 ### A) Javascript Promises
-##### Side by side compare to Callback and Promises:
+##### Comparing Side by side of Callback and Promises:
 
 Understanding JavaScript **callback**s and **promises** is fundamental to mastering asynchronous programming in JavaScript. We have already learned lot about Callback from the upper sections of this article. Below, we will compare callbacks and promises side by side, and then we will dive into an in-depth exploration of promises.
 
-###### When simulating an asynchronous operation using callback, eight things may exists in between the processes to handle operation,
+**When simulating an asynchronous operation using callback, eight things may exists in between the processes to handle operation**,
 
 i) A main function call to start the process
+
 ii) A callback function passing as a main function argument
+
 iii) Main function body
+
 iv) Receiving the passing callback in main function body
+
 v) A time-taking asynchronous function to process some tasks
+
 vi) Some data if available 
+
 vii) Callback function call to process the data
+
 viii) Callback function body
+
 ```javascript
 // Example: 
-// Main function body, receiving callback, time-cunsuming asynchronous function, available data, callback call   
+// Main function body, receiving callback, time-cunsuming asynchronous function, 
+// available data, callback call   
 const fetchData = (callback) => {
   setTimeout(() => {
     const data = {
@@ -2407,7 +2416,7 @@ Data received: {
 }
 ```
 
-###### We can also write the above code using whole callback syntax as belows,
+**We can also write the above code using whole callback syntax as belows**,
 ```javascript
 // Example: 
 // Main function body, receiving callback, time-cunsuming asynchronous function, available data, callback call   
