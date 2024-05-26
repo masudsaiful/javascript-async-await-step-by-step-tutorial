@@ -2504,61 +2504,84 @@ Final Data: {
 After fetching available processed data, the nested one receives it, thus managing the nested chain. However, as the chain grows larger, reading and controlling the code will become increasingly difficult.
 
 
-**Let's convert it to Javascript Promises**,
+**Let's convert the code to Javascript Promises**,
 ```javascript
 // Example:   
-const fetchData = (callback) => {
-  setTimeout(() => {
-    const data = {
-      name: 'Khan',
-      age: 50
-    }
-    callback(data)
-  }, 1000)
-}
-
-const fetchMoreData = (data, callback) => {
-  setTimeout(() => {
-    data.sex = 'Male'
-    callback(data)
-  }, 1000)
-}
-
-const fetchEvenMoreData = (data, callback) => {
-  setTimeout(() => {
-    data.profession = 'Software Engineer'
-    callback(data)
-  }, 1000)
-}
-
-const fetchFinalData = (data, callback) => {
-  setTimeout(() => {
-    data.interest = 'Movie'
-    callback(data)
-  }, 1000)
-}
-
-fetchData((data) => {
-  fetchMoreData(data, (data) => {
-    fetchEvenMoreData(data, (data) => {
-      fetchFinalData(data, (data) => {
-        console.log('Final Data:', data)
-      })
-    })
+const fetchData = () => {
+  const result = new Promise((resolved, rejected) => {
+    setTimeout(() => {
+      const data = {
+        name: 'Khan',
+        age: 50
+      }
+      resolved(data)
+    }, 1000)
   })
-});
+  return result
+}
+
+const fetchMoreData = data => {
+  const result = new Promise((resolved, rejected) => {
+    setTimeout(() => {
+      data.sex = 'Male'
+      resolved(data)
+    }, 1000)
+  })
+  return result
+}
+
+const fetchEvenMoreData = data => {
+  const result = new Promise((resolved, rejected) => {
+    setTimeout(() => {
+      data.profession = 'Software Engineer'
+      resolved(data)
+    }, 1000)
+  })
+  return result
+}
+
+const fetchFinalData = data => {
+  const result = new Promise((resolved, rejected) => {
+    setTimeout(() => {
+      data.interest = 'Movie'
+      resolved(data)
+    }, 1000)
+  })
+  return result
+}
+
+fetchData()
+  .then(data => {
+    return fetchMoreData(data)
+  })
+  .then(data => {
+    return fetchEvenMoreData(data)
+  })
+  .then(data => {
+    return fetchFinalData(data)
+  })
+  .then(data => {
+    console.log('Final Data:', data)
+  })
 
 
 # Output:
 
 Final Data: {
   name: 'Khan', 
-  age: 50, sex: 'Male', 
+  age: 50, 
+  sex: 'Male', 
   profession: 'Software Engineer', 
   interest: 'Movie'
 }
 ```
+Comparing both **callback hell** and **promise** code described above, the later asynchronous operations are cleaner and more readable manner.
 
+**Let's compare the both code side by side as given below**,
+| Description | Description |
+| --- | --- |
+| git status | List all new or modified files |
+| git diff | Show file differences that haven't been staged |
 
 
 
