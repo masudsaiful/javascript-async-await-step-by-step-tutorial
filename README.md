@@ -2496,7 +2496,8 @@ fetchData((data) => {
 
 Final Data: {
   name: 'Khan', 
-  age: 50, sex: 'Male', 
+  age: 50, 
+  sex: 'Male', 
   profession: 'Software Engineer', 
   interest: 'Movie'
 }
@@ -2575,9 +2576,10 @@ Final Data: {
   interest: 'Movie'
 }
 ```
-Comparing both **callback hell** and **promise** code described above, the later asynchronous operations are cleaner and more readable manner.
+Comparing both **callback hell** and **promises** code described above, it seems the later asynchronous operations are cleaner and more readable manner.
 
 **Let's compare the both code side by side as given below**,
+
 | Description | Description |
 | --- | --- |
 | git status | List all new or modified files |
