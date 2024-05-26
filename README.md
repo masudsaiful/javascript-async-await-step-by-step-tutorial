@@ -2363,11 +2363,11 @@ After studying the sections above and reviewing the code, it becomes evident tha
 
 
 ### A) Javascript Promises
-##### i) Comparing Side by side of Callback and Promises:
+#### i) Comparing Side by side of Callback and Promises:
 
 Understanding JavaScript **callback**s and **promises** is fundamental to mastering asynchronous programming in JavaScript. We have already learned lot about Callback from the upper sections of this article. Below, we will compare callbacks and promises side by side, and then we will dive into an in-depth exploration of promises.
 
-**When simulating an asynchronous operation using callback, eight things may exists in between the processes to handle operation**,
+##### When simulating an asynchronous operation using callback, eight things may exists in between the processes to handle operation,
 
 i) A main function call to start the process
 
@@ -2416,7 +2416,7 @@ Data received: {
 }
 ```
 
-**We can also write the above code using whole callback syntax as belows**,
+##### We can also write the above code using whole callback syntax as belows,
 ```javascript
 // Example: 
 // Main function body, receiving callback, time-cunsuming asynchronous function, 
@@ -2447,7 +2447,7 @@ Data received: {
 
 Callbacks can lead to complex and hard-to-maintain code, especially when multiple asynchronous operations depend on each other. The more nested callbacks are used, the more those processing terms will become intertwined. Consequently, understanding the code will become increasingly difficult. We already known that this is called **callback hell** or **pyramid of doom**.
 
-**Callback Hell**,
+##### Callback Hell,
 ```javascript
 // Example:   
 const fetchData = (callback) => {
@@ -2521,7 +2521,7 @@ Final Data: {
 After fetching available processed data, the nested one receives it, thus managing the nested chain. However, as the chain grows larger, reading and controlling the code will become increasingly difficult.
 
 
-**Let's convert the above code to Javascript Promises**,
+##### Let's convert the above code to Javascript Promises,
 ```javascript
 // Example:   
 const fetchData = () => {
@@ -2595,7 +2595,9 @@ Final Data: {
   interest: 'Movie'
 }
 ```
-Comparing both **callback hell** and **promises** code samples described above, it seems the later asynchronous operations are cleaner and more readable manner. Below are some more features specified that how we can get benifits of **Promises** over **Callbacks**.
+Comparing both **callback hell** and **promises** code samples described above, it seems the later asynchronous operations are cleaner and more readable manner. 
+
+##### Below are some more features specified that how we can get benifits of Promises over Callbacks.
 
 **Readability** :- How easy it is to read and understand the code. We don't need to burden about **Nested Callbacks**.
 ```javascript
@@ -2867,7 +2869,7 @@ Executing multiple asynchronous operations in parallel using callback is done by
 
 
 
-##### ii) Introduction to Promises:
+#### ii) Introduction to Promises:
 
 A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allowing us to chain operations.
 
