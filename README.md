@@ -2896,9 +2896,11 @@ The Promise object supports two properties: **state** and **result**.
 
 A promise can be one of three states: **Pending, Fulfilled and Rejected**
 
-**Pending:** The initial state. The promise is neither fulfilled nor rejected.
-**Fulfilled:** The operation completed successfully.
-**Rejected:** The operation failed.
+**Pending:** The initial state. The promise is neither fulfilled nor rejected. The result is undefined
+
+**Fulfilled:** The operation completed successfully. The result is a value
+
+**Rejected:** The operation failed. The result is an error object
 
 
 
