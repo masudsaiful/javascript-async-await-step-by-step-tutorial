@@ -2578,12 +2578,22 @@ Final Data: {
 ```
 Comparing both **callback hell** and **promises** code described above, it seems the later asynchronous operations are cleaner and more readable manner.
 
-**Let's compare the both code side by side as given below**,
+**Let's compare the both code side by side from below table**,
 
-| Description | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
+| Feature | Description | Callback | Promises
+| :--- | :--- | :--- | :--- |
+| Readability | How easy it is to read and understand the code. 
+| 
+```javascript
+javascript function doSomething(callback) { setTimeout(() => { callback('Result'); }, 1000); } doSomething(result => { console.log(result); });
+``` 
+| 
+```javascript
+javascript function doSomething() { return new Promise((resolve) => { setTimeout(() => { resolve('Result'); }, 1000); }); } doSomething().then(result => { console.log(result); });
+``` 
+|
+
+| Error Handling | Managing errors that occur during asynchronous operations. |
 
 
 
