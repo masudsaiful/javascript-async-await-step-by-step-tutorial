@@ -2597,7 +2597,7 @@ Final Data: {
 ```
 Comparing both **callback hell** and **promises** code samples described above, it seems the later asynchronous operations are cleaner and more readable manner. Below are some more features specified that how we can get benifits of **Promises** over **Callbacks**.
 
-**Readability** - How easy it is to read and understand the code. We don't need to burden about **Nested Callbacks**.
+**Readability** :- How easy it is to read and understand the code. We don't need to burden about **Nested Callbacks**.
 ```javascript
 // Example: Callback
 fetchData((data) => {
@@ -2628,7 +2628,7 @@ fetchData()
 ``` 
 
 
-**Purpose** - **Callback** Handle async operations by passing a function. **Promises** handle async operations with more control.
+**Purpose** :- **Callback** Handle async operations by passing a function. **Promises** handle async operations with more control.
 ```javascript
 // Example: Callback
 const fetchData = (callback) => {
@@ -2684,9 +2684,13 @@ fetchData()
 ``` 
 
 
-**Error Handling** - Using **Callback**, Must handle errors manually in each callback. Using **Promises**, Centralized error handling with **.catch()**.
+**Error Handling** :- 
+
+Using **Callback**, Must handle errors manually in each callback. 
+
+Using **Promises**, Centralized error handling with **.catch()**.
 ```javascript
-// Example: Callback
+// Example: Callback error handling
 fetchData((error, data) => {
   if (Object.entries(data).length === 0) {
     console.error("Error fetching data:", error);
@@ -2714,7 +2718,7 @@ fetchData((error, data) => {
 });
 
 
-// Example: promise
+// Example: promise error handling
 fetchData()
   .then(data => {
     return fetchMoreData(data)
@@ -2731,6 +2735,109 @@ fetchData()
   .catch(error => {
     console.log('Error:', error)
   })
+``` 
+
+
+**Chaining** :- Nested callbacks can lead to callback hell. In promises, clean chaining with **.then()** 
+```javascript
+// Example: Callback chaining
+fetchData((error, data) => {
+  fetchMoreData(data, (error, data) => {
+    fetchEvenMoreData(data, (error, data) => {
+      fetchFinalData(data, (error, data) => {
+        ...
+        ...
+      })
+    })
+  })
+});
+
+
+// Example: Promise .then()
+fetchData()
+  .then(data => {
+    ...
+    ...
+  })
+  .then(data => {
+    ...
+    ...
+  })
+  .then(data => {
+    ...
+    ...
+  })
+  .then(data => {
+    ...
+    ...
+  })
+  .catch(error => {
+    ...
+    ...
+  })
+``` 
+
+
+**State** :- Using callback asynchronous programming no built-in state management while in promises has states (**pending, fulfilled, rejected**). We will discuss that in details later. 
+
+
+**Parallel Execution** :- 
+
+Executing multiple asynchronous operations in parallel using callback is done by **seperated function call**.
+
+Executing multiple asynchronous operations in parallel using promise is done by **Promise.all()** bindings.
+```javascript
+// Example: Callback parallel execution
+// Logs both results when both tasks are done
+function task1(callback) {
+  setTimeout(() => {
+      callback('Task 1 result');
+  }, 1000);
+}
+
+function task2(callback) {
+  setTimeout(() => {
+      callback('Task 2 result');
+  }, 1000);
+}
+
+let results = [];
+task1(result1 => {
+  results.push(result1);
+  if (results.length === 2) {
+      console.log(results);
+  }
+});
+task2(result2 => {
+    results.push(result2);
+    if (results.length === 2) {
+        console.log(results);
+    }
+});
+
+
+
+// Example: Promises parallel execution
+// Logs both results when both tasks are done
+function task1() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Task 1 result');
+        }, 1000);
+    });
+}
+
+function task2() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('Task 2 result');
+        }, 1000);
+    });
+}
+
+Promise.all([task1(), task2()]).then(results => {
+    console.log(results);
+});
 ``` 
 
 
