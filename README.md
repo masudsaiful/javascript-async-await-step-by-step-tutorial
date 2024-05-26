@@ -2362,6 +2362,137 @@ After studying the sections above and reviewing the code, it becomes evident tha
 
 
 
+### A) Javascript Promises
+##### Side by side compare to Callback and Promises:
+
+Understanding JavaScript **callback**s and **promises** is fundamental to mastering asynchronous programming in JavaScript. We have already learned lot about Callback from the upper sections of this article. Below, we will compare callbacks and promises side by side, and then we will dive into an in-depth exploration of promises.
+
+###### When simulating an asynchronous operation using callback, eight things may exists in between the processes to handle operation,
+
+i) A main function call to start the process
+ii) A callback function passing as a main function argument
+iii) Main function body
+iv) Receiving the passing callback in main function body
+v) A time-taking asynchronous function to process some tasks
+vi) Some data if available 
+vii) Callback function call to process the data
+viii) Callback function body
+```javascript
+// Example: 
+// Main function body, receiving callback, time-cunsuming asynchronous function, available data, callback call   
+const fetchData = (callback) => {
+  setTimeout(() => {
+    const data = {
+      name: "Khan",
+      age: 50
+    };
+    callback(data);
+  }, 1000);
+}
+
+// Callback function body
+function handleData(data) {
+  console.log("Data received:", data);
+}
+
+// Main function call and passing a callback function
+fetchData(handleData);
+
+
+# Output:
+
+Data received: {
+  name: "Khan"
+  age: 50,
+}
+```
+
+###### We can also write the above code using whole callback syntax as belows,
+```javascript
+// Example: 
+// Main function body, receiving callback, time-cunsuming asynchronous function, available data, callback call   
+const fetchData = (callback) => {
+  setTimeout(() => {
+    const data = {
+      name: "Khan",
+      age: 50
+    };
+    callback(data);
+  }, 1000);
+}
+
+// Main function call, passing a callback function, callback function body
+fetchData((data) => {
+  console.log("Data received:", data);
+});
+
+
+# Output:
+
+Data received: {
+  name: "Khan"
+  age: 50,
+}
+```
+
+Callbacks can lead to complex and hard-to-maintain code, especially when multiple asynchronous operations depend on each other. The more nested callbacks are used, the more those processing terms will become intertwined. Consequently, understanding the code will become increasingly difficult. We already known that this is called **callback hell** or **pyramid of doom**.
+
+###### Callback Hell,
+```javascript
+// Example:   
+const fetchData = (callback) => {
+  setTimeout(() => {
+    const data = {
+      name: 'Khan',
+      age: 50
+    }
+    callback(data)
+  }, 1000)
+}
+
+const fetchMoreData = (data, callback) => {
+  setTimeout(() => {
+    data.sex = 'Male'
+    callback(data)
+  }, 1000)
+}
+
+const fetchEvenMoreData = (data, callback) => {
+  setTimeout(() => {
+    data.profession = 'Software Engineer'
+    callback(data)
+  }, 1000)
+}
+
+const fetchFinalData = (data, callback) => {
+  setTimeout(() => {
+    data.interest = 'Movie'
+    callback(data)
+  }, 1000)
+}
+
+fetchData((data) => {
+  fetchMoreData(data, (data) => {
+    fetchEvenMoreData(data, (data) => {
+      fetchFinalData(data, (data) => {
+        console.log('Final Data:', data)
+      })
+    })
+  })
+});
+
+
+# Output:
+
+Final Data: {
+  name: 'Khan', 
+  age: 50, sex: 'Male', 
+  profession: 'Software Engineer', 
+  interest: 'Movie'
+}
+```
+
+
 
 ## Conclusion
 
