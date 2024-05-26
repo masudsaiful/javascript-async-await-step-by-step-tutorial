@@ -2456,35 +2456,51 @@ const fetchData = (callback) => {
       name: 'Khan',
       age: 50
     }
-    callback(data)
+    callback(null, data)
   }, 1000)
 }
 
 const fetchMoreData = (data, callback) => {
   setTimeout(() => {
     data.sex = 'Male'
-    callback(data)
+    callback(null, data)
   }, 1000)
 }
 
 const fetchEvenMoreData = (data, callback) => {
   setTimeout(() => {
     data.profession = 'Software Engineer'
-    callback(data)
+    callback(null, data)
   }, 1000)
 }
 
 const fetchFinalData = (data, callback) => {
   setTimeout(() => {
     data.interest = 'Movie'
-    callback(data)
+    callback(null, data)
   }, 1000)
 }
 
-fetchData((data) => {
-  fetchMoreData(data, (data) => {
-    fetchEvenMoreData(data, (data) => {
-      fetchFinalData(data, (data) => {
+fetchData((error, data) => {
+  if (Object.entries(data).length === 0) {
+    console.error("Error fetching data:", error);
+    return;
+  }
+  fetchMoreData(data, (error, data) => {
+    if (Object.entries(data).length === 0) {
+      console.error("Error fetching data:", error);
+      return;
+    }
+    fetchEvenMoreData(data, (error, data) => {
+      if (Object.entries(data).length === 0) {
+        console.error("Error fetching data:", error);
+        return;
+      }
+      fetchFinalData(data, (error, data) => {
+        if (Object.entries(data).length === 0) {
+          console.error("Error fetching data:", error);
+          return;
+        }
         console.log('Final Data:', data)
       })
     })
@@ -2505,7 +2521,7 @@ Final Data: {
 After fetching available processed data, the nested one receives it, thus managing the nested chain. However, as the chain grows larger, reading and controlling the code will become increasingly difficult.
 
 
-**Let's convert the code to Javascript Promises**,
+**Let's convert the above code to Javascript Promises**,
 ```javascript
 // Example:   
 const fetchData = () => {
@@ -2564,6 +2580,9 @@ fetchData()
   .then(data => {
     console.log('Final Data:', data)
   })
+  .catch(error => {
+    console.log('Error:', error)
+  })
 
 
 # Output:
@@ -2576,24 +2595,143 @@ Final Data: {
   interest: 'Movie'
 }
 ```
-Comparing both **callback hell** and **promises** code described above, it seems the later asynchronous operations are cleaner and more readable manner.
+Comparing both **callback hell** and **promises** code samples described above, it seems the later asynchronous operations are cleaner and more readable manner. Below are some more features specified that how we can get benifits of **Promises** over **Callbacks**.
 
-**Let's compare the both code side by side from below table**,
-
-| Feature | Description | Callback | Promises
-| :--- | :--- | :--- | :--- |
-| Readability | How easy it is to read and understand the code. 
-| 
+**Readability** - How easy it is to read and understand the code. We don't need to burden about **Nested Callbacks**.
 ```javascript
-javascript function doSomething(callback) { setTimeout(() => { callback('Result'); }, 1000); } doSomething(result => { console.log(result); });
-``` 
-| 
-```javascript
-javascript function doSomething() { return new Promise((resolve) => { setTimeout(() => { resolve('Result'); }, 1000); }); } doSomething().then(result => { console.log(result); });
-``` 
-|
+// Example: Callback
+fetchData((data) => {
+  fetchMoreData(data, (data) => {
+    fetchEvenMoreData(data, (data) => {
+      fetchFinalData(data, (data) => {
+        console.log('Final Data:', data)
+      })
+    })
+  })
+});
 
-| Error Handling | Managing errors that occur during asynchronous operations. |
+
+// Example: promise
+fetchData()
+  .then(data => {
+    return fetchMoreData(data)
+  })
+  .then(data => {
+    return fetchEvenMoreData(data)
+  })
+  .then(data => {
+    return fetchFinalData(data)
+  })
+  .then(data => {
+    console.log('Final Data:', data)
+  })
+``` 
+
+
+**Purpose** - **Callback** Handle async operations by passing a function. **Promises** handle async operations with more control.
+```javascript
+// Example: Callback
+const fetchData = (callback) => {
+  setTimeout(() => {
+    const data = {
+      name: 'Khan',
+      age: 50
+    }
+    callback(data)
+  }, 1000)
+}
+...
+...
+fetchData((data) => {
+  fetchMoreData(data, (data) => {
+    fetchEvenMoreData(data, (data) => {
+      fetchFinalData(data, (data) => {
+        console.log('Final Data:', data)
+      })
+    })
+  })
+});
+
+
+// Example: promise
+const fetchData = () => {
+  const result = new Promise((resolved, rejected) => {
+    setTimeout(() => {
+      const data = {
+        name: 'Khan',
+        age: 50
+      }
+      resolved(data)
+    }, 1000)
+  })
+  return result
+}
+...
+...
+fetchData()
+  .then(data => {
+    return fetchMoreData(data)
+  })
+  .then(data => {
+    return fetchEvenMoreData(data)
+  })
+  .then(data => {
+    return fetchFinalData(data)
+  })
+  .then(data => {
+    console.log('Final Data:', data)
+  })
+``` 
+
+
+**Error Handling** - Using **Callback**, Must handle errors manually in each callback. Using **Promises**, Centralized error handling with **.catch()**.
+```javascript
+// Example: Callback
+fetchData((error, data) => {
+  if (Object.entries(data).length === 0) {
+    console.error("Error fetching data:", error);
+    return;
+  }
+  fetchMoreData(data, (error, data) => {
+    if (Object.entries(data).length === 0) {
+      console.error("Error fetching data:", error);
+      return;
+    }
+    fetchEvenMoreData(data, (error, data) => {
+      if (Object.entries(data).length === 0) {
+        console.error("Error fetching data:", error);
+        return;
+      }
+      fetchFinalData(data, (error, data) => {
+        if (Object.entries(data).length === 0) {
+          console.error("Error fetching data:", error);
+          return;
+        }
+        console.log('Final Data:', data)
+      })
+    })
+  })
+});
+
+
+// Example: promise
+fetchData()
+  .then(data => {
+    return fetchMoreData(data)
+  })
+  .then(data => {
+    return fetchEvenMoreData(data)
+  })
+  .then(data => {
+    return fetchFinalData(data)
+  })
+  .then(data => {
+    console.log('Final Data:', data)
+  })
+  .catch(error => {
+    console.log('Error:', error)
+  })
+``` 
 
 
 
