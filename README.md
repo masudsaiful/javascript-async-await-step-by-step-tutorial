@@ -2871,7 +2871,37 @@ Executing multiple asynchronous operations in parallel using callback is done by
 
 #### ii) Introduction to Promises:
 
-A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allowing us to chain operations.
+##### Introduction: Promise is an object
+A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. They represent a value that may be available now, or in the future, or never.
+
+While Promises are primarily designed to handle asynchronous operations, they can also be used in synchronous code. However, their primary use case is managing asynchronous behavior in JavaScript. Promises allowing us to chain operations.
+
+
+##### Creating a Promise: Syntax
+A Promise is created using the Promise constructor, which takes a function (executor) with two parameters: resolve and reject.
+```javascript
+// Example: Creating a promise template
+let promise = new Promise((resolve, reject) => {
+  // asynchronous operation goes here
+  if (/* operation successful */) {
+    resolve('Success');  // pass result to resolve
+  } else {
+    reject('Error');  // pass error to reject
+  }
+});
+```
+
+##### Promise Object Properties: State and Result
+The Promise object supports two properties: **state** and **result**.
+
+A promise can be one of three states: **Pending, Fulfilled and Rejected**
+
+**Pending:** The initial state. The promise is neither fulfilled nor rejected.
+**Fulfilled:** The operation completed successfully.
+**Rejected:** The operation failed.
+
+
+
 
 
 
