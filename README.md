@@ -2419,7 +2419,8 @@ Data received: {
 **We can also write the above code using whole callback syntax as belows**,
 ```javascript
 // Example: 
-// Main function body, receiving callback, time-cunsuming asynchronous function, available data, callback call   
+// Main function body, receiving callback, time-cunsuming asynchronous function, 
+// available data, callback call   
 const fetchData = (callback) => {
   setTimeout(() => {
     const data = {
@@ -2446,7 +2447,7 @@ Data received: {
 
 Callbacks can lead to complex and hard-to-maintain code, especially when multiple asynchronous operations depend on each other. The more nested callbacks are used, the more those processing terms will become intertwined. Consequently, understanding the code will become increasingly difficult. We already known that this is called **callback hell** or **pyramid of doom**.
 
-###### Callback Hell,
+**Callback Hell**,
 ```javascript
 // Example:   
 const fetchData = (callback) => {
@@ -2500,6 +2501,64 @@ Final Data: {
   interest: 'Movie'
 }
 ```
+After fetching available processed data, the nested one receives it, thus managing the nested chain. However, as the chain grows larger, reading and controlling the code will become increasingly difficult.
+
+
+**Let's convert it to Javascript Promises**,
+```javascript
+// Example:   
+const fetchData = (callback) => {
+  setTimeout(() => {
+    const data = {
+      name: 'Khan',
+      age: 50
+    }
+    callback(data)
+  }, 1000)
+}
+
+const fetchMoreData = (data, callback) => {
+  setTimeout(() => {
+    data.sex = 'Male'
+    callback(data)
+  }, 1000)
+}
+
+const fetchEvenMoreData = (data, callback) => {
+  setTimeout(() => {
+    data.profession = 'Software Engineer'
+    callback(data)
+  }, 1000)
+}
+
+const fetchFinalData = (data, callback) => {
+  setTimeout(() => {
+    data.interest = 'Movie'
+    callback(data)
+  }, 1000)
+}
+
+fetchData((data) => {
+  fetchMoreData(data, (data) => {
+    fetchEvenMoreData(data, (data) => {
+      fetchFinalData(data, (data) => {
+        console.log('Final Data:', data)
+      })
+    })
+  })
+});
+
+
+# Output:
+
+Final Data: {
+  name: 'Khan', 
+  age: 50, sex: 'Male', 
+  profession: 'Software Engineer', 
+  interest: 'Movie'
+}
+```
+
 
 
 
