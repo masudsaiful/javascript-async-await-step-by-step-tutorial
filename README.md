@@ -2925,6 +2925,39 @@ const promiseObj = new Promise((resolve, reject) => {
 ```
 
 
+##### Accessing Promise States and Results: Promise Callbacks and Promise Methods
+**Promise Callbacks: Resolve and Reject:**
+
+In the context of JavaScript promises, **resolve** and **reject** are callback functions provided by the Promise constructor. They are used to transition the promise from its initial pending state to either a fulfilled state (using resolve) or a rejected state (using reject).
+
+i) **resolve(value)**: The promise is fulfilled with the given value
+
+ii) **reject(reason)**: The promise is rejected with the given reason
+
+iii) We can use anything name in replace of **resolve** and **reject**
+
+iv) But always remember the first parameter will be **resolve** callback and the second parameter **reject** 
+
+```javascript
+// Example: Promise resolve, reject
+let myPromise = new Promise((resolve, reject) => {
+  let success = true;
+  if (success) {
+    resolve("Operation successful!");
+  } else {
+    reject("Operation failed!");
+  }
+});
+```
+
+**Promise Methods: .then(), .catch(), .finally():**
+When promises are resolved or rejected with success or failure result we can't directly access the state or result. We have to use promise methods.
+
+i) **.then()**: Handle the result of a promise. **then()** can chained to handle successive asynchronous operations.
+
+ii) **.catch()**: Handle errors if the promise is rejected.
+
+iii) **.finally()**: Executes code after the promise is settled, whether it's fulfilled or rejected. Sometimes we need to cleanup or finalization tasks after the promise chain completes.
 
 
 
