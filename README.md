@@ -2883,40 +2883,32 @@ Promises help in managing asynchronous operations in JavaScript, making code mor
 ##### Promises Object Properties: State and Result
 The Promise object supports two properties: 
 
-**state** and 
+a) **state** 
 
-**result**.
+b) **result**.
 
 A promise can be one of three states: 
 
-**Pending**, 
+a) **Pending:** The initial state. The promise is neither fulfilled nor rejected. The result is undefined
 
-**Fulfilled** and 
+b) **Fulfilled:** When a promise is fulfilled, it means the asynchronous operation has completed successfully, and it holds a value as its result.
 
-**Rejected**
-
-**Pending:** The initial state. The promise is neither fulfilled nor rejected. The result is undefined
-
-**Fulfilled:** When a promise is fulfilled, it means the asynchronous operation has completed successfully, and it holds a value as its result.
-
-**Rejected:** When a promise is rejected, it means the asynchronous operation has failed, and it holds a reason for the failure.
+c) **Rejected:** When a promise is rejected, it means the asynchronous operation has failed, and it holds a reason for the failure.
 
 **NOTE:** Promise properties state and result can't be accessed. We have to use promise method to handle promises.
 
 
 ##### Creating a Promise: Promise Syntax
 
-you use the new **Promise() constructor**, 
+i) you use the new **Promise() constructor**, 
 
-which takes a function with two parameters: 
+ii) which takes a function with two parameters: **resolve** and **reject**. 
 
-**resolve** and 
+iii) Inside this function, you perform the asynchronous operation 
 
-**reject**. 
+iv) then call **resolve()** when it **succeeds** or 
 
-Inside this function, you perform the asynchronous operation 
-
-and then call **resolve()** when it **succeeds** or **reject()** when it **fails**.
+v) **reject()** when it **fails**.
 ```javascript
 const promiseObj = new Promise((resolve, reject) => {
   // Simulating an asynchronous operation
