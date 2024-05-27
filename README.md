@@ -3012,7 +3012,7 @@ const fetchData = new Promise((resolve, reject) => {
 ```
 ###### In this example,
 
-i) The fetchData promise is created with the new Promise constructor.
+i) The fetchData promise is created with the **new Promise constructor**.
 
 ii) The executor function starts the asynchronous operation.
 ```javascript
@@ -3048,7 +3048,7 @@ i) **fetchData.then((result) => { ... })** attaches a handler for when the promi
 ii) **fetchData.catch((error) => { ... })** attaches a handler for when the promise is rejected. It receives the error and logs it to the console.
 
 
-**Working with Producing and Consuming Code**
+**Working with Producing and Consuming Code:**
 
 As a developer, you will often work with both producing and consuming code. However, the nature of the task determines which type of code you spend more time writing.
 
@@ -3069,7 +3069,7 @@ Combined Example
 
 Let's look at a more complex example that combines both producing and consuming code.
 
-##### Producing Code:
+###### Producing Code:
 ```javascript
 // Example: Producing Code
 function fetchUserData(userId) {
@@ -3091,7 +3091,7 @@ function fetchUserData(userId) {
 }
 ```
 
-##### Consuming Code,
+###### Consuming Code,
 ```javascript
 fetchUserData(1)
   .then((userData) => {
@@ -3101,7 +3101,7 @@ fetchUserData(1)
     console.error("Failed to fetch user data:", error);
   });
 ```
-**Explanation**:
+###### Explanation**:
 ###### Producing Code,
 
 i) **fetchUserData(userId)** is a function that returns a promise.
