@@ -2940,7 +2940,7 @@ iv) But always remember the first parameter will be **resolve** callback and the
 
 ```javascript
 // Example: Promise resolve, reject
-let myPromise = new Promise((resolve, reject) => {
+let promiseObj = new Promise((resolve, reject) => {
   let success = true;
   if (success) {
     resolve("Operation successful!");
@@ -2951,14 +2951,35 @@ let myPromise = new Promise((resolve, reject) => {
 ```
 
 **Promise Methods: .then(), .catch(), .finally():**
+
 When promises are resolved or rejected with success or failure result we can't directly access the state or result. We have to use promise methods.
 
-i) **.then()**: Handle the result of a promise. **then()** can chained to handle successive asynchronous operations.
+i) **.then()**: Handle the result of a promise. **then()** can chained to handle successive asynchronous operations. **.then()** can take two optional callback arguments. One for **success(resolve**) and one for **failure(reject)**
 
 ii) **.catch()**: Handle errors if the promise is rejected.
 
 iii) **.finally()**: Executes code after the promise is settled, whether it's fulfilled or rejected. Sometimes we need to cleanup or finalization tasks after the promise chain completes.
+```javascript
+// Example: .then(), .catch() and .finally()
+// If .then() take one argument, .catch() will use for failure handle
+promiseObj.then((result) => {
+  console.log("Promise fulfilled:", result);
+}).catch((error) => {
+  console.error("Promise rejected:", error);
+}).finally(() => {
+  console.log("Promise settled."); // This will be executed regardless of the promise's outcome.
+});
 
+
+// Example: .then() can take two arguments to handle success or failure result
+promiseObj.then((result) => {
+  console.log("Promise fulfilled:", result);
+}, (error) => {
+  console.log("Promise failed:", error);
+}).finally(() => {
+  console.log("Promise settled."); // This will be executed regardless of the promise's outcome.
+});
+```
 
 
 ## Conclusion
