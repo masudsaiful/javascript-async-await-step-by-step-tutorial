@@ -3077,7 +3077,7 @@ When handling the results of asynchronous operations in your application.
 ###### Combined Example:
 
 
-Let's look at a more complex example that combines both producing and consuming code.
+Let's look at a the following example that combines both producing and consuming code.
 
 ###### Producing Code,
 ```javascript
@@ -3130,6 +3130,27 @@ ii) The **.then** handler processes the resolved data, logging the user informat
 
 iii) The **.catch** handler handles any potential errors.
 
+
+
+### A) Javascript Async/Await
+We have learned a great deal about callbacks and how they handle asynchronous operations. Additionally, we have explored the difficulties and frustrations that arise when managing asynchronous operations with nested callbacks. Furthermore, we have seen how promises, with their magical **.then()** method, can simplify handling asynchronous operations as well as chaining asynchronous operations without passing callbacks.
+
+Now, we will learn how **Async/Await**, built on promises, can manage asynchronous code in an even more elegant, more intuitive and straightforward way.
+
+#### i) Introducing Async/Await
+##### Introducing Async:
+The async keyword is used to declare a function as asynchronous. An async function always returns a Promise.
+
+**Async function syntax**
+```javascript
+// Example: Simple async function
+async function iAmAsyncFunc() {
+  return "Hello!";
+}
+
+iAmAsyncFunc()
+.then(message => console.log(message))
+```
 
 
 
