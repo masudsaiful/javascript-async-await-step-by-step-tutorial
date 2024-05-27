@@ -3108,11 +3108,11 @@ iii) Based on the outcome of the operation, the promise is either resolved with 
 
 ###### Consuming Code,
 
-i) The fetchUserData function is called with a user ID of 1.
+i) The **fetchUserData** function is called with a user ID of 1.
 
-ii) The .then handler processes the resolved data, logging the user information to the console.
+ii) The **.then** handler processes the resolved data, logging the user information to the console.
 
-iii) The .catch handler handles any potential errors.
+iii) The **.catch** handler handles any potential errors.
 
 
 
