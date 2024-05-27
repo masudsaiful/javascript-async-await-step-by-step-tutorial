@@ -2989,7 +2989,7 @@ Promises in JavaScript provide a powerful way to handle asynchronous operations.
 
 Producing code is the code that creates and resolves a promise. This code is responsible for starting an asynchronous operation and eventually resolving or rejecting the promise based on the outcome of the operation.
 
-###### Example of Producing Code:
+###### Example of Producing Code,
 
 Let's create a promise that simulates an asynchronous task, such as fetching data from a server.
 
@@ -3027,9 +3027,9 @@ iv) If the operation fails, reject is called with an error message (**Error fetc
 
 Consuming code is the code that uses the promise produced by the producing code. This code handles the promise's resolution or rejection by attaching handlers to it.
 
-###### Example of Consuming Code:
+###### Example of Consuming Code,
 
-Now let's see how we can consume the fetchData promise using .then and .catch.
+Now let's see how we can consume the **fetchData** promise using **.then** and **.catch**.
 
 ```javascript
 // Example: Consuming code
@@ -3064,12 +3064,13 @@ When you need to wrap asynchronous operations (like AJAX calls, file reads, etc.
 When using APIs or libraries that return promises.
 
 When handling the results of asynchronous operations in your application.
-Combined Example
+
+###### Combined Example,
 
 
 Let's look at a more complex example that combines both producing and consuming code.
 
-###### Producing Code:
+###### Producing Code,
 ```javascript
 // Example: Producing Code
 function fetchUserData(userId) {
@@ -3101,7 +3102,7 @@ fetchUserData(1)
     console.error("Failed to fetch user data:", error);
   });
 ```
-###### Explanation**:
+###### Explanation:
 ###### Producing Code,
 
 i) **fetchUserData(userId)** is a function that returns a promise.
