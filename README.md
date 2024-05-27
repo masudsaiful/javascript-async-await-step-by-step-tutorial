@@ -2755,7 +2755,7 @@ fetchData((error, data) => {
 });
 
 
-// Example: Promise .then()
+// Example: Promise .then() chaining
 fetchData()
   .then(data => {
     ...
@@ -2818,6 +2818,10 @@ task2(result2 => {
 });
 
 
+# Output:
+
+['Task 1 result', 'Task 2 result']
+
 
 // Example: Promises parallel execution
 // Logs both results when both tasks are done
@@ -2840,6 +2844,11 @@ function task2() {
 Promise.all([task1(), task2()]).then(results => {
   console.log(results);
 });
+
+
+# Output:
+
+['Task 1 result', 'Task 2 result']
 ``` 
 
 
@@ -2866,7 +2875,7 @@ Executing multiple asynchronous operations in parallel using callback is done by
 
 4) Chain Operations: Chain multiple asynchronous operations together. 
 
-
+Before fully getting acquainted with promises, we've spent time discussing both callbacks and promises side by side. This approach helps to build an early understanding of promises and their practical applications.
 
 
 #### ii) Introduction to Promises:
