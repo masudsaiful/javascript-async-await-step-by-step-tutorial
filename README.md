@@ -2982,13 +2982,15 @@ promiseObj.then((result) => {
 ```
 
 
-##### Promises as a: Producing Code, Consuming Code**
+##### Promises as a: Producing Code, Consuming Code
 Promises in JavaScript provide a powerful way to handle asynchronous operations. To understand promises fully, it's helpful to break them down into two main parts: "producing code" and "consuming code." Let's explore each part in detail, including examples.
 
-**Producing Code**,
+**Producing Code:**
+
 Producing code is the code that creates and resolves a promise. This code is responsible for starting an asynchronous operation and eventually resolving or rejecting the promise based on the outcome of the operation.
 
-**Example of Producing Code**,
+###### Example of Producing Code:
+
 Let's create a promise that simulates an asynchronous task, such as fetching data from a server.
 
 ```javascript
@@ -3021,11 +3023,12 @@ iii) If the operation is successful, resolve is called with the result (**Data f
 iv) If the operation fails, reject is called with an error message (**Error fetching data.**).
 
 
-**Consuming Code**
+**Consuming Code:**
 
 Consuming code is the code that uses the promise produced by the producing code. This code handles the promise's resolution or rejection by attaching handlers to it.
 
-**Example of Consuming Code**,
+###### Example of Consuming Code:
+
 Now let's see how we can consume the fetchData promise using .then and .catch.
 
 ```javascript
@@ -3046,6 +3049,7 @@ ii) **fetchData.catch((error) => { ... })** attaches a handler for when the prom
 
 
 **Working with Producing and Consuming Code**
+
 As a developer, you will often work with both producing and consuming code. However, the nature of the task determines which type of code you spend more time writing.
 
 ###### Producing Code,
@@ -3062,9 +3066,10 @@ When using APIs or libraries that return promises.
 When handling the results of asynchronous operations in your application.
 Combined Example
 
-**Let's look at a more complex example that combines both producing and consuming code.**
 
-###### Producing Code,
+Let's look at a more complex example that combines both producing and consuming code.
+
+##### Producing Code:
 ```javascript
 // Example: Producing Code
 function fetchUserData(userId) {
@@ -3086,7 +3091,7 @@ function fetchUserData(userId) {
 }
 ```
 
-###### Consuming Code,
+##### Consuming Code,
 ```javascript
 fetchUserData(1)
   .then((userData) => {
@@ -3096,10 +3101,10 @@ fetchUserData(1)
     console.error("Failed to fetch user data:", error);
   });
 ```
-***Explanation***:
+**Explanation**:
 ###### Producing Code,
 
-i) fetchUserData(userId) is a function that returns a promise.
+i) **fetchUserData(userId)** is a function that returns a promise.
 
 ii) Inside the promise executor, a simulated asynchronous operation is performed using setTimeout.
 
