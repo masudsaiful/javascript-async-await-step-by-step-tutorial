@@ -2910,6 +2910,7 @@ iv) then call **resolve()** when it **succeeds** or
 
 v) **reject()** when it **fails**.
 ```javascript
+// Example: Promises syntax
 const promiseObj = new Promise((resolve, reject) => {
   // Simulating an asynchronous operation
   setTimeout(() => {
