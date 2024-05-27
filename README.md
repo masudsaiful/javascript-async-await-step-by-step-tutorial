@@ -2881,9 +2881,19 @@ Promises help in managing asynchronous operations in JavaScript, making code mor
 
 
 ##### Promises Object Properties: State and Result
-The Promise object supports two properties: **state** and **result**.
+The Promise object supports two properties: 
 
-A promise can be one of three states: **Pending, Fulfilled and Rejected**
+**state** and 
+
+**result**.
+
+A promise can be one of three states: 
+
+**Pending**, 
+
+**Fulfilled** and 
+
+**Rejected**
 
 **Pending:** The initial state. The promise is neither fulfilled nor rejected. The result is undefined
 
@@ -2895,25 +2905,29 @@ A promise can be one of three states: **Pending, Fulfilled and Rejected**
 
 
 ##### Creating a Promise: Promise Syntax
-**To create a promise**, 
+
 you use the new **Promise() constructor**, 
 
-which takes a function with two parameters: **resolve** and **reject**. 
+which takes a function with two parameters: 
+
+**resolve** and 
+
+**reject**. 
 
 Inside this function, you perform the asynchronous operation 
 
 and then call **resolve()** when it **succeeds** or **reject()** when it **fails**.
 ```javascript
 const promiseObj = new Promise((resolve, reject) => {
-    // Simulating an asynchronous operation
-    setTimeout(() => {
-        let success = true; // Assuming the operation succeeded
-        if (success) {
-            resolve("Data successfully fetched!");
-        } else {
-            reject("Error: Failed to fetch data!");
-        }
-    }, 2000);
+  // Simulating an asynchronous operation
+  setTimeout(() => {
+    let success = true; // Assuming the operation succeeded
+    if (success) {
+      resolve("Data successfully fetched!");
+    } else {
+      reject("Error: Failed to fetch data!");
+    }
+  }, 2000);
 });
 ```
 
