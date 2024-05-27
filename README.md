@@ -3065,7 +3065,7 @@ When using APIs or libraries that return promises.
 
 When handling the results of asynchronous operations in your application.
 
-###### Combined Example,
+###### Combined Example:
 
 
 Let's look at a more complex example that combines both producing and consuming code.
@@ -3079,7 +3079,7 @@ function fetchUserData(userId) {
 
     // Simulate an asynchronous operation with setTimeout
     setTimeout(() => {
-      const data = { id: userId, name: "John Doe", age: 30 };
+      const data = { id: userId, name: "Khan", age: 50 };
       const success = true; // Change this to false to simulate a failure
 
       if (success) {
@@ -3094,6 +3094,7 @@ function fetchUserData(userId) {
 
 ###### Consuming Code,
 ```javascript
+// Example: Consuming Code
 fetchUserData(1)
   .then((userData) => {
     console.log("User Data:", userData);
