@@ -3133,7 +3133,7 @@ iii) The **.catch** handler handles any potential errors.
 
 
 ### A) Javascript Async/Await
-We have learned a great deal about callbacks and how they handle asynchronous operations. Additionally, we have explored the difficulties and frustrations that arise when managing asynchronous operations with nested callbacks. Furthermore, we have seen how promises, with their magical **.then()** method, can simplify handling asynchronous operations as well as chaining asynchronous operations without passing callbacks.
+We have learned a great deal about **callbacks** and how they handle asynchronous operations. Additionally, we have explored the difficulties and frustrations that arise when managing asynchronous operations with **nested callbacks**. Furthermore, we have seen how **promises**, with their magical **.then()** method, can simplify handling asynchronous operations as well as chaining asynchronous operations without passing callbacks.
 
 Now, we will learn how **Async/Await**, built on promises, can manage asynchronous code in an even more elegant, more intuitive and straightforward way.
 
@@ -3177,11 +3177,27 @@ I am async function!
 
 **Async function always return Promise**
 ```javascript
-// Example: Async function return promise
+// Example: Async function always return promise even no promise constructor
+const iAmAsyncFunc = async () => {
+  return 'I am async function without promise constructor'
+}
+
+iAmAsyncFunc()
+.then((data) => {
+  console.log(data)
+})
+
+# Output:
+
+I am async function without promise constructor
+
+
+
+// Example: Async function always return promise resolved with promise 
 const iAmAsyncFunc = async () => {
   const promiseObj = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve('I am async function!')
+      resolve('I am async function resolved with promise')
     }, 3000)
   })
 
@@ -3192,6 +3208,11 @@ iAmAsyncFunc()
 .then((data) => {
   console.log(data)
 })
+
+
+# Output:
+
+I am async function resolved with promise
 ```
 
 ## Conclusion
