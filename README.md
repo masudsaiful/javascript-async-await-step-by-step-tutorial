@@ -7,23 +7,23 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
-###### A) [Javascript Functions](#javascript-functions)
+###### A) [Javascript Functions](#a-javascript-functions-1)
 
-###### B) Single-threaded, blocking and synchronous
+###### B) [Single-threaded, blocking and synchronous](#b-single-threaded-blocking-and-synchronous-1)
 
-###### C) Function Sequence and synchronous programming
+###### C) [Function Sequence and synchronous programming](#c-function-sequence-and-synchronous-programming-1)
 
-###### D) Problems with synchronous programming
+###### D) [Problems with synchronous programming](#d-problems-with-synchronous-programming-1)
 
-###### E) Callback
+###### E) [Callback](#e-javascript-callback-function)
 
-###### F) multi-threaded, non-blocking and asynchronous
+###### F) [multi-threaded, non-blocking and asynchronous](#f-multi-threaded-non-blocking-and-asynchronous-1)
 
-###### G) Problems with Asynchronous programing using Callback (Callback Hell)
+###### G) [Problems with Asynchronous programing using Callback (Callback Hell)](#g-problems-with-asynchronous-programing-using-callback-callback-hell-1)
 
-###### H) Javascript Promises
+###### H) [Javascript Promises](#h-javascript-promises)
 
-###### I) Async/Await
+###### I) [Async/Await](#i-javascript-asyncawait)
 
 ###### I) Recap everything at a glance
 
@@ -2362,7 +2362,7 @@ After studying the sections above and reviewing the code, it becomes evident tha
 
 
 
-### A) Javascript Promises
+### H) Javascript Promises
 #### i) Comparing Side by side of Callback and Promises:
 
 Understanding JavaScript **callback**s and **promises** is fundamental to mastering asynchronous programming in JavaScript. We have already learned lot about Callback from the upper sections of this article. Below, we will compare callbacks and promises side by side, and then we will dive into an in-depth exploration of promises.
@@ -3132,7 +3132,7 @@ iii) The **.catch** handler handles any potential errors.
 
 
 
-### A) Javascript Async/Await
+### I) Javascript Async/Await
 We have learned a great deal about **callbacks** and how they handle asynchronous operations. Additionally, we have explored the difficulties and frustrations that arise when managing asynchronous operations with **nested callbacks**. Furthermore, we have seen how **promises**, with their magical **.then()** method, can simplify handling asynchronous operations as well as chaining asynchronous operations without passing callbacks.
 
 Now, we will learn how **Async/Await**, built on promises, can manage asynchronous code in an even more elegant, more intuitive and straightforward way.
