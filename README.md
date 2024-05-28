@@ -3141,7 +3141,7 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 #### i) Introducing Async/Await
 
 ##### Async function:
-<br />
+<p class="gap"></p>
 
 **Async function syntax**,
 
