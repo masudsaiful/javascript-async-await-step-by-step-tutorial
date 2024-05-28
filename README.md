@@ -3182,7 +3182,7 @@ iAMAsyncFunc()
 
 I am async function!
 ```
-<p style="height:1px; margin-bottom:24px;"></p>
+<p style="height:1px; margin-bottom:19px;"></p>
 
 ##### Async function always return Promise
 ```javascript
@@ -3223,9 +3223,9 @@ iAmAsyncFunc()
 
 I am async function resolved with promise
 ```
-<p style="height:1px; margin-bottom:24px;"></p>
+<p style="height:1px; margin-bottom:19px;"></p>
 
-##### Async function return value can be handle using promise method .then()
+##### Async function return result can be handled by promise method .then()
 ```javascript
 // Example: Using .then() method handling async return result
 const iAmAsyncFunc = async () => {
@@ -3242,11 +3242,13 @@ iAmAsyncFunc()
 I am async function without promise constructor
 
 ```
-<p style="height:1px; margin-bottom:24px;"></p>
+<p style="height:1px; margin-bottom:19px;"></p>
 
 ##### It's not that much interesting only use async keyword!
 
 Only use async keyword need promise methods to handle result. So, basically promise style result handling.
+
+
 ```javascript
 // Example: Async return promise
 const iAmAsyncFunc = async () => {
