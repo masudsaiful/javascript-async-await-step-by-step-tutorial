@@ -3139,9 +3139,9 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 
 
 #### i) Introducing Async
-<p style="height:1px; margin-bottom:24px;"></p>
+<p style="height:1px; margin-bottom:19px;"></p>
 ##### Async function syntax
-<p style="height:1px; margin-bottom:12px;"></p>
+<p style="height:1px; margin-bottom:9px;"></p>
 
 The async keyword is used to declare a function as asynchronous. 
 
@@ -3182,7 +3182,7 @@ iAMAsyncFunc()
 
 I am async function!
 ```
-<p style="height:1px; margin-bottom:19px;"></p>
+<p style="height:1px; margin-bottom:14px;"></p>
 
 ##### Async function always return Promise
 ```javascript
@@ -3223,7 +3223,7 @@ iAmAsyncFunc()
 
 I am async function resolved with promise
 ```
-<p style="height:1px; margin-bottom:19px;"></p>
+<p style="height:1px; margin-bottom:14px;"></p>
 
 ##### Async function return result can be handled by promise method .then()
 ```javascript
@@ -3242,13 +3242,11 @@ iAmAsyncFunc()
 I am async function without promise constructor
 
 ```
-<p style="height:1px; margin-bottom:19px;"></p>
+<p style="height:1px; margin-bottom:14px;"></p>
 
 ##### It's not that much interesting only use async keyword!
 
 Only use async keyword need promise methods to handle result. So, basically promise style result handling.
-
-
 ```javascript
 // Example: Async return promise
 const iAmAsyncFunc = async () => {
