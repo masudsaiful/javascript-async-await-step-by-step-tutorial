@@ -7,7 +7,7 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 ## Before understanding Async/Await we should first need to understand the concept of the followings. More or less they are: 
 
-###### A. [Javascript Functions](####-A.-javascript-functions)
+###### A. [Javascript Functions](#A.-javascript-functions)
 
 ###### B) Single-threaded, blocking and synchronous
 
