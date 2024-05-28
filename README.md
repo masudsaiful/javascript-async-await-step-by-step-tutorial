@@ -3286,14 +3286,38 @@ It's obvious from the above code that only using async keyword doesn't come any 
 
 The **Await** keyword can only be used inside an async function. 
 
-The **Await** keyword makes the asynch function pause the execution and wait until a resolved promise before it continues. 
+The **Await** keyword makes the async function pause the execution and wait until a resolved promise before it continues. 
 
-Handling the asynchronous operations using asynch function effectively typically requires the use of **await** keyword to ensure the co-routine runs to completion. Without **await** the co-routine will not execute as expected.
+Handling the asynchronous operations using async function effectively typically requires the use of **await** keyword to ensure the co-routine runs to completion. Without **await** the co-routine will not execute as expected.
 ```javascript
-// Example: Await sytax
+// Example: Simple await sytax
 let result = await promise
-```
 
+
+// Example: Simple await syntax inside async function
+const iAmAsyncFunc = async () => {
+  const response = 'settled promise'
+  const result = await response
+  console.log(result)
+}
+
+iAmAsyncFunc()
+
+# Output:
+
+settled promise
+```
+#### iii) Async/Await is syntactic sugar built on top of promises
+Async/Await allows us to write asynchronous code in a more synchronous fashion, which can be easier to read and understand.
+
+<p style="height:1px; margin-bottom:19px;"></p>
+##### Async/Await don't need to use promise method .then()
+<p style="height:1px; margin-bottom:9px;"></p>
+
+
+```javascript
+
+```
 
 
 ## Conclusion
