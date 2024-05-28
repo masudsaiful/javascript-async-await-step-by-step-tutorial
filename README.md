@@ -3139,7 +3139,13 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 
 #### i) Introducing Async/Await
 ##### Introducing Async:
-The async keyword is used to declare a function as asynchronous. An async function always returns a Promise. The keyword async before a function makes the function returning promise.
+The async keyword is used to declare a function as asynchronous. 
+
+An async function always returns a Promise. 
+
+The keyword async before a function makes the function returning promise.
+
+Though async function return promise, **.then()** method to get settled result
 
 **Async function syntax**
 ```javascript
@@ -3193,7 +3199,7 @@ I am async function without promise constructor
 
 
 
-// Example: Async function always return promise resolved with promise 
+// Example: Async function always return promise even resolved with another promise constructor
 const iAmAsyncFunc = async () => {
   const promiseObj = new Promise((resolve, reject) => {
     setTimeout(() => {
