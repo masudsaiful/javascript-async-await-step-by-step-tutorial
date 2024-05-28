@@ -3225,7 +3225,7 @@ I am async function resolved with promise
 ```
 <p style="height:1px; margin-bottom:14px;"></p>
 
-##### Async function return result can be handled by promise method .then()
+##### Async function returned result can be handled by promise method .then()
 ```javascript
 // Example: Using .then() method handling async return result
 const iAmAsyncFunc = async () => {
@@ -3244,7 +3244,9 @@ I am async function without promise constructor
 ```
 <p style="height:1px; margin-bottom:14px;"></p>
 
-##### It's not that much interesting only use async keyword!
+##### It's not that much interesting only using async keyword!
+
+Only use async keyword with no internal promise call need to implicitly create a resolved promise with a value.
 
 Only use async keyword need promise methods to handle result. So, basically promise style result handling.
 ```javascript
