@@ -3246,9 +3246,11 @@ I am async function without promise constructor
 ##### It's not that much interesting only using async keyword!
 <p style="height:1px; margin-bottom:9px;"></p>
 
-Only use async keyword with no internal promise call need to implicitly create a resolved promise with a value.
+Only using async keyword with no internal promise call need to implicitly create a resolved promise with a value.
 
-Only use async keyword need promise methods to handle result. So, basically promise style result handling.
+Only use async keyword with implicitly created a resolve promise actually return the vlue immediately.
+
+Only use async keyword need promise methods to handle settled result. So, basically promise style result handling.
 ```javascript
 // Example: Async return promise
 const iAmAsyncFunc = async () => {
