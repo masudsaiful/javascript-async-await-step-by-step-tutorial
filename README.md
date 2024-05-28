@@ -3139,9 +3139,12 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 
 
 #### i) Introducing Async/Await
+
 ##### Async function:
 
+
 **Async function syntax**,
+
 The async keyword is used to declare a function as asynchronous. 
 
 An async function always returns a Promise. 
@@ -3181,6 +3184,7 @@ iAMAsyncFunc()
 
 I am async function!
 ```
+
 
 **Async function always return Promise**,
 ```javascript
