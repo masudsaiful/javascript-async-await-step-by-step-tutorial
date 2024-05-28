@@ -21,11 +21,11 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 ###### G) [Problems with Asynchronous programing using Callback (Callback Hell)](#g-problems-with-asynchronous-programing-using-callback-callback-hell-1)
 
-###### H) [Javascript Promises](#h-javascript-promises)
+###### H) [Javascript Promises](#h-javascript-promises-1)
 
 ###### I) [Async/Await](#i-javascript-asyncawait)
 
-###### I) Recap everything at a glance
+
 
 
 ## Let's a short overview all of them:
