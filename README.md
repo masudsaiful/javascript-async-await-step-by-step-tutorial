@@ -3141,7 +3141,7 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 #### i) Introducing Async/Await
 
 ##### Async function:
-<p style="margin-bottom:0;"></p>
+<p style="margin-bottom:25;"></p>
 
 **Async function syntax**,
 
@@ -3184,7 +3184,7 @@ iAMAsyncFunc()
 
 I am async function!
 ```
-<br />
+<p style="margin-bottom:25;"></p>
 
 **Async function always return Promise**,
 ```javascript
