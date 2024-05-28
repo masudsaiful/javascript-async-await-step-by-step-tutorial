@@ -3143,7 +3143,7 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 ##### Async function syntax
 <p style="height:1px; margin-bottom:9px;"></p>
 
-The async keyword is used to declare a function as asynchronous. 
+The **Async** keyword is used to declare a function as asynchronous. 
 
 An async function always returns a Promise. 
 
@@ -3281,10 +3281,17 @@ It's obvious from the above code that only using async keyword doesn't come any 
 
 #### ii) Introducing Await
 <p style="height:1px; margin-bottom:19px;"></p>
-##### Async/Await function syntax
+##### Await syntax
 <p style="height:1px; margin-bottom:9px;"></p>
-```javascript
 
+The **Await** keyword can only be used inside an async function. 
+
+The **Await** keyword makes the asynch function pause the execution and wait until a resolved promise before it continues. 
+
+Handling the asynchronous operations using asynch function effectively typically requires the use of **await** keyword to ensure the co-routine runs to completion. Without **await** the co-routine will not execute as expected.
+```javascript
+// Example: Await sytax
+let result = await promise
 ```
 
 
