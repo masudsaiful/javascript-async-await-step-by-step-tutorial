@@ -3139,8 +3139,9 @@ Now, we will learn how **Async/Await**, built on promises, can manage asynchrono
 
 
 #### i) Introducing Async
-
-##### Async function syntax:
+<p style="height:1px; margin-bottom:30px;"></p>
+##### Async function syntax
+<p style="height:1px; margin-bottom:20px;"></p>
 
 The async keyword is used to declare a function as asynchronous. 
 
@@ -3183,7 +3184,7 @@ I am async function!
 ```
 <p style="height:1px; margin-bottom:24px;"></p>
 
-##### Async function always return Promise,
+##### Async function always return Promise.
 ```javascript
 // Example: Async function always return promise even no promise constructor
 const iAmAsyncFunc = async () => {
@@ -3224,10 +3225,29 @@ I am async function resolved with promise
 ```
 <p style="height:1px; margin-bottom:24px;"></p>
 
-##### It's not that much interesting only use async keyword!,
+##### Async function return value can be handle using promise method .then()
+```javascript
+// Example: Using .then() method handling async return result
+const iAmAsyncFunc = async () => {
+  return 'I am async function without promise constructor'
+}
 
+iAmAsyncFunc()
+.then((data) => {
+  console.log(data)
+})
 
-**Only use async keyword just saying everything is returned like promise settled. Even a whole string returned like promise settled**. 
+# Output:
+
+I am async function without promise constructor
+
+```
+<p style="height:1px; margin-bottom:24px;"></p>
+
+##### It's not that much interesting only use async keyword!
+<p style="height:1px; margin-bottom:20px;"></p>
+
+Only use async keyword need promise methods to handle result. So, basically promise based result handling.
 ```javascript
 // Example: Async return promise
 const iAmAsyncFunc = async () => {
