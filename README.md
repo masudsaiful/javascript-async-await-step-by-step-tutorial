@@ -31,7 +31,7 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 ## Let's a short overview all of them:
 ###### (Please read all sections consecutively for ease of understanding. One section is inextricably linked with another section.)
 
-A) ### Javascript Functions
+### Javascript Functions
 #### i) Name Function
 ##### Declaration or Definition:
 ```javascript
