@@ -3243,8 +3243,8 @@ I am async function without promise constructor
 
 ```
 <p style="height:1px; margin-bottom:14px;"></p>
-
 ##### It's not that much interesting only using async keyword!
+<p style="height:1px; margin-bottom:9px;"></p>
 
 Only use async keyword with no internal promise call need to implicitly create a resolved promise with a value.
 
