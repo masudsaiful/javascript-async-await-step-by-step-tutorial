@@ -3276,28 +3276,13 @@ Operation started...
 Operation will complete after delay
 Operation completed after delay
 ```
+It's obvious from the above code that only using async keyword doesn't come any speciality to handle asynchronous operation as an asynchronous function. This approach achieves the requirement of lackings any waiting mechanism while still demonstrating asynchronous behavior. So, need a pattern to fully utilize the promise-based-asynchronous handling over smartly on top of promises. And here comes 'Await' into the scene.
 
-**Though **async** return promise, only using keyword need **.then()** to handle settled result**.
-```javascript
-// Example: Only using async keywork need .then() to handle return result
-const iAmAsyncFunc1 = async () => {
-  return 'I am async function1 \n'
-}
 
-const iAmAsyncFunc2 = async (data) => {
-  return data + 'I am async function2'
-}
-
-iAmAsyncFunc1()
-.then(data => iAmAsyncFunc2(data))
-.then(data => console.log(data))
-
-# Output:
-
-I am async function1 
-I am async function2
-```
-**Though **async** return promise, need **.then()** to handle settled result**.
+#### ii) Introducing Await
+<p style="height:1px; margin-bottom:19px;"></p>
+##### Async/Await function syntax
+<p style="height:1px; margin-bottom:9px;"></p>
 ```javascript
 
 ```
