@@ -3251,18 +3251,30 @@ Only using async keyword with no internal promise call need to implicitly create
 Only use async keyword with implicitly created a resolve promise actually return the vlue immediately.
 
 Only use async keyword need promise methods to handle settled result. So, basically promise style result handling.
+
+Only creating async keyword the function itself can not directly wait for the time-consuming asynchronous task to complete before returning a result because time-taking methods are non-blocking.
 ```javascript
-// Example: Async return promise
+// Example: Async function no internal promise call implicitly creates a resolved promise
 const iAmAsyncFunc = async () => {
-  return 'I am returning whole string promis'
+  console.log('Operation started...')
+
+  setTimeout(() =>  {
+    console.log('Operation completed after delay') // logged after 2 second delay independently
+  }, 2000)
+
+  return ('Operation will complete after delay') // implicitly resolved promise
 }
 
 iAmAsyncFunc()
-.then(data => console.log(data))
+.then(data => console.log(data)) // Handling the immediately settled promise result
+.catch(error => console.log(error))
+
 
 # Output:
 
-I am returning whole string promis
+Operation started...
+Operation will complete after delay
+Operation completed after delay
 ```
 
 **Though **async** return promise, only using keyword need **.then()** to handle settled result**.
