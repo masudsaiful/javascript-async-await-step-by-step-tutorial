@@ -3138,12 +3138,9 @@ We have learned a great deal about **callbacks** and how they handle asynchronou
 Now, we will learn how **Async/Await**, built on promises, can manage asynchronous code in an even more elegant, more intuitive and straightforward way.
 
 
-#### i) Introducing Async/Await
+#### i) Introducing Async
 
-##### Async function:
-<p style="height:1px; margin-bottom:24px;"></p>
-
-**Async function syntax**,
+##### Async function syntax:
 
 The async keyword is used to declare a function as asynchronous. 
 
@@ -3186,7 +3183,7 @@ I am async function!
 ```
 <p style="height:1px; margin-bottom:24px;"></p>
 
-**Async function always return Promise**,
+##### Async function always return Promise,
 ```javascript
 // Example: Async function always return promise even no promise constructor
 const iAmAsyncFunc = async () => {
@@ -3225,7 +3222,50 @@ iAmAsyncFunc()
 
 I am async function resolved with promise
 ```
+<p style="height:1px; margin-bottom:24px;"></p>
 
+##### It's not that much interesting only use async keyword!,
+
+
+**Only use async keyword just saying everything is returned like promise settled. Even a whole string returned like promise settled**. 
+```javascript
+// Example: Async return promise
+const iAmAsyncFunc = async () => {
+  return 'I am returning whole string promis'
+}
+
+iAmAsyncFunc()
+.then(data => console.log(data))
+
+# Output:
+
+I am returning whole string promis
+```
+
+**Though **async** return promise, only using keyword need **.then()** to handle settled result**.
+```javascript
+// Example: Only using async keywork need .then() to handle return result
+const iAmAsyncFunc1 = async () => {
+  return 'I am async function1 \n'
+}
+
+const iAmAsyncFunc2 = async (data) => {
+  return data + 'I am async function2'
+}
+
+iAmAsyncFunc1()
+.then(data => iAmAsyncFunc2(data))
+.then(data => console.log(data))
+
+# Output:
+
+I am async function1 
+I am async function2
+```
+**Though **async** return promise, need **.then()** to handle settled result**.
+```javascript
+
+```
 
 
 
