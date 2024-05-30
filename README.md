@@ -3308,13 +3308,13 @@ iAmAsyncFunc()
 settled promise
 ```
 #### iii) Async/Await is syntactic sugar built on top of promises
-Async/Await allows us to write asynchronous code in a more synchronous fashion, which can be easier to read, understand and manageable. Async/Await levarages Promises under the hood to handle asynchronous operations, ensuring backward compatibility and consistent behavior. Here are five key points with comparable code examples to illustrate this relationship.
+**Async/Await** allows us to write asynchronous code in a more synchronous fashion, which can be easier to read, understand and manageable. **Async/Await** levarages **Promises** under the hood to handle asynchronous operations, ensuring backward compatibility and consistent behavior. Here are five key points with comparable code examples to illustrate this relationship.
 
 <p style="height:1px; margin-bottom:19px;"></p>
-##### Handling asynchronous operations looks synchronous
+##### 1) Handling asynchronous operations looks synchronous
 <p style="height:1px; margin-bottom:9px;"></p>
 
-**Promise based asynchronous operation**
+**Example: Promise based asynchronous operation**
 ```javascript
 // Example: Promise based asynchronous operation
 const PromiseFetchData = () => {
@@ -3344,7 +3344,7 @@ Promise data fetched
 Promise fetch completed
 ```
 
-**Async/Await asynchronous operation looks synchronous**
+**Example: Async/Await asynchronous operation looks synchronous**
 ```javascript
 // Example: Async/Await asynchronous operation
 const AsyncFetchData = async () => {
@@ -3378,7 +3378,64 @@ Async data fetched
 Async fetch completed
 ```
 **Explanation:**
-Both examples perform the same operation: fetching data asynchronously. Async/Await makes the code look synchronous, but under the hood, it still uses Promises.
+Both examples perform the same operation: fetching data asynchronously. **Async/Await** makes the code look synchronous, but under the hood, it still uses **Promises**.
+
+
+<p style="height:1px; margin-bottom:19px;"></p>
+##### 2) Sequential Execution
+<p style="height:1px; margin-bottom:9px;"></p>
+
+**Example: Promise based sequential execution**
+```javascript
+// Example: Promise based asynchronous operation
+function fetchData1() {
+  return new Promise(resolve => setTimeout(() => resolve("Promise Data 1"), 1000));
+}
+
+function fetchData2() {
+  return new Promise(resolve => setTimeout(() => resolve("Promise Data 2"), 1000));
+}
+
+fetchData1().then(data1 => {
+  console.log(data1);
+  return fetchData2();
+}).then(data2 => {
+    console.log(data2);
+});
+
+
+# Output:
+Promise Data 1
+Promise Data 2
+```
+
+**Example: Async/Await sequential execution**
+```javascript
+// Example: Async/Await sequential execution
+async function fetchData1() {
+  return new Promise(resolve => setTimeout(() => resolve("Async Data 1"), 1000));
+}
+
+async function fetchData2() {
+  return new Promise(resolve => setTimeout(() => resolve("Async Data 2"), 1000));
+}
+
+async function getData() {
+  const data1 = await fetchData1();
+  console.log(data1);
+  const data2 = await fetchData2();
+  console.log(data2);
+}
+
+getData();
+
+
+# Output:
+Async Data 1
+Async Data 2
+```
+**Explanation:**
+Sequentially fetching data can be done using Promises with chained **then** calls or **async/await** syntax. **async/await** provides a clearer, more readable way to handle sequential operations while still relying on **Promises**.
 
 
 
