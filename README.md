@@ -3405,6 +3405,7 @@ fetchData1().then(data1 => {
 
 
 # Output:
+
 Promise Data 1
 Promise Data 2
 ```
@@ -3431,11 +3432,70 @@ getData();
 
 
 # Output:
+
 Async Data 1
 Async Data 2
 ```
 **Explanation:**
 Sequentially fetching data can be done using **Promises** with chained **then** calls or **async/await** syntax. **async/await** provides a clearer, more readable way to handle sequential operations while still relying on **Promises**.
+
+
+<p style="height:1px; margin-bottom:19px;"></p>
+##### 3) Error Handling
+<p style="height:1px; margin-bottom:9px;"></p>
+
+**Example: Promise based error handling**
+```javascript
+// Example: Promises error
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject("Promise error: fetching data");
+    }, 1000);
+  });
+}
+
+fetchData().then(data => {
+  console.log(data);
+}).catch(error => {
+  console.error(error);
+});
+
+
+# Output:
+
+Promise error: fetching data
+```
+<p style="height:1px; margin-bottom:14px;"></p>
+**Example: Async/Await error handling**
+```javascript
+// Example: Async/Await error
+async function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject("Async error: fetching data");
+    }, 1000);
+  });
+}
+
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getData();
+
+
+# Output:
+
+Async error: fetching data
+```
+**Explanation:**
+Both approaches handle errors, but শ্রশ্র uses শ্রশ্র blocks which are familiar from synchronous code, simplifying error handling while still utilizing **Promises**.
 
 
 
