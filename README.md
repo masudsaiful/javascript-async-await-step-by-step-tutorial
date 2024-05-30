@@ -3435,7 +3435,7 @@ Async Data 1
 Async Data 2
 ```
 **Explanation:**
-Sequentially fetching data can be done using Promises with chained **then** calls or **async/await** syntax. **async/await** provides a clearer, more readable way to handle sequential operations while still relying on **Promises**.
+Sequentially fetching data can be done using **Promises** with chained **then** calls or **async/await** syntax. **async/await** provides a clearer, more readable way to handle sequential operations while still relying on **Promises**.
 
 
 
