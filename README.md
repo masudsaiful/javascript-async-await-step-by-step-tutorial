@@ -3495,7 +3495,7 @@ getData();
 Async error: fetching data
 ```
 **Explanation:**
-Both approaches handle errors, but শ্রশ্র uses শ্রশ্র blocks which are familiar from synchronous code, simplifying error handling while still utilizing **Promises**.
+Both approaches handle errors, but **async/await** uses **try/catch** blocks which are familiar from **synchronous** code, simplifying error handling while still utilizing **Promises**.
 
 
 
