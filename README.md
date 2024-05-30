@@ -3308,15 +3308,67 @@ iAmAsyncFunc()
 settled promise
 ```
 #### iii) Async/Await is syntactic sugar built on top of promises
-Async/Await allows us to write asynchronous code in a more synchronous fashion, which can be easier to read and understand.
+Async/Await allows us to write asynchronous code in a more synchronous fashion, which can be easier to read, understand and manageable. Async/Await levarages Promises under the hood to handle asynchronous operations, ensuring backward compatibility and consistent behavior. Here are five key points with comparable code examples to illustrate this relationship.
 
 <p style="height:1px; margin-bottom:19px;"></p>
-##### Async/Await don't need to use promise method .then()
+##### Handling asynchronous operations looks synchronous
 <p style="height:1px; margin-bottom:9px;"></p>
 
-
+**Promise based asynchronous operation**
 ```javascript
+// Example: Promise based asynchronous operation
+const PromiseFetchData = () => {
+  return new Promise((resolve, reject) => {
+    console.log('Promise fetch started')
+    let fetchedData = "Promise data fetched"
+    setTimeout(() => {
+      resolve(fetchedData)
+      
+    }, 1000)
+    console.log('Promise fetch will complete later')
+  })
+}
 
+PromiseFetchData()
+.then(data => {
+  console.log(data) 
+  console.log('Promise fetch completed')
+})
+.catch(error => console.log(error))
+
+
+# Output:
+Fetch started
+Fetch will complete later
+Data fetched
+Fetch completed
+```
+
+**Async/Await asynchronous operation looks synchronous**
+```javascript
+// Example: Async/Await asynchronous operation
+const AsyncFetchData = async () => {
+  return new Promise((resolve, reject) => {
+    console.log('Async fetch started')
+    let fetchedData = "Async data fetched"
+    setTimeout(() => {
+      resolve(fetchedData)
+    }, 1000)
+    console.log('Async fetch will complete later')
+  })
+}
+
+const AsyncGetData = async () => {
+  try {
+    let data = await AsyncFetchData()
+    console.log(data)
+    console.log('Async fetch completed')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+AsyncGetData()
 ```
 
 
