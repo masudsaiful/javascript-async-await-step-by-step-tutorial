@@ -3164,19 +3164,19 @@ iii) The **.catch** handler handles any potential errors.
 
 #### ii) Key Facts about JavaScript Promises:
 
-##### 1. Pre-defined resolve and reject Functions
+##### Pre-defined resolve and reject Functions
 **resolve** and **reject** are pre-defined: When you create a new **Promise**, the **resolve** and **reject** functions are provided by JavaScript. You do not need to define them yourself. These functions control the outcome of the **promise**.
 
 
-##### 2. Reject Function Usage
+##### Reject Function Usage
 **Reject** function less frequently used. In many cases, especially when the operation is simple or unlikely to fail, the reject function might not be used. **Promises** often resolve successfully without needing to handle rejection.
 
 
-##### 3. Consuming vs. Producing Code
+##### Consuming vs. Producing Code
 **Developers** often work with **consuming code**. Most developers interact with promises by consuming them using **.then()**, **.catch()**, and **async/await** (will talk later) rather than **producing** them. The consuming code handles the resolved or rejected values of promises. Most of the time third-party libraries provide consuming code to work with.
 
 
-##### 4. When to work with producing code?
+##### When to work with producing code?
 **Developers** rarely need to create (or '**produce**') promises but sometimes there may requirements such as fetching data from an API, reading files, querying a dB or perform complex calculations that need to run in the background. This involves wrapping the asynchronous operation inside a new Promise. Some common scenarios where developers write producing code include:
 
 i) When creating custom functions that perform asynchronous tasks, such as connecting to a new API or interfacing with hardware devices.
