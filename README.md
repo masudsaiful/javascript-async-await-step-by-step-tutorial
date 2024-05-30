@@ -3173,7 +3173,7 @@ iii) The **.catch** handler handles any potential errors.
 
 
 ##### Consuming vs. Producing Code
-**Developers** often work with **consuming code**. Most developers interact with promises by consuming them using **.then()**, **.catch()**, and **async/await** (will talk later) rather than **producing** them. The consuming code handles the resolved or rejected values of promises. Most of the time third-party libraries provide consuming code to work with.
+**Developers** often work with **consuming code**. Most developers interact with promises by consuming them using **.then()**, **.catch()**, and **async/await** (will talk later) rather than **producing** them. The consuming code handles the **resolved** or **rejected** values of promises. Most of the time third-party libraries provide consuming code to work with.
 
 
 ##### When to work with producing code?
