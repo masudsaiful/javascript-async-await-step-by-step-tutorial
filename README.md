@@ -3338,10 +3338,10 @@ PromiseFetchData()
 
 
 # Output:
-Fetch started
-Fetch will complete later
-Data fetched
-Fetch completed
+Promise fetch started
+Promise fetch will complete later
+Promise data fetched
+Promise fetch completed
 ```
 
 **Async/Await asynchronous operation looks synchronous**
@@ -3369,7 +3369,19 @@ const AsyncGetData = async () => {
 }
 
 AsyncGetData()
+
+
+# Output:
+Async fetch started
+Async fetch will complete later
+Async data fetched
+Async fetch completed
 ```
+**Explanation:**
+Both examples perform the same operation: fetching data asynchronously. Async/Await makes the code look synchronous, but under the hood, it still uses Promises.
+
+
+
 
 
 ## Conclusion
