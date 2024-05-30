@@ -3500,7 +3500,7 @@ Both approaches handle errors, but **async/await** uses **try/catch** blocks whi
 
 
 <p style="height:1px; margin-bottom:19px;"></p>
-##### 3) Parallel Execution
+##### 4) Parallel Execution
 <p style="height:1px; margin-bottom:9px;"></p>
 
 **Example: Promises parallel execution**
@@ -3565,6 +3565,62 @@ Async parallel: Data 2
 ```
 **Explanation:**
 Parallel execution can be handled with **Promise.all()** in both **Promise** and **async/await** syntax. **async/await** still leverages **Promises** to manage parallel operations.
+
+
+
+<p style="height:1px; margin-bottom:19px;"></p>
+##### 5) Returning Values
+<p style="height:1px; margin-bottom:9px;"></p>
+
+**Example: Promises return**
+```javascript
+// Example: Promises based return
+function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+        resolve("Promise return: Data fetched");
+    }, 1000);
+  });
+}
+
+fetchData().then(data => {
+  console.log(data);
+});
+
+
+
+# Output:
+
+Promise return: Data fetched
+```
+<p style="height:1px; margin-bottom:14px;"></p>
+**Example: Async/Await return**
+```javascript
+// Example: Async/Await return
+async function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+        resolve("Async/Await return: Data fetched");
+    }, 1000);
+  });
+}
+
+async function getData() {
+  const data = await fetchData();
+  console.log(data);
+}
+
+getData();
+
+
+
+# Output:
+
+Async/Await return: Data fetched
+```
+**Explanation:**
+Returning values from an asynchronous function with **Promises** involves **then** chaining, while **async/await** can directly handle the returned value, offering more readable code without altering the underlying use of **Promises**.
+
 
 
 
