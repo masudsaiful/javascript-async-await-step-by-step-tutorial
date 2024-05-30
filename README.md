@@ -23,6 +23,8 @@ Since JavaScript is inherently a single-threaded, blocking, and synchronous prog
 
 ###### H) [Javascript Promises](#h-javascript-promises-1)
 
+and lastly we will know,
+
 ###### I) [Async/Await](#i-javascript-asyncawait)
 
 
@@ -455,6 +457,18 @@ NOTE: Though Arrow Function actually the shorter syntax of Anonymous Function,
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ### B) Single-threaded, blocking and synchronous
 #### By default Javascript is single-threaded, blocking and synchronous nature. Let's see what are they in belows.
 ###### (From now on towards we will use arrow functions of all following examples) ######
@@ -603,6 +617,22 @@ The code illustrated in **example1** will print output **'something1', 'somethin
 
 
 In the **example2** we can now seen that the output sequence orders are **'something2', 'something1' and 'something3'**. This is because their function call execution occured line by line one after another according their invokation sequences and only one instruction at a time i.e. **func2(), func1() and func3()**. The noteworthy thing here is that after execution of **func2** function, the next instructed function **func1()** make delay to execute **func3()** function because **func1()** function yet not finished it's porcess.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### C) Function Sequence and synchronous programming
@@ -3129,6 +3159,43 @@ i) The **fetchUserData** function is called with a user ID of 1.
 ii) The **.then** handler processes the resolved data, logging the user information to the console.
 
 iii) The **.catch** handler handles any potential errors.
+
+
+
+#### ii) Key Facts about JavaScript Promises:
+
+##### 1. Pre-defined resolve and reject Functions
+**resolve** and **reject** are pre-defined: When you create a new **Promise**, the **resolve** and **reject** functions are provided by JavaScript. You do not need to define them yourself. These functions control the outcome of the **promise**.
+
+
+##### 2. Reject Function Usage
+**Reject** function less frequently used. In many cases, especially when the operation is simple or unlikely to fail, the reject function might not be used. **Promises** often resolve successfully without needing to handle rejection.
+
+
+##### 3. Consuming vs. Producing Code
+**Developers** often work with **consuming code**. Most developers interact with promises by consuming them using **.then()**, **.catch()**, and **async/await** (will talk later) rather than **producing** them. The consuming code handles the resolved or rejected values of promises. Most of the time third-party libraries provide consuming code to work with.
+
+
+##### 4. When to work with producing code?
+**Developers** rarely need to create (or '**produce**') promises but sometimes there may requirements such as fetching data from an API, reading files, querying a dB or perform complex calculations that need to run in the background. This involves wrapping the asynchronous operation inside a new Promise. Some common scenarios where developers write producing code include:
+
+i) When creating custom functions that perform asynchronous tasks, such as connecting to a new API or interfacing with hardware devices.
+
+ii) When converting callback-based code to promise-based code for consistency and readability.
+
+iii) When a developer needs finer control over the asynchronous operation than what is provided by third-party libraries.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
