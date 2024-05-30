@@ -3343,7 +3343,7 @@ Promise fetch will complete later
 Promise data fetched
 Promise fetch completed
 ```
-
+<p style="height:1px; margin-bottom:14px;"></p>
 **Example: Async/Await asynchronous operation looks synchronous**
 ```javascript
 // Example: Async/Await asynchronous operation
@@ -3408,7 +3408,7 @@ fetchData1().then(data1 => {
 Promise Data 1
 Promise Data 2
 ```
-
+<p style="height:1px; margin-bottom:14px;"></p>
 **Example: Async/Await sequential execution**
 ```javascript
 // Example: Async/Await sequential execution
