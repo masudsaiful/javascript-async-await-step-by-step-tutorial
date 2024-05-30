@@ -3622,6 +3622,9 @@ Async/Await return: Data fetched
 Returning values from an asynchronous function with **Promises** involves **then** chaining, while **async/await** can directly handle the returned value, offering more readable code without altering the underlying use of **Promises**.
 
 
+So we have seen, while async/await introduces a more intuitive and readable way to write asynchronous JavaScript code, it fundamentally relies on the Promise API. This syntactic enhancement does not replace Promises but rather complements them by providing a structure that resembles synchronous code, thereby making it easier to reason about complex asynchronous flows. By examining how async/await performs the same tasks as Promises, such as handling asynchronous operations, executing sequences, managing errors, running tasks in parallel, and returning values, it's evident that async/await is built on top of the robust functionality provided by Promises. This layered approach allows developers to leverage existing Promise capabilities while enjoying a streamlined syntax that enhances code clarity and maintainability.
+
+
 
 
 
