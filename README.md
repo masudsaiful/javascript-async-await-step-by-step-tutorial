@@ -3499,6 +3499,74 @@ Both approaches handle errors, but **async/await** uses **try/catch** blocks whi
 
 
 
+<p style="height:1px; margin-bottom:19px;"></p>
+##### 3) Parallel Execution
+<p style="height:1px; margin-bottom:9px;"></p>
+
+**Example: Promises parallel execution**
+```javascript
+// Example: Promises parallel execution
+function fetchData1() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Promise parallel: Data 1"), 1000)
+  });
+}
+
+function fetchData2() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Promise parallel: Data 2"), 1000)
+  });
+}
+
+Promise.all([fetchData1(), fetchData2()]).then(results => {
+  console.log(results[0]);
+  console.log(results[1]);
+});
+
+
+# Output:
+
+Promise parallel: Data 1
+Promise parallel: Data 2
+```
+<p style="height:1px; margin-bottom:14px;"></p>
+**Example: Async/Await parallel execution**
+```javascript
+// Example: Async/Await parallel execution
+async function fetchData1() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("Async Parallel: Data 1")
+    }, 1000)
+  });
+}
+
+async function fetchData2() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("Async Parallel: Data 2")
+    }, 1000)
+  });
+}
+
+async function getData() {
+  const [data1, data2] = await Promise.all([fetchData1(), fetchData2()]);
+  console.log(data1);
+  console.log(data2);
+}
+
+getData();
+
+
+# Output:
+
+Async parallel: Data 1
+Async parallel: Data 2
+```
+**Explanation:**
+Parallel execution can be handled with **Promise.all()** in both **Promise** and **async/await** syntax. **async/await** still leverages **Promises** to manage parallel operations.
+
+
 
 
 ## Conclusion
